@@ -47,14 +47,26 @@ dependencies {
     implementation(libs.androidx.constraintlayout.v210)
     implementation(libs.retrofit.v290)
     implementation(libs.converter.gson.v290)
+    implementation(libs.androidx.activity)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit.v113)
     androidTestImplementation(libs.androidx.espresso.core.v340)
     implementation (libs.androidx.appcompat.v151)
     implementation(libs.material.v161)
     implementation (libs.material.v180)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
+    implementation (libs.material.v140)
+    implementation (libs.androidx.constraintlayout)
+    implementation ("com.google.android.gms:play-services-auth:20.5.0")
+
+
+
 
 
 }
+
 
 
