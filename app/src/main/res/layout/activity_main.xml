@@ -46,7 +46,6 @@
         android:text="Choose your path"
         android:textColor="#003566"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
 
