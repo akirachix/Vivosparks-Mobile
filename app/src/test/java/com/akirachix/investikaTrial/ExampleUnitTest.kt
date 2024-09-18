@@ -1,4 +1,4 @@
-package com.akirachix.investikatrial
+package com.akirachix.investikaTrial
 
 import org.junit.Test
 

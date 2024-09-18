@@ -38,14 +38,23 @@ android {
     }
 }
 
-dependencies {
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
+dependencies {
+    implementation(libs.androidx.core.ktx.v160)
+    implementation(libs.androidx.appcompat.v131)
+    implementation(libs.material.v140)
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.constraintlayout.v210)
+    implementation(libs.retrofit.v290)
+    implementation(libs.converter.gson.v290)
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.junit.v113)
+    androidTestImplementation(libs.androidx.espresso.core.v340)
+    implementation (libs.androidx.appcompat.v151)
+    implementation(libs.material.v161)
+    implementation (libs.material.v180)
+
+
 }
+
+
