@@ -1,6 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
+<<<<<<< HEAD
     <style name="Base.Theme.InvestikaTrial..." parent="Theme.AppCompat.DayNight.DarkActionBar">
+=======
+    <style name="Base.Theme.Investika" parent="Theme.Material3.DayNight.NoActionBar">
+>>>>>>> feature/registration
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>

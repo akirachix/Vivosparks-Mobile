@@ -4,11 +4,9 @@ plugins {
 }
 
 android {
-    namespace = "com.akirachix.investikatrial"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.akirachix.investikatrial"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -38,23 +36,7 @@ android {
     }
 }
 
-
 dependencies {
-    implementation(libs.androidx.core.ktx.v160)
-    implementation(libs.androidx.appcompat.v131)
-    implementation(libs.material.v140)
-    implementation(libs.androidx.activity.ktx)
-    implementation(libs.androidx.constraintlayout.v210)
-    implementation(libs.retrofit.v290)
-    implementation(libs.converter.gson.v290)
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit.v113)
-    androidTestImplementation(libs.androidx.espresso.core.v340)
-    implementation (libs.androidx.appcompat.v151)
-    implementation(libs.material.v161)
-    implementation (libs.material.v180)
-
 
 }
-
-
