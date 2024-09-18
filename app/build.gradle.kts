@@ -7,6 +7,8 @@ android {
     namespace = "com.akirachix.investikatrial"
     compileSdk = 34
 
+
+
     defaultConfig {
         applicationId = "com.akirachix.investikatrial"
         minSdk = 24
@@ -60,7 +62,9 @@ dependencies {
     implementation (libs.converter.gson)
     implementation (libs.material.v140)
     implementation (libs.androidx.constraintlayout)
-    implementation ("com.google.android.gms:play-services-auth:20.5.0")
+    implementation (libs.play.services.auth)
+    implementation (libs.androidx.core.v1100)
+
 
 
 

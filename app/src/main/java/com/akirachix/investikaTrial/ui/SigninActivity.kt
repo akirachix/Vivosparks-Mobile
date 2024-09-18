@@ -1,37 +1,30 @@
-package com.akirachix.investikatrial.ui
+package com.akirachix.investikaTrial.ui
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
+import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.akirachix.investikaTrial.api.SignInClient
 import com.akirachix.investikaTrial.api.ApiInterface
-import com.akirachix.investikatrial.databinding.ActivitySigninBinding
 import com.akirachix.investikaTrial.models.LoginRequest
 import com.akirachix.investikaTrial.models.LoginResponse
-import com.akirachix.investikaTrial.ui.HomeActivity
+import com.akirachix.investikatrial.databinding.ActivitySigninBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class SigninActivity : AppCompatActivity() {
 
-    // ViewBinding object to access the views in the layout
     private lateinit var binding: ActivitySigninBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Initialize ViewBinding and set the content view to the root of the layout
         binding = ActivitySigninBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        // Set up click listeners for the login button and sign-up text
         setupListeners()
     }
 
     private fun setupListeners() {
-        // Handle the login button click
         binding.loginbtn.setOnClickListener {
             if (validateForm()) {
                 val username = binding.usernameInput.text.toString().trim()
@@ -40,21 +33,18 @@ class SigninActivity : AppCompatActivity() {
             }
         }
 
-        // Handle sign-up text click to navigate to SignupActivity
         binding.signUpText.setOnClickListener {
-            val intent = Intent(this,HomeActivity ::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
     }
 
-    // Validate the form inputs for username and password
     private fun validateForm(): Boolean {
         var isValid = true
 
         val username = binding.usernameInput.text.toString().trim()
         val password = binding.passwordInput.text.toString().trim()
 
-        // Validate username field
         if (username.isEmpty()) {
             binding.usernameInput.error = "Username is required"
             isValid = false
@@ -62,7 +52,6 @@ class SigninActivity : AppCompatActivity() {
             binding.usernameInput.error = null
         }
 
-        // Validate password field
         if (password.isEmpty()) {
             binding.passwordInput.error = "Password is required"
             isValid = false
@@ -76,16 +65,19 @@ class SigninActivity : AppCompatActivity() {
         return isValid
     }
 
-    // Perform the login by making an API call with Retrofit
     private fun login(username: String, password: String) {
         val loginRequest = LoginRequest(username, password)
         val apiService = SignInClient.retrofitInstance.create(ApiInterface::class.java)
 
-
         apiService.login(loginRequest).enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                if (response.isSuccessful && response.body()?.status == "success") {
-                    handleSuccessfulLogin(response.body()?.message)
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody?.status == "success") {
+                        handleSuccessfulLogin(responseBody.message)
+                    } else {
+                        handleFailedLogin("Login failed: ${responseBody?.message ?: response.message()}")
+                    }
                 } else {
                     handleFailedLogin("Login failed: ${response.message()}")
                 }
@@ -97,16 +89,13 @@ class SigninActivity : AppCompatActivity() {
         })
     }
 
-    // Handle a successful login
     private fun handleSuccessfulLogin(message: String?) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-        // Navigate to the next activity (e.g., HomeActivity)
+        Toast.makeText(this, message ?: "Login successful", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
-        finish()  // Close the login activity so the user can't go back to it
+        finish()
     }
 
-    // Handle a failed login by showing a toast message
     private fun handleFailedLogin(errorMessage: String) {
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
     }

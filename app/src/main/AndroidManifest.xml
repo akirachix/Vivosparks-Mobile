@@ -4,7 +4,8 @@
 
     <uses-sdk
         android:minSdkVersion="24"
-        android:targetSdkVersion="34" />
+        android:targetSdkVersion="34"
+        tools:ignore="GradleOverrides" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -20,6 +21,8 @@
         tools:replace="android:allowBackup"
         tools:targetApi="31">
 
+        <uses-library android:name="com.google.android.maps" />
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-com.akirachix.investikatrial" />
@@ -33,7 +36,7 @@
             android:exported="false" />
 
         <activity
-            android:name="ui.SigninActivity"
+            android:name="com.akirachix.investikaTrial.ui.SigninActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
