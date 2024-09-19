@@ -1,12 +1,9 @@
-package com.example.investika
+package com.akirachix.investikaTrial.ui
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.investika.databinding.ActivityBattlequizBinding
-import com.example.investika.databinding.ActivityHighRiskPathsBinding
-import com.example.investika.databinding.ActivityMainBinding
-import com.example.investika.databinding.ActivityPathDecisionBinding
+import com.akirachix.investikatrial.databinding.ActivityBattlequizBinding
 
 
 class BattleQuizActivity : AppCompatActivity() {

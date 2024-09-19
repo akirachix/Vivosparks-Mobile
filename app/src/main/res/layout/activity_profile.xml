@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:gravity="center"
-    android:background="@drawable/battlequiz"
-    tools:context=".MainActivity">
+    android:background="@drawable/battlequiz">
 
 
 

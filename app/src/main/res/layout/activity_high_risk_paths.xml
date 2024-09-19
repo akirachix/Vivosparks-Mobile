@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:gravity="center"
-    android:background="@drawable/riverbg"
-    tools:context=".MainActivity">
+    android:background="@drawable/riverbg">
 
 
     <Button
@@ -15,9 +14,10 @@
         android:layout_width="350dp"
         android:layout_height="65dp"
         android:layout_marginBottom="60dp"
-        android:background="@drawable/boarder_radius"
         android:backgroundTint="#FFFFFF"
         android:text="Pay the dragon"
+        android:fontFamily="@font/nunito_bold"
+        android:background="@drawable/corners"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/button16"
@@ -30,9 +30,10 @@
         android:layout_width="350dp"
         android:layout_height="65dp"
         android:layout_marginBottom="60dp"
-        android:background="@drawable/boarder_radius"
+        android:fontFamily="@font/nunito_bold"
         android:backgroundTint="#FFFFFF"
         android:text=" Fight the dragon"
+        android:background="@drawable/corners"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/button15"
@@ -42,11 +43,12 @@
 
     <Button
         android:id="@+id/button12"
-        android:layout_width="350dp"
-        android:layout_height="65dp"
+        android:layout_width="349dp"
+        android:layout_height="78dp"
         android:layout_marginBottom="164dp"
-        android:background="@drawable/boarder_radius"
+        android:background="@drawable/corners"
         android:backgroundTint="#FFFFFF"
+        android:fontFamily="@font/nunito_bold"
         android:text="Cross the bridge of choices"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -60,9 +62,10 @@
         android:layout_width="350dp"
         android:layout_height="65dp"
         android:layout_marginBottom="60dp"
-        android:background="@drawable/boarder_radius"
         android:backgroundTint="#FFFFFF"
         android:text="Consult the wise sage"
+        android:fontFamily="@font/nunito_bold"
+        android:background="@drawable/corners"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/button12"

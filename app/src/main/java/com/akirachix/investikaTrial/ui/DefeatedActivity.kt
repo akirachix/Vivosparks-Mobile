@@ -1,10 +1,9 @@
-package com.example.investika
+package com.akirachix.investikaTrial.ui
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.investika.databinding.ActivityDefeatedBinding
-import com.example.investika.databinding.ActivityMainBinding
+import com.akirachix.investikatrial.databinding.ActivityDefeatedBinding
 
 
 class DefeatedActivity : AppCompatActivity() {
@@ -16,7 +15,7 @@ class DefeatedActivity : AppCompatActivity() {
         binding = ActivityDefeatedBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.button.setOnClickListener {
+        binding.btnProceed.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
