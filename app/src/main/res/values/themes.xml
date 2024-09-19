@@ -1,9 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Investika" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.VivoSparksInvestika" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/white</item>
     </style>
 
-    <style name="Theme.Investika" parent="Base.Theme.Investika" />
+    <style name="Theme.VivoSparksInvestika" parent="Base.Theme.VivoSparksInvestika" />
 </resources>
