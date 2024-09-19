@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.retrofit.v290)
     implementation(libs.converter.gson.v290)
     implementation(libs.androidx.activity)
+    implementation(libs.firebase.auth.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit.v113)
     androidTestImplementation(libs.androidx.espresso.core.v340)
@@ -64,6 +65,11 @@ dependencies {
     implementation (libs.androidx.constraintlayout)
     implementation (libs.play.services.auth)
     implementation (libs.androidx.core.v1100)
+    implementation (libs.firebase.auth)
+    implementation (libs.play.services.auth.v2050)
+    implementation(libs.firebase.bom)
+    implementation(libs.google.firebase.auth)
+    implementation(libs.play.services.auth)
 
 
 

@@ -1,61 +1,77 @@
-// SignInViewModel.kt
-package com.akirachix.investikaTrial.ViewModel
-import android.app.Activity
-import android.content.Context
+import android.app.Application
 import android.content.Intent
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.akirachix.investikatrial.R
-import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.akirachix.investikaTrial.api.ApiInterface
+import com.akirachix.investikaTrial.api.SignInClient
+import com.akirachix.investikaTrial.models.LoginRequest
+import com.akirachix.investikaTrial.models.LoginResponse
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class SignInViewModel : ViewModel() {
+class SignInViewModel(application: Application) : AndroidViewModel(application) {
 
-    private lateinit var googleSignInClient: GoogleSignInClient
-    private val _signInResult = MutableLiveData<Pair<Boolean, String?>>()
-    val signInResult: LiveData<Pair<Boolean, String?>> = _signInResult
+    private val _loginResult = MutableLiveData<Result<String>>()
+    val loginResult: LiveData<Result<String>> = _loginResult
 
-    private val _signOutResult = MutableLiveData<Boolean>()
-    val signOutResult: LiveData<Boolean> = _signOutResult
+    private val _googleSignInResult = MutableLiveData<Result<String>>()
+    val googleSignInResult: LiveData<Result<String>> = _googleSignInResult
 
-    private val RC_SIGN_IN = 9001
+    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
-    // Initialize Google Sign-In options
-    fun initializeGoogleSignIn(context: Context) {
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(context.getString(R.string.cdSKtUvnl9Q4Y3NtvSWWDYmLPctEdlfQ)) // Use correct web client ID
-            .requestEmail()
-            .build()
+    // API Login Logic
+    fun login(username: String, password: String) {
+        val loginRequest = LoginRequest(username, password)
+        val apiService = SignInClient.retrofitInstance.create(ApiInterface::class.java)
 
-        googleSignInClient = GoogleSignIn.getClient(context, gso)
+        apiService.login(loginRequest).enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                if (response.isSuccessful && response.body()?.status == "success") {
+                    _loginResult.postValue(Result.success(response.body()?.message ?: "Login successful"))
+                } else {
+                    _loginResult.postValue(Result.failure(Throwable(response.message())))
+                }
+            }
+
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                _loginResult.postValue(Result.failure(t))
+            }
+        })
     }
 
-    // Get the Google Sign-In intent
-    fun getSignInIntent(): Intent {
-        return googleSignInClient.signInIntent
-    }
-
-    // Handle Google Sign-In result and update LiveData
-    fun handleSignInResult(task: Task<GoogleSignInAccount>) {
-        try {
-            val account = task.getResult(ApiException::class.java)
-            val email = account?.email
-            _signInResult.value = Pair(true, email)
-        } catch (e: ApiException) {
-            _signInResult.value = Pair(false, null)
+    // Google Sign-In Logic
+    fun firebaseAuthWithGoogle(account: GoogleSignInAccount) {
+        val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+        auth.signInWithCredential(credential).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                _googleSignInResult.postValue(Result.success("Google Sign-In successful"))
+            } else {
+                _googleSignInResult.postValue(Result.failure(task.exception ?: Exception("Google Sign-In failed")))
+            }
         }
     }
 
-    // Sign out from Google and update LiveData
-    fun signOut(context: Context) {
-        googleSignInClient.signOut()
-            .addOnCompleteListener(context as Activity) {
-                _signOutResult.value = true
+    // Validation Logic
+    fun validateForm(username: String, password: String): Boolean {
+        return when {
+            username.isEmpty() -> {
+                _loginResult.postValue(Result.failure(Throwable("Username is required")))
+                false
             }
+            password.isEmpty() -> {
+                _loginResult.postValue(Result.failure(Throwable("Password is required")))
+                false
+            }
+            password.length < 6 -> {
+                _loginResult.postValue(Result.failure(Throwable("Password must be at least 6 characters long")))
+                false
+            }
+            else -> true
+        }
     }
 }

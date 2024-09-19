@@ -1,102 +1,90 @@
-package com.akirachix.investikaTrial.ui
-
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.akirachix.investikaTrial.api.SignInClient
-import com.akirachix.investikaTrial.api.ApiInterface
-import com.akirachix.investikaTrial.models.LoginRequest
-import com.akirachix.investikaTrial.models.LoginResponse
+import androidx.lifecycle.Observer
+import com.akirachix.investikatrial.R
 import com.akirachix.investikatrial.databinding.ActivitySigninBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+
 
 class SigninActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySigninBinding
+    private lateinit var googleSignInClient: GoogleSignInClient
+
+    // ViewModel for the activity
+    private val viewModel: SignInViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySigninBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Google Sign-In configuration
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id)) // Make sure the ID is in strings.xml
+            .requestEmail()
+            .build()
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
+
+        // Set up listeners for UI interactions
         setupListeners()
+
+        // Observe LiveData from ViewModel
+        observeViewModel()
     }
 
     private fun setupListeners() {
         binding.loginbtn.setOnClickListener {
-            if (validateForm()) {
-                val username = binding.usernameInput.text.toString().trim()
-                val password = binding.passwordInput.text.toString().trim()
-                login(username, password)
+            val username = binding.usernameInput.text.toString().trim()
+            val password = binding.passwordInput.text.toString().trim()
+            if (viewModel.validateForm(username, password)) {
+                viewModel.login(username, password)
             }
         }
 
         binding.signUpText.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
+            val intent = Intent(this,this::class.java)
             startActivity(intent)
         }
+
+        binding.googleSignInButton.setOnClickListener {
+            val signInIntent = googleSignInClient.signInIntent
+            googleSignInResultLauncher.launch(signInIntent)
+        }
     }
 
-    private fun validateForm(): Boolean {
-        var isValid = true
-
-        val username = binding.usernameInput.text.toString().trim()
-        val password = binding.passwordInput.text.toString().trim()
-
-        if (username.isEmpty()) {
-            binding.usernameInput.error = "Username is required"
-            isValid = false
-        } else {
-            binding.usernameInput.error = null
+    private val googleSignInResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+        task.getResult(Exception::class.java)?.let { account ->
+            viewModel.firebaseAuthWithGoogle(account)
+        } ?: run {
+            Toast.makeText(this, "Google Sign-In failed", Toast.LENGTH_SHORT).show()
         }
-
-        if (password.isEmpty()) {
-            binding.passwordInput.error = "Password is required"
-            isValid = false
-        } else if (password.length < 6) {
-            binding.passwordInput.error = "Password must be at least 6 characters long"
-            isValid = false
-        } else {
-            binding.passwordInput.error = null
-        }
-
-        return isValid
     }
 
-    private fun login(username: String, password: String) {
-        val loginRequest = LoginRequest(username, password)
-        val apiService = SignInClient.retrofitInstance.create(ApiInterface::class.java)
+    private fun observeViewModel() {
+        viewModel.loginResult.observe(this, Observer { result ->
+            result.fold(
+                onSuccess = { showToast(it) },
+                onFailure = { showToast(it.message ?: "Login failed") }
+            )
+        })
 
-        apiService.login(loginRequest).enqueue(object : Callback<LoginResponse> {
-            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                if (response.isSuccessful) {
-                    val responseBody = response.body()
-                    if (responseBody?.status == "success") {
-                        handleSuccessfulLogin(responseBody.message)
-                    } else {
-                        handleFailedLogin("Login failed: ${responseBody?.message ?: response.message()}")
-                    }
-                } else {
-                    handleFailedLogin("Login failed: ${response.message()}")
-                }
-            }
-
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                handleFailedLogin("Network error: ${t.message}")
-            }
+        viewModel.googleSignInResult.observe(this, Observer { result ->
+            result.fold(
+                onSuccess = { showToast(it) },
+                onFailure = { showToast(it.message ?: "Google Sign-In failed") }
+            )
         })
     }
 
-    private fun handleSuccessfulLogin(message: String?) {
-        Toast.makeText(this, message ?: "Login successful", Toast.LENGTH_SHORT).show()
-        val intent = Intent(this, HomeActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
-
-    private fun handleFailedLogin(errorMessage: String) {
-        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

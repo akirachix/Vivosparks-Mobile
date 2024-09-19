@@ -20,18 +20,6 @@
         android:theme="@style/Theme.InvestikaTrial"
         tools:replace="android:allowBackup"
         tools:targetApi="31">
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.CdsLinkActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.MarketActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.InvestActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.AchievementActivity"
-            android:exported="false" />
 
         <uses-library android:name="com.google.android.maps" />
 
@@ -46,8 +34,9 @@
             android:name="com.akirachix.investikaTrial.ui.HomeActivity"
             android:exported="false" />
         <activity
-            android:name="com.akirachix.investikaTrial.ui.SigninActivity"
-            android:exported="true">
+            android:name="SigninActivity"
+            android:exported="true"
+            tools:ignore="MissingClass">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
