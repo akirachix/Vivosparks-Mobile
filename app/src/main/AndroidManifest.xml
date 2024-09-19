@@ -20,13 +20,24 @@
         android:theme="@style/Theme.InvestikaTrial"
         tools:replace="android:allowBackup"
         tools:targetApi="31">
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.CdsLinkActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.MarketActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.InvestActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.AchievementActivity"
+            android:exported="false" />
 
         <uses-library android:name="com.google.android.maps" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-com.akirachix.investikatrial" />
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -34,16 +45,15 @@
         <activity
             android:name="com.akirachix.investikaTrial.ui.HomeActivity"
             android:exported="false" />
-
         <activity
             android:name="com.akirachix.investikaTrial.ui.SigninActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
