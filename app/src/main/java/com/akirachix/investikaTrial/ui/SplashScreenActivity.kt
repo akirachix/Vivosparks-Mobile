@@ -1,4 +1,3 @@
-// SplashScreenActivity.kt
 package com.akirachix.investikaTrial.ui
 
 import android.content.Intent
