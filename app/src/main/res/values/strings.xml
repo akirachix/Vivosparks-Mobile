@@ -1,3 +1,14 @@
+<!-- res/values/strings.xml -->
 <resources>
-    <string name="app_name">InvestikaTrial</string>
+    <!-- Add your app's string resources here -->
+
+    <!-- Missing string resources from the error log -->
+    <string name="fxdi">Your FXDI text here</string>
+    <string name="fdig">Your FDIG text here</string>
+    <string name="FDIB">Your FDIB text here</string>
+    <string name="i_trust_wisdom_over_chance">I trust wisdom over chance</string>
+    <string name="i_m_unsure_about_my_decision">I\'m unsure about my decision</string>
+    <string name="i_want_to_learn_more_first">I want to learn more first</string>
+    <string name="why_have_you_chosen_to_consult_the_wise_sage">Why have you chosen to consult the wise sage?</string>
+    <string name="i_need_expert_guidance">I need expert guidance</string>
 </resources>

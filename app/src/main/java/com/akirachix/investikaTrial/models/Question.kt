@@ -6,5 +6,4 @@ data class Question(
     val options: List<String>,
     val correctAnswer: Int,
     val image: String
-
 )

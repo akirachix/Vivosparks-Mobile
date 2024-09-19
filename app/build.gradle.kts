@@ -7,6 +7,7 @@ android {
     namespace = "com.akirachix.investikatrial"
     compileSdk = 34
 
+
     defaultConfig {
         applicationId = "com.akirachix.investikatrial"
         minSdk = 24
@@ -36,6 +37,7 @@ android {
     buildFeatures {
         viewBinding=true
     }
+    
 }
 
 
@@ -47,12 +49,15 @@ dependencies {
     implementation(libs.androidx.constraintlayout.v210)
     implementation(libs.retrofit.v290)
     implementation(libs.converter.gson.v290)
+    implementation(libs.androidx.activity)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit.v113)
     androidTestImplementation(libs.androidx.espresso.core.v340)
     implementation (libs.androidx.appcompat.v151)
     implementation(libs.material.v161)
     implementation (libs.material.v180)
+    implementation (libs.material)
+
 
 
 }

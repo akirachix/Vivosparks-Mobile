@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/corporate"
+    tools:context="com.akirachix.investikaTrial.ui.corporatebondActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilFirstBond"
+        android:layout_width="109dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="86dp"
+        android:layout_marginEnd="274dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietFirstBond"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="FXD1\n2024/005" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilSecondBond"
+        android:layout_width="106dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="253dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilFirstBond">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietSecondBond"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="FXG2\n2024/008" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilAmountOne"
+        android:layout_width="93dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tilFirstBond"
+        app:layout_constraintStart_toEndOf="@+id/tilFirstBond">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietAmountOne"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="KES100.00\nB" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilAmountTwo"
+        android:layout_width="92dp"
+        android:layout_height="51dp"
+        app:layout_constraintEnd_toEndOf="@+id/tilAmountOne"
+        app:layout_constraintStart_toStartOf="@+id/tilAmountOne"
+        app:layout_constraintTop_toTopOf="@+id/tilSecondBond">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietAmountTwo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="KES\nB" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilAmountThree"
+        android:layout_width="108dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tilAmountOne"
+        app:layout_constraintStart_toEndOf="@+id/tilAmountOne"
+        app:layout_constraintTop_toTopOf="@+id/tilAmountOne">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietAmountThree"
+            android:layout_width="109dp"
+            android:layout_height="match_parent"
+            android:hint="KES\nA" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilPercentage"
+        android:layout_width="108dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="@+id/tilAmountThree"
+        app:layout_constraintStart_toStartOf="@+id/tilAmountThree"
+        app:layout_constraintTop_toTopOf="@+id/tilAmountTwo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietPercentage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="8.99%" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Corporate Bonds"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCorporatePrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="86dp"
+        android:text="How much are you \nwilling to invest?"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilAmountTwo" />
+
+    <Button
+        android:id="@+id/btnEnterAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp"
+        android:backgroundTint="@color/white"
+        android:text="Enter amount..."
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/btnProceedWeekly"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnProceedWeekly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:backgroundTint="#FFC300"
+        android:text="Proceed"
+        android:textColor="#003566"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnEnterAmount"
+        app:layout_constraintStart_toStartOf="@+id/btnEnterAmount" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,7 +29,6 @@ class QuestionRepository(private val api: ApiInterface) {
             }
         }
 
-        api.getQuestions().enqueue()
 
         return liveData
     }
