@@ -4,7 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object SignInClient {
-    private const val BASE_URL = "https://investika-fed709cc5cec.herokuapp.com/auth/login/"
+    private const val BASE_URL = "https://investika-fed709cc5cec.herokuapp.com/auth"
 
     val retrofitInstance: Retrofit by lazy {
         Retrofit.Builder()
