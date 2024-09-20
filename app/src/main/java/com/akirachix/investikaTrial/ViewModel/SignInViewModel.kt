@@ -6,9 +6,6 @@ import com.akirachix.investikaTrial.api.ApiInterface
 import com.akirachix.investikaTrial.api.SignInClient
 import com.akirachix.investikaTrial.models.LoginRequest
 import com.akirachix.investikaTrial.models.LoginResponse
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,7 +18,6 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
     private val _googleSignInResult = MutableLiveData<Result<String>>()
     val googleSignInResult: LiveData<Result<String>> = _googleSignInResult
 
-    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     // API Login Logic
     fun login(username: String, password: String) {
@@ -45,17 +41,7 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
         })
     }
 
-    // Google Sign-In Logic
-    fun firebaseAuthWithGoogle(account: GoogleSignInAccount) {
-        val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-        auth.signInWithCredential(credential).addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                _googleSignInResult.postValue(Result.success("Google Sign-In successful"))
-            } else {
-                _googleSignInResult.postValue(Result.failure(task.exception ?: Exception("Google Sign-In failed")))
-            }
-        }
-    }
+
 
     // Validation Logic
     fun validateForm(username: String, password: String): Boolean {

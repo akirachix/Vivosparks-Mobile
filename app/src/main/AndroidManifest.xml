@@ -24,6 +24,21 @@
 
         <!-- Splash Screen Activity -->
         <activity
+            android:name="com.akirachix.investikaTrial.ui.championActivity"
+            android:exported="true"/>
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.launchgameActivity"
+            android:exported="true"/>
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.creatprofileActivity"
+            android:exported="true"/>
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.RegisterActivity"
+            android:exported="true"/>
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.AssessmentActivity"
+            android:exported="true"/>
+        <activity
             android:name="com.akirachix.investikaTrial.ui.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
@@ -39,9 +54,7 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX" />
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+
     </application>
 
 </manifest>
