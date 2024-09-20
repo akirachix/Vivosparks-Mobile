@@ -39,15 +39,16 @@
         android:layout_marginTop="44dp"
         android:background="@drawable/corners"
         android:backgroundTint="#FFFFFF"
+        android:fontFamily="@font/nunito_sans_bold"
         android:padding="5dp"
-        android:textAlignment="center"
         android:text="I don’t fully understand high-risk investments yet"
+        android:textAlignment="center"
+        android:textAllCaps="false"
         android:textColor="#040101"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/button2"
         app:layout_constraintStart_toStartOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
 
     <Button
         android:id="@+id/button2"
@@ -56,11 +57,13 @@
         android:layout_marginTop="44dp"
         android:background="@drawable/corners"
         android:backgroundTint="#FFFFFF"
-        android:padding="8dp"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:padding="0dp"
         android:text="I’m comfortable with safer options"
-        android:textSize="18sp"
         android:textAlignment="center"
+        android:textAllCaps="false"
         android:textColor="#050202"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/button3"
         app:layout_constraintStart_toStartOf="@+id/button3"
         app:layout_constraintTop_toBottomOf="@+id/button3" />
@@ -72,11 +75,13 @@
         android:layout_marginTop="44dp"
         android:background="@drawable/corners"
         android:backgroundTint="#FFFFFF"
-        android:padding="10dp"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:padding="0dp"
         android:text="I want to protect my current wealth"
-        android:textSize="18sp"
         android:textAlignment="center"
+        android:textAllCaps="false"
         android:textColor="#050404"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/button4"
         app:layout_constraintStart_toStartOf="@+id/button4"
         app:layout_constraintTop_toBottomOf="@+id/button4" />
@@ -87,6 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="108dp"
+        android:fontFamily="@font/nunito_sans_bold"
         android:gravity="center"
         android:text="Why have you decided to pay the dragon?"
         android:textAlignment="center"
@@ -95,8 +101,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button4"
@@ -107,14 +112,15 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/corners"
         android:backgroundTint="#FFFFFF"
+        android:fontFamily="@font/nunito_sans_bold"
         android:padding="5dp"
         android:text="I prefer to avoid high risks"
-        android:textColor="#050505"
         android:textAlignment="center"
+        android:textColor="#050505"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.634"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleText"
-        android:textSize="18sp"
-        />
+        android:textAllCaps="false"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
