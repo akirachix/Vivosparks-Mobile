@@ -1,7 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.InvestikaTrial.." parent="Theme.MaterialComponents.Light.Bridge">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-    </style>
-</resources>
+        <!-- Button style with white background -->
+        <style name="WhiteButtonStyle" parent="Widget.MaterialComponents.Button">
+            <item name="backgroundTint">@android:color/white</item>
+            <item name="android:textColor">#003566</item> <!-- You can change this to your preferred text color -->
+            <item name="cornerRadius">25dp</item> <!-- Optional: Add rounded corners -->
+        </style>
+    </resources>
+

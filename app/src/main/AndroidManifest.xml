@@ -20,10 +20,10 @@
             android:name="com.akirachix.investikaTrial.ui.MoneymarketActivity"
             android:exported="true" />
         <activity
-            android:name="com.akirachix.investikaTrial.ui.MarketActivity"
+            android:name="com.akirachix.investika.ui.MainActivity"
             android:exported="true" />
         <activity
-            android:name="com.akirachix.investika.ui.MainActivity"
+            android:name="com.akirachix.investikaTrial.ui.MarketActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
