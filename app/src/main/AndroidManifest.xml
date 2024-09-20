@@ -20,7 +20,7 @@
             android:exported="false" />
         <!-- Launcher Activity (launchgameActivity) -->
         <activity
-            android:name="com.akirachix.investikaTrial.ui.launchgameActivity"
+            android:name="com.akirachix.investikaTrial.ui.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,12 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- MainActivity (without launcher intent filter) -->
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.MainActivity"
-            android:exported="true" /> <!-- Additional Activities -->
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.masterActivity"
-            android:exported="true" />
+
         <activity
             android:name="com.akirachix.investikaTrial.ui.awardActivity"
             android:exported="true" />
