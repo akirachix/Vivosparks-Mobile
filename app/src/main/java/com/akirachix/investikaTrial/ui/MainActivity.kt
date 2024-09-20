@@ -1,17 +1,19 @@
 package com.akirachix.investika.ui
+
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.akirachix.investikaTrial.api.ApiClient
 import com.akirachix.investikaTrial.models.Question
+import com.akirachix.investikaTrial.ui.MarketActivity
 import com.akirachix.investikatrial.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: ActivityMainBinding
     private var currentQuestionIndex = 0
     private var score = 0
     private lateinit var questions: List<Question>
@@ -21,15 +23,31 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Setup listeners for buttons
         setupListeners()
+
+        // Fetch questions to display
         fetchQuestions()
     }
 
     private fun setupListeners() {
-        binding.option1Button.setOnClickListener { onAnswerSelected(0) }
-        binding.option2Button.setOnClickListener { onAnswerSelected(1) }
+        // Button for option 1
+        binding.option3Button.setOnClickListener { onAnswerSelected(0) }
+
+        // Button for option 2 will navigate to MarketActivity
+        binding.option2Button.setOnClickListener {
+            // Navigate to MarketActivity
+            val intent = Intent(this, MarketActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Button for option 3
         binding.option3Button.setOnClickListener { onAnswerSelected(2) }
-        binding.profileIcon.setOnClickListener {  }
+
+        // Profile icon click (if needed)
+        binding.profileIcon.setOnClickListener {
+            // Do something when the profile icon is clicked
+        }
     }
 
     private fun fetchQuestions() {
@@ -45,8 +63,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun displayQuestion(index: Int) {
+        // Logic to display the question based on the index
+        // e.g., binding.questionTextView.text = questions[index].text
     }
 
     private fun onAnswerSelected(answer: Int) {
+        // Logic to handle answer selection
+        // e.g., check if answer is correct, update score, etc.
     }
 }

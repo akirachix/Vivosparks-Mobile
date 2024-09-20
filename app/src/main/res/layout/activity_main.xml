@@ -32,27 +32,10 @@
         tools:text="Given Ksh.10000 how much would you spend on food?" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/option1Button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:backgroundTint="#F0F0F0"
-        android:textColor="@android:color/black"
-        app:iconGravity="start"
-        app:iconTint="@android:color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/questionText"
-        tools:text="2500 KSH"/>
-
-    <com.google.android.material.button.MaterialButton
         android:id="@+id/option2Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="#F0F0F0"
         android:textColor="@android:color/black"
@@ -60,7 +43,7 @@
         app:iconTint="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/option1Button"
+        tools:layout_editor_absoluteY="534dp"
         tools:text="1500 KSH" />
 
     <com.google.android.material.button.MaterialButton

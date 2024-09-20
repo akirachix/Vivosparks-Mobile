@@ -1,11 +1,13 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    kotlin("android") version "1.9.21"
 }
 
 android {
     namespace = "com.akirachix.investikatrial"
     compileSdk = 34
+
 
     defaultConfig {
         applicationId = "com.akirachix.investikatrial"
@@ -34,27 +36,23 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
-        viewBinding=true
+        viewBinding = true
     }
 }
 
-
 dependencies {
+    implementation(libs.androidx.appcompat.v151)
     implementation(libs.androidx.core.ktx.v160)
-    implementation(libs.androidx.appcompat.v131)
-    implementation(libs.material.v140)
-    implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.constraintlayout.v210)
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.activity)
+    implementation(libs.material.v140)
+    implementation(libs.material.v161)
+    implementation(libs.material.v180)
     implementation(libs.retrofit.v290)
     implementation(libs.converter.gson.v290)
+    implementation(libs.kotlinx.coroutines.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit.v113)
     androidTestImplementation(libs.androidx.espresso.core.v340)
-    implementation (libs.androidx.appcompat.v151)
-    implementation(libs.material.v161)
-    implementation (libs.material.v180)
-
-
 }
-
-
