@@ -1,10 +1,12 @@
 package com.akirachix.investika.ui
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.akirachix.investikaTrial.api.ApiClient
 import com.akirachix.investikaTrial.models.Question
+import com.akirachix.investikaTrial.ui.FollowupActivity
 import com.akirachix.investikatrial.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
 
@@ -25,9 +27,18 @@ class MainActivity : AppCompatActivity() {
         fetchQuestions()
     }
 
+
+
     private fun setupListeners() {
-        binding.option1Button.setOnClickListener { onAnswerSelected(0) }
-        binding.option2Button.setOnClickListener { onAnswerSelected(1) }
+
+        binding.option1Button.setOnClickListener{
+            val intent = Intent(this,FollowupActivity::class.java )
+            startActivity(intent)
+        }
+
+
+        binding.option2Button.setOnClickListener { onAnswerSelected(0) }
+        binding.option3Button.setOnClickListener { onAnswerSelected(1) }
         binding.option3Button.setOnClickListener { onAnswerSelected(2) }
         binding.profileIcon.setOnClickListener {  }
     }

@@ -26,6 +26,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.akirachix.investikaTrial.ui.FollowupActivity"
+            android:exported="true"
+            />
+        <activity android:name="com.akirachix.investikaTrial.ui.BridgeActivity"
+            android:exported="true"/>
+        <activity android:name="com.akirachix.investikaTrial.ui.LossActivity"
+            android:exported="true"/>
+        <activity android:name="com.akirachix.investikaTrial.ui.MedActivity"
+            android:exported="true"/>
+        <activity android:name="com.akirachix.investikaTrial.ui.SafeActivity"
+            android:exported="true"/>
+        <activity android:name="com.akirachix.investikaTrial.ui.SafetyActivity"
+            android:exported="true"/>
+        <activity android:name="com.akirachix.investikaTrial.ui.SageActivity"
+            android:exported="true"/>
+        <activity android:name="com.akirachix.investikaTrial.ui.StepsActivity"
+            android:exported="true"/>
+        <activity android:name="com.akirachix.investikaTrial.ui.WisdomActivity"
+            android:exported="true"/>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
 
     </application>
