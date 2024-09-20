@@ -2,7 +2,6 @@ package com.akirachix.investikaTrial.ui
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.akirachix.investika.ui.MainActivity
 import com.akirachix.investikatrial.R
 import com.akirachix.investikatrial.databinding.ActivityLaunchgameBinding
 
@@ -18,7 +17,7 @@ class launchgameActivity : AppCompatActivity() {
 
         // Navigate to MainActivity on button click using View Binding
         binding.btnGetStarted.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, AssessmentActivity::class.java)
             startActivity(intent)
             finish()
         }

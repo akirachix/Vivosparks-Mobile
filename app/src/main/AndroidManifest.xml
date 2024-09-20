@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <!-- SDK Versions -->
+    xmlns:tools="http://schemas.android.com/tools"> <!-- SDK Versions -->
     <uses-sdk
         android:minSdkVersion="24"
         android:targetSdkVersion="34" />
-
     <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -18,23 +15,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.InvestikaTrial"
         tools:targetApi="31">
-
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.AssessmentActivity"
+            android:exported="false" />
         <!-- Launcher Activity (launchgameActivity) -->
         <activity
             android:name="com.akirachix.investikaTrial.ui.launchgameActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- MainActivity (without launcher intent filter) -->
+        </activity> <!-- MainActivity (without launcher intent filter) -->
         <activity
-            android:name="com.akirachix.investika.ui.MainActivity"
-            android:exported="true" />
-
-        <!-- Additional Activities -->
+            android:name="com.akirachix.investikaTrial.ui.MainActivity"
+            android:exported="true" /> <!-- Additional Activities -->
         <activity
             android:name="com.akirachix.investikaTrial.ui.masterActivity"
             android:exported="true" />
@@ -49,12 +45,10 @@
             android:exported="true" />
         <activity
             android:name="com.akirachix.investikaTrial.ui.RegisterActivity"
-        android:exported="true" />
-
-        <!-- Preloaded Fonts Metadata -->
+            android:exported="true" /> <!-- Preloaded Fonts Metadata -->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
     </application>
+
 </manifest>
