@@ -9,7 +9,6 @@ import android.content.Intent
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.akirachix.investikatrial.databinding.ActivitySigninBinding
-import com.akirachix.investikaTrial.ui.HomeActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -114,7 +113,7 @@ class SigninActivity : AppCompatActivity() {
     }
 
     private fun navigateToMain() {
-        startActivity(Intent(this, HomeActivity::class.java))
+        startActivity(Intent(this, this::class.java))
         finish()
     }
 
