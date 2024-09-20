@@ -1,10 +1,12 @@
 package com.akirachix.investika.ui
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.akirachix.investikaTrial.api.ApiClient
 import com.akirachix.investikaTrial.models.Question
+import com.akirachix.investikaTrial.ui.RegisterActivity
 import com.akirachix.investikatrial.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
 
@@ -22,14 +24,24 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupListeners()
-        fetchQuestions()
+        fetchQuestions()  // Fetch questions when the activity is created
     }
 
     private fun setupListeners() {
-        binding.option1Button.setOnClickListener { onAnswerSelected(0) }
-        binding.option2Button.setOnClickListener { onAnswerSelected(1) }
-        binding.option3Button.setOnClickListener { onAnswerSelected(2) }
-        binding.profileIcon.setOnClickListener {  }
+        // Start corporatebondActivity on this button click
+        binding.option1Button.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Assign correct listeners to the buttons
+        binding.option2Button.setOnClickListener { onAnswerSelected(0) }
+        binding.option3Button.setOnClickListener { onAnswerSelected(1) }
+        binding.option3Button.setOnClickListener { onAnswerSelected(3) }
+        binding.option3Button.setOnClickListener { onAnswerSelected(4) }
+
+
+
     }
 
     private fun fetchQuestions() {
@@ -49,4 +61,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun onAnswerSelected(answer: Int) {
     }
+
+
+
 }
