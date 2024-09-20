@@ -1,103 +1,120 @@
-
-package com.akirachix.investikaTrial.ui
+package com.example.investikatrial
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.akirachix.investikaTrial.api.SignInClient
-import com.akirachix.investikaTrial.api.ApiInterface
-import com.akirachix.investikaTrial.models.LoginRequest
-import com.akirachix.investikaTrial.models.LoginResponse
-import com.akirachix.investikatrial.databinding.ActivitySigninBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.investikatrial.databinding.ActivitySigninBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 
 class SigninActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivitySigninBinding
+    private lateinit var auth: FirebaseAuth
+    private lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySigninBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setupListeners()
-    }
 
-    private fun setupListeners() {
+        supportActionBar?.hide()
+
+        // Initialize Firebase Auth
+        auth = FirebaseAuth.getInstance()
+
+        // Configure Google Sign In
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
+
+        // Set up Google sign-in button
+        binding.signInButton.setOnClickListener {
+            signInWithGoogle()
+        }
+
+        // Set up regular login button
         binding.loginbtn.setOnClickListener {
-            if (validateForm()) {
-                val username = binding.usernameInput.text.toString().trim()
-                val password = binding.passwordInput.text.toString().trim()
-                login(username, password)
+            val username = binding.usernameInput.text.toString()
+            val password = binding.passwordInput.text.toString()
+            if (username.isNotEmpty() && password.isNotEmpty()) {
+                signInWithEmail(username, password)
+            } else {
+                Toast.makeText(this, "Please enter both username and password", Toast.LENGTH_SHORT).show()
             }
         }
 
+        // Set up sign-up text
         binding.signUpText.setOnClickListener {
-            val intent = Intent(this, this::class.java)
-            startActivity(intent)
+            // Navigate to sign up screen
+            Toast.makeText(this, "Navigate to Sign Up screen", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun validateForm(): Boolean {
-        var isValid = true
-
-        val username = binding.usernameInput.text.toString().trim()
-        val password = binding.passwordInput.text.toString().trim()
-
-        if (username.isEmpty()) {
-            binding.usernameInput.error = "Username is required"
-            isValid = false
-        } else {
-            binding.usernameInput.error = null
-        }
-
-        if (password.isEmpty()) {
-            binding.passwordInput.error = "Password is required"
-            isValid = false
-        } else if (password.length < 6) {
-            binding.passwordInput.error = "Password must be at least 6 characters long"
-            isValid = false
-        } else {
-            binding.passwordInput.error = null
-        }
-
-        return isValid
+    private fun signInWithGoogle() {
+        val signInIntent = googleSignInClient.signInIntent
+        startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
-    private fun login(username: String, password: String) {
-        val loginRequest = LoginRequest(username, password)
-        val apiService = SignInClient.retrofitInstance.create(ApiInterface::class.java)
-
-        apiService.login(loginRequest).enqueue(object : Callback<LoginResponse> {
-            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                if (response.isSuccessful) {
-                    val responseBody = response.body()
-                    if (responseBody?.status == "success") {
-                        handleSuccessfulLogin(responseBody.message)
-                    } else {
-                        handleFailedLogin("Login failed: ${responseBody?.message ?: response.message()}")
-                    }
+    private fun signInWithEmail(email: String, password: String) {
+        binding.loginbtn.isEnabled = false // Disable button to prevent multiple clicks
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                binding.loginbtn.isEnabled = true // Re-enable button after process
+                if (task.isSuccessful) {
+                    Log.d(TAG, "signInWithEmail:success")
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish() // Prevent going back to sign-in screen
+                    Toast.makeText(this, "Authentication successful.", Toast.LENGTH_SHORT).show()
                 } else {
-                    handleFailedLogin("Login failed: ${response.message()}")
+                    val errorMessage = task.exception?.localizedMessage ?: "Authentication failed."
+                    Log.w(TAG, "signInWithEmail:failure", task.exception)
+                    Toast.makeText(baseContext, errorMessage, Toast.LENGTH_SHORT).show()
                 }
             }
+    }
 
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                handleFailedLogin("Network error: ${t.message}")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == RC_SIGN_IN) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                val account = task.getResult(ApiException::class.java)
+                firebaseAuthWithGoogle(account.idToken!!)
+            } catch (e: ApiException) {
+                Log.w(TAG, "Google sign in failed", e)
+                Toast.makeText(this, "Google Sign In failed", Toast.LENGTH_SHORT).show()
             }
-        })
+        }
     }
 
-    private fun handleSuccessfulLogin(message: String?) {
-        Toast.makeText(this, message ?: "Login successful", Toast.LENGTH_SHORT).show()
-        val intent = Intent(this, this::class.java)
-        startActivity(intent)
-        finish()
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    Log.d(TAG, "signInWithCredential:success")
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish() // Prevent going back to sign-in screen
+                    Toast.makeText(this, "Google Sign In successful", Toast.LENGTH_SHORT).show()
+                } else {
+                    Log.w(TAG, "signInWithCredential:failure", task.exception)
+                    Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                }
+            }
     }
 
-    private fun handleFailedLogin(errorMessage: String) {
-        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+    companion object {
+        private const val TAG = "SigninActivity"
+        private const val RC_SIGN_IN = 9001
     }
 }
