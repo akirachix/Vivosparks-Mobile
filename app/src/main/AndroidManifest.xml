@@ -8,6 +8,7 @@
         tools:ignore="GradleOverrides" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -20,25 +21,29 @@
         android:theme="@style/Theme.InvestikaTrial"
         tools:replace="android:allowBackup"
         tools:targetApi="31">
-
-
-        <uses-library android:name="com.google.android.maps" />
-
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-com.akirachix.investikatrial" />
-
-
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.HomeActivity"
+            android:exported="false" />
+        <!-- Splash Screen Activity -->
         <activity
             android:name="com.akirachix.investikaTrial.ui.SplashScreenActivity"
-            android:exported="true"
-            tools:ignore="MissingClass">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity> <!-- Sign In Activity -->
+        <activity
+            android:name=".SigninActivity"
+            android:exported="true" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>
