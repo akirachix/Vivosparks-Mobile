@@ -1,11 +1,15 @@
-package com.example.investikatrial
+package com.akirachix.investikatrial
 
-import android.content.Intent
+import SignInViewModel
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.example.investikatrial.databinding.ActivitySigninBinding
+import android.content.Intent
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
+import com.akirachix.investikatrial.databinding.ActivitySigninBinding
+import com.akirachix.investikaTrial.ui.HomeActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -18,44 +22,57 @@ class SigninActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
 
+    private val signInViewModel: SignInViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySigninBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         supportActionBar?.hide()
-
-        // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
 
-        // Configure Google Sign In
+        setupGoogleSignIn()
+        observeLoginResult()
+        setupClickListeners()
+    }
+
+    private fun setupGoogleSignIn() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
+    }
 
-        // Set up Google sign-in button
-        binding.signInButton.setOnClickListener {
-            signInWithGoogle()
-        }
-
-        // Set up regular login button
-        binding.loginbtn.setOnClickListener {
-            val username = binding.usernameInput.text.toString()
-            val password = binding.passwordInput.text.toString()
-            if (username.isNotEmpty() && password.isNotEmpty()) {
-                signInWithEmail(username, password)
-            } else {
-                Toast.makeText(this, "Please enter both username and password", Toast.LENGTH_SHORT).show()
+    private fun observeLoginResult() {
+        signInViewModel.loginResult.observe(this, Observer { result ->
+            result.onSuccess { message ->
+                navigateToMain()
+                showToast(message) // Optional: Show success message
+            }.onFailure { throwable ->
+                showError(throwable.localizedMessage ?: "Login failed.")
             }
-        }
+        })
+    }
 
-        // Set up sign-up text
-        binding.signUpText.setOnClickListener {
-            // Navigate to sign up screen
-            Toast.makeText(this, "Navigate to Sign Up screen", Toast.LENGTH_SHORT).show()
+    private fun setupClickListeners() {
+        binding.apply {
+            googleSignInButton.setOnClickListener { signInWithGoogle() }
+            loginbtn.setOnClickListener { handleEmailLogin() }
+            signUpText.setOnClickListener { navigateToSignUp() }
+        }
+    }
+
+    private fun handleEmailLogin() {
+        val username = binding.usernameInput.text.toString().trim()
+        val password = binding.passwordInput.text.toString().trim()
+
+        if (signInViewModel.validateForm(username, password)) {
+            signInViewModel.login(username, password) // No need for .onFailure here
+        } else {
+            showToast("Please enter both username and password")
         }
     }
 
@@ -64,36 +81,21 @@ class SigninActivity : AppCompatActivity() {
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
-    private fun signInWithEmail(email: String, password: String) {
-        binding.loginbtn.isEnabled = false // Disable button to prevent multiple clicks
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                binding.loginbtn.isEnabled = true // Re-enable button after process
-                if (task.isSuccessful) {
-                    Log.d(TAG, "signInWithEmail:success")
-                    startActivity(Intent(this, MainActivity::class.java))
-                    finish() // Prevent going back to sign-in screen
-                    Toast.makeText(this, "Authentication successful.", Toast.LENGTH_SHORT).show()
-                } else {
-                    val errorMessage = task.exception?.localizedMessage ?: "Authentication failed."
-                    Log.w(TAG, "signInWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, errorMessage, Toast.LENGTH_SHORT).show()
-                }
-            }
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == RC_SIGN_IN) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            try {
-                val account = task.getResult(ApiException::class.java)
-                firebaseAuthWithGoogle(account.idToken!!)
-            } catch (e: ApiException) {
-                Log.w(TAG, "Google sign in failed", e)
-                Toast.makeText(this, "Google Sign In failed", Toast.LENGTH_SHORT).show()
-            }
+            handleGoogleSignInResult(data)
+        }
+    }
+
+    private fun handleGoogleSignInResult(data: Intent?) {
+        try {
+            val account = GoogleSignIn.getSignedInAccountFromIntent(data).getResult(ApiException::class.java)
+            account.idToken?.let { firebaseAuthWithGoogle(it) }
+        } catch (e: ApiException) {
+            Log.w(TAG, "Google sign in failed", e)
+            showToast("Google Sign In failed")
         }
     }
 
@@ -103,14 +105,31 @@ class SigninActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.d(TAG, "signInWithCredential:success")
-                    startActivity(Intent(this, MainActivity::class.java))
-                    finish() // Prevent going back to sign-in screen
-                    Toast.makeText(this, "Google Sign In successful", Toast.LENGTH_SHORT).show()
+                    navigateToMain()
                 } else {
-                    Log.w(TAG, "signInWithCredential:failure", task.exception)
-                    Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                    Log.e(TAG, "signInWithCredential:failure", task.exception)
+                    showError("Authentication failed: ${task.exception?.message}")
                 }
             }
+    }
+
+    private fun navigateToMain() {
+        startActivity(Intent(this, HomeActivity::class.java))
+        finish()
+    }
+
+    private fun navigateToSignUp() {
+        showToast("Navigate to Sign Up screen")
+        // TODO: Implement sign-up screen navigation
+    }
+
+    private fun showError(message: String) {
+        Log.w(TAG, message)
+        showToast(message)
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     companion object {

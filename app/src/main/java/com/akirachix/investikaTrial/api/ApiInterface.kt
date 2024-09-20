@@ -9,14 +9,8 @@ import com.akirachix.investikaTrial.models.LoginResponse
 import com.akirachix.investikaTrial.models.LoginRequest
 
 interface ApiInterface {
-
-    @POST("auth/login")
-    fun login(@Body loginRequest: LoginRequest): Call<LoginResponse>
+    @POST("login_endpoint") // Replace with your actual endpoint
+    fun login(@Body request: LoginRequest): Call<LoginResponse>
 }
-interface SignInInterface {
-    @Headers("Content-Type: application/json")
-    @POST("auth/login/")
-    fun login(@Body loginRequest: LoginRequest): Call<LoginResponse>
 
-}
 

@@ -1,5 +1,4 @@
 import android.app.Application
-import android.content.Intent
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -26,6 +25,8 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
 
     // API Login Logic
     fun login(username: String, password: String) {
+        if (!validateForm(username, password)) return
+
         val loginRequest = LoginRequest(username, password)
         val apiService = SignInClient.retrofitInstance.create(ApiInterface::class.java)
 
@@ -34,7 +35,7 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
                 if (response.isSuccessful && response.body()?.status == "success") {
                     _loginResult.postValue(Result.success(response.body()?.message ?: "Login successful"))
                 } else {
-                    _loginResult.postValue(Result.failure(Throwable(response.message())))
+                    _loginResult.postValue(Result.failure(Throwable(response.body()?.message ?: "Login failed")))
                 }
             }
 
