@@ -1,10 +1,12 @@
 package com.akirachix.investika.ui
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.akirachix.investikaTrial.api.ApiClient
 import com.akirachix.investikaTrial.models.Question
+import com.akirachix.investikaTrial.ui.MarketActivity
 import com.akirachix.investikatrial.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
 
@@ -20,9 +22,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.option1Button.setOnClickListener {
+            var intent= Intent(this, MarketActivity::class.java)
+            startActivity(intent)
+        }
+        binding.option2Button.setOnClickListener {
+            var intent= Intent(this, MarketActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.option3Button.setOnClickListener {
+            var intent= Intent(this, MarketActivity::class.java)
+            startActivity(intent)
+        }
 
         setupListeners()
         fetchQuestions()
+
     }
 
     private fun setupListeners() {
