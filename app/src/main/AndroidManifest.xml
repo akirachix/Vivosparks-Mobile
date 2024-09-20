@@ -23,7 +23,7 @@
             android:name="com.akirachix.investikaTrial.ui.MarketActivity"
             android:exported="true" />
         <activity
-            android:name="com.akirachix.investika.ui.MainActivity"
+            android:name="com.akirachix.investikaTrial.ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
