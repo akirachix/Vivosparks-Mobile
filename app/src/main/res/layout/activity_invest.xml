@@ -17,17 +17,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/background" />
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="58dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/crown" />
-
     <TextView
         android:id="@+id/welcomeText"
         android:layout_width="214dp"
@@ -55,7 +44,7 @@
         app:srcCompat="@drawable/coins" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginbtn"
+        android:id="@+id/btnProceed"
         android:layout_width="162dp"
         android:layout_height="53dp"
         android:layout_marginStart="32dp"

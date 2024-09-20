@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="com.akirachix.investikaTrial.ui.AchievementScreenActivity"
+    >
 
     <ImageView
         android:id="@+id/imageView10"
@@ -59,7 +61,7 @@
         tools:text="Get ready to navigate the  exciting world of money  market funds trading!" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginbtn"
+        android:id="@+id/btnNext"
         android:layout_width="162dp"
         android:layout_height="53dp"
         android:layout_marginStart="32dp"

@@ -76,7 +76,7 @@
         tools:text="Build Your Empire " />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginbtn"
+        android:id="@+id/btnProceed"
         android:layout_width="162dp"
         android:layout_height="53dp"
         android:layout_marginStart="32dp"
