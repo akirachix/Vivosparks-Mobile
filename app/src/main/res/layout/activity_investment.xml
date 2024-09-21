@@ -72,7 +72,7 @@
         android:layout_marginEnd="24dp"
         android:background="@drawable/corners"
         android:text="Money market funds"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionText"
