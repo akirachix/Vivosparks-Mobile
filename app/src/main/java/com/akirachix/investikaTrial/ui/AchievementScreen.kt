@@ -1,20 +1,20 @@
 package com.akirachix.investikaTrial.ui
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.akirachix.investikatrial.R
 import com.akirachix.investikatrial.databinding.ActivityAchievementScreenBinding
 
-class AchievementScreenActivity : AppCompatActivity() {
+class AchievementScreen : AppCompatActivity() {
     lateinit var binding: ActivityAchievementScreenBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityAchievementScreenBinding.inflate(layoutInflater)
+       binding= ActivityAchievementScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
+        binding.btnNext.setOnClickListener {
+            var intent= Intent(this, InvestActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

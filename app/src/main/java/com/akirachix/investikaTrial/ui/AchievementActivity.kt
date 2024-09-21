@@ -16,8 +16,8 @@ class AchievementActivity : AppCompatActivity() {
         binding= ActivityAchievementBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnProceed.setOnClickListener {
-            var intent= Intent(this,AchievementScreenActivity::class.java )
+        binding.btnNext.setOnClickListener {
+            var intent= Intent(this,InvestActivity::class.java )
             startActivity(intent)
         }
 
