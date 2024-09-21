@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.akirachix.investikaTrial.ui.awardActivity">
+    tools:context="com.akirachix.investikaTrial.ui.AwardActivity">
 
     <!-- Top Background Image -->
     <ImageView
@@ -73,8 +73,8 @@
         android:layout_width="160dp"
         android:layout_height="67dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="128dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginBottom="88dp"
         android:backgroundTint="#FFc300"
         android:fontFamily="@font/nunito_sans_bold"
         android:paddingStart="40dp"
@@ -87,9 +87,9 @@
         app:cornerRadius="40dp"
         app:layout_constraintBottom_toBottomOf="@+id/bottom_background_image"
         app:layout_constraintEnd_toEndOf="@+id/textView1"
-        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintHorizontal_bias="0.453"
         app:layout_constraintStart_toStartOf="@+id/textView1"
         app:layout_constraintTop_toBottomOf="@+id/textView1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

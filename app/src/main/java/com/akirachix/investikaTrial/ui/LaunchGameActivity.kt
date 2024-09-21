@@ -6,11 +6,12 @@ import com.akirachix.investikatrial.R
 import com.akirachix.investikatrial.databinding.ActivityLaunchgameBinding
 
 
-class launchgameActivity : AppCompatActivity() {
+class LaunchGameActivity : AppCompatActivity() {
     lateinit var binding: ActivityLaunchgameBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_launchgame)
+
 
         binding = ActivityLaunchgameBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -19,7 +20,7 @@ class launchgameActivity : AppCompatActivity() {
         binding.btnGetStarted.setOnClickListener {
             val intent = Intent(this, AssessmentActivity::class.java)
             startActivity(intent)
-            finish()
+
         }
     }
 }

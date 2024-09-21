@@ -8,18 +8,19 @@ import com.akirachix.investikatrial.databinding.ActivityRegisterBinding
 
 class RegisterActivity : AppCompatActivity() {
     lateinit var binding: ActivityRegisterBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_launchgame)
+
 
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Navigate to MainActivity on button click using View Binding
         binding.loginbtn.setOnClickListener {
-            val intent = Intent(this, creatprofileActivity::class.java)
+            val intent = Intent(this, CreateProfileActivity::class.java)
             startActivity(intent)
-            finish()
+
         }
     }
 }
