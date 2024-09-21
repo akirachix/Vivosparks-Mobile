@@ -13,7 +13,7 @@ class AchievementScreen : AppCompatActivity() {
        binding= ActivityAchievementScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.btnNext.setOnClickListener {
-            var intent= Intent(this, InvestActivity::class.java)
+            var intent= Intent(this, MarketActivity::class.java)
             startActivity(intent)
         }
     }
