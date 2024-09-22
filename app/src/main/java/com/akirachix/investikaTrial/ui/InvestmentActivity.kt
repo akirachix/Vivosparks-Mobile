@@ -18,15 +18,15 @@ class InvestmentActivity : AppCompatActivity() {
         binding= ActivityInvestmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.button1.setOnClickListener {
+        binding.btn1.setOnClickListener {
             var intent= Intent(this,AchievementScreen::class.java )
             startActivity(intent)
         }
-        binding.button2.setOnClickListener {
+        binding.btn2.setOnClickListener {
             var intent= Intent(this,AchievementScreen::class.java )
             startActivity(intent)
         }
-        binding.button3.setOnClickListener {
+        binding.btn3.setOnClickListener {
             var intent= Intent(this,AchievementScreen::class.java )
             startActivity(intent)
         }
