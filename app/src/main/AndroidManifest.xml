@@ -2,12 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+
     <uses-sdk
         android:minSdkVersion="24"
         android:targetSdkVersion="34"
         tools:ignore="GradleOverrides" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -23,9 +25,9 @@
         <activity
             android:name="com.akirachix.investikaTrial.ui.InvestmentActivity"
             android:exported="false" />
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.CdsLinkActivity"
-            android:exported="false" />
+
+        <activity android:name=".ui.MoneymarketActivity"></activity>
+
         <activity
             android:name="com.akirachix.investikaTrial.ui.MarketActivity"
             android:exported="false" />

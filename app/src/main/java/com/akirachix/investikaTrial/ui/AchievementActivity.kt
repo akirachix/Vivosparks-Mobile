@@ -2,56 +2,52 @@ package com.akirachix.investikaTrial.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.akirachix.investikaTrial.api.ApiClient
-import com.akirachix.investikaTrial.models.Achievement
+import com.akirachix.investikaTrial.models.AchievementAdapter
 import com.akirachix.investikatrial.databinding.ActivityAchievementBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class AchievementActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAchievementBinding
+    private lateinit var adapter: AchievementAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAchievementBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Fetch achievements when the activity is created
-        fetchAchievements()
-
-        binding.btnNext.setOnClickListener {
-            val intent = Intent(this, InvestActivity::class.java)
+        binding.btnProceed.setOnClickListener {
+            var intent= Intent(this, InvestActivity::class.java)
             startActivity(intent)
         }
+
+        binding.rvAchievements.layoutManager = LinearLayoutManager(this)
+
+        fetchAchievements()
     }
 
     private fun fetchAchievements() {
-        val call = ApiClient.api.achievements() // No token needed
+        // Initialize the adapter with an empty list first
+        adapter = AchievementAdapter(emptyList())
+        binding.rvAchievements.adapter = adapter
 
-        call.enqueue(object : Callback<List<Achievement>> {
-            override fun onResponse(call: Call<List<Achievement>>, response: Response<List<Achievement>>) {
-                if (response.isSuccessful) {
-                    val achievements = response.body()
-                    achievements?.let {
-                        displayAchievements(it) // Display achievements
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = ApiClient.api.achievements().execute()
+            if (response.isSuccessful) {
+                response.body()?.let { achievementResponse ->
+                    withContext(Dispatchers.Main) {
+                        // Update the adapter with the fetched achievements
+                        adapter = AchievementAdapter(achievementResponse.achievements)
+                        binding.rvAchievements.adapter = adapter
                     }
-                } else {
-                    Log.e("Error", "Failed to fetch achievements: ${response.message()}")
                 }
             }
-
-            override fun onFailure(call: Call<List<Achievement>>, t: Throwable) {
-                Log.e("Error", "API call failed: ${t.message}")
-            }
-        })
-    }
-
-    private fun displayAchievements(achievements: List<Achievement>) {
-        val achievementsText = achievements.joinToString("\n") {
-            "${it.name}: ${it.description}"
         }
 
     }

@@ -67,6 +67,7 @@ dependencies {
     implementation (libs.play.services.auth)
     implementation (libs.androidx.core.v1100)
     implementation (libs.material.v190)
+    implementation ("androidx.constraintlayout:constraintlayout:2.1.0")
 
 
 

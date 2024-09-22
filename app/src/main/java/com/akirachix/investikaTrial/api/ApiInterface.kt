@@ -1,6 +1,7 @@
 package com.akirachix.investikaTrial.api
 
 import com.akirachix.investikaTrial.models.Achievement
+import com.akirachix.investikaTrial.models.AchievementResponse
 import com.akirachix.investikaTrial.models.QuestionResponse
 import retrofit2.Call
 import retrofit2.http.Body
@@ -17,6 +18,6 @@ interface ApiInterface {
     fun login(@Body loginRequest: LoginRequest): Call<LoginResponse>
 
     @GET("achievements/")
-    fun achievements(): Call<List<Achievement>>
+    fun achievements(): Call<AchievementResponse>
 
 }
