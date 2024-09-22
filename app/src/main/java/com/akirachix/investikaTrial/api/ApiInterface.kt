@@ -9,6 +9,9 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import com.akirachix.investikaTrial.models.LoginResponse
 import com.akirachix.investikaTrial.models.LoginRequest
+import com.akirachix.investikaTrial.models.MarketResponse
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiInterface {
     @GET("assessments/")
@@ -21,3 +24,6 @@ interface ApiInterface {
     fun achievements(): Call<AchievementResponse>
 
 }
+
+
+
