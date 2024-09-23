@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.akirachix.investikaTrial.api.ApiClient
-import com.akirachix.investikaTrial.models.AchievementAdapter
 import com.akirachix.investikatrial.databinding.ActivityAchievementBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -14,7 +13,6 @@ import kotlinx.coroutines.withContext
 
 class AchievementActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAchievementBinding
-    private lateinit var adapter: AchievementAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,32 +20,28 @@ class AchievementActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnProceed.setOnClickListener {
-            var intent= Intent(this, InvestActivity::class.java)
+            val intent = Intent(this, InvestActivity::class.java)
             startActivity(intent)
         }
-
-        binding.rvAchievements.layoutManager = LinearLayoutManager(this)
+        
 
         fetchAchievements()
     }
 
     private fun fetchAchievements() {
-        // Initialize the adapter with an empty list first
-        adapter = AchievementAdapter(emptyList())
-        binding.rvAchievements.adapter = adapter
-
         CoroutineScope(Dispatchers.IO).launch {
             val response = ApiClient.api.achievements().execute()
             if (response.isSuccessful) {
                 response.body()?.let { achievementResponse ->
                     withContext(Dispatchers.Main) {
-                        // Update the adapter with the fetched achievements
-                        adapter = AchievementAdapter(achievementResponse.achievements)
-                        binding.rvAchievements.adapter = adapter
+                        // Do something with the fetched achievements
+                        // For example, display them in the UI without using an adapter
+                        binding.tvAchievements.text = achievementResponse.achievements.joinToString("\n") { achievement ->
+                            achievement.name  // Assuming your achievements have a name field
+                        }
                     }
                 }
             }
         }
-
     }
 }
