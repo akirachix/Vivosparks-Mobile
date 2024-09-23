@@ -42,6 +42,7 @@
             android:scaleType="centerCrop" />
 
         <!-- Option Buttons -->
+
         <Button
             android:id="@+id/btnOptionA"
             android:layout_width="match_parent"

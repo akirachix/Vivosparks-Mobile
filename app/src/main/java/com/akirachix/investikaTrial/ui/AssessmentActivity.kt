@@ -206,7 +206,7 @@ class AssessmentActivity : AppCompatActivity() {
 
     // Navigate to results activity after last question
     private fun navigateToResults() {
-        val intent = Intent(this, ResultsActivity::class.java)
+        val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
         finish()
     }
