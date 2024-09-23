@@ -16,7 +16,11 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.button.setOnClickListener {
-            val intent = Intent(this, HighRiskPaths::class.java)
+            val intent = Intent(this, FollowupActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btn5.setOnClickListener {
+            val intent = Intent(this, FollowupActivity::class.java)
             startActivity(intent)
         }
     }

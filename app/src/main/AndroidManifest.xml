@@ -30,7 +30,37 @@
             android:name="com.akirachix.investikaTrial.ui.ProfileActivity"
             android:exported="false" />
         <activity
+            android:name="com.akirachix.investikaTrial.ui.SafeActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.BridgeActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.StepsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.MedActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.LossActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.FollowupActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.SageActivity"
+            android:exported="false" />
+
+        <activity
             android:name="com.akirachix.investikaTrial.ui.DefeatedActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.SafetyActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.WisdomActivity"
             android:exported="false" />
         <activity
             android:name="com.akirachix.investikaTrial.ui.SlayDragonActivity"
