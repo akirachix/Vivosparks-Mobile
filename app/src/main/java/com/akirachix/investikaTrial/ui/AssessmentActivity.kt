@@ -12,9 +12,10 @@ import com.akirachix.investikatrial.databinding.ActivityChampionBinding
 
 class AssessmentActivity : AppCompatActivity() {
     lateinit var binding: ActivityAssessmentBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_launchgame)
+
 
         binding = ActivityAssessmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -23,7 +24,19 @@ class AssessmentActivity : AppCompatActivity() {
         binding.buttonId1.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
-            finish()
+
+        }
+
+        binding.button2.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+
+        }
+
+        binding.button3.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+
         }
     }
 }

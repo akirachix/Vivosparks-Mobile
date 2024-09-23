@@ -2,14 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- SDK Versions -->
     <uses-sdk
         android:minSdkVersion="24"
         android:targetSdkVersion="34"
         tools:ignore="GradleOverrides" />
 
+    <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <!-- Application Information -->
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -20,37 +23,64 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.InvestikaTrial"
         tools:replace="android:allowBackup"
-        tools:targetApi="31">
+        tools:targetApi="31"> <!-- Double-check API level relevance -->
 
-        <!-- Splash Screen Activity -->
+        <!-- Activities -->
         <activity
-            android:name="com.akirachix.investikaTrial.ui.championActivity"
-            android:exported="true"/>
+            android:name="com.akirachix.investikaTrial.ui.ProfileActivity"
+            android:exported="false" />
         <activity
-            android:name="com.akirachix.investikaTrial.ui.launchgameActivity"
-            android:exported="true"/>
+            android:name="com.akirachix.investikaTrial.ui.DefeatedActivity"
+            android:exported="false" />
         <activity
-            android:name="com.akirachix.investikaTrial.ui.creatprofileActivity"
-            android:exported="true"/>
+            android:name="com.akirachix.investikaTrial.ui.SlayDragonActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.BattleQuizActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.BattleActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.PathDecisionActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.AwardActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.HighRiskPaths"
+            android:exported="false" />
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.DragonActivity"
+            android:exported="false" /> <!-- Splash Screen Activity -->
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.ChampionActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.LaunchGameActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.CreateProfileActivity"
+            android:exported="true" />
         <activity
             android:name="com.akirachix.investikaTrial.ui.RegisterActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name="com.akirachix.investikaTrial.ui.AssessmentActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name="com.akirachix.investikaTrial.ui.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- Sign In Activity -->
         <activity
-            android:name=".SigninActivity"
+            android:name=".SignInActivity"
             android:exported="true" />
 
+        <!-- Google Ads Meta-Data -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX" />
