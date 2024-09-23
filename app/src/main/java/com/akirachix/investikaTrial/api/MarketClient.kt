@@ -3,13 +3,14 @@ package com.akirachix.investikaTrial.api
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object SignInClient {
-    private const val BASE_URL = "https://investika-fed709cc5cec.herokuapp.com/auth/login/"
+object MarketClient {
+    private const val BASE_URL = "https://api.polygon.io/"
 
-    val retrofitInstance: Retrofit by lazy {
+    val api: MarketApiService by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+            .create(MarketApiService::class.java)
     }
 }

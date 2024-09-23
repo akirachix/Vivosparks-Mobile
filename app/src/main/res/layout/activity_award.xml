@@ -10,15 +10,15 @@
     <!-- Top Background Image -->
     <ImageView
         android:id="@+id/top_background_image"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="447dp"
+        android:layout_height="430dp"
         android:scaleType="fitXY"
         android:src="@drawable/award"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toTopOf="@id/bottom_background_image"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHeight_percent="0.5" /> <!-- Adjust height percentage if needed -->
+        app:layout_constraintBottom_toTopOf="@id/bottom_background_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /> <!-- Adjust height percentage if needed -->
 
     <!-- Bottom Background Image -->
     <ImageView
