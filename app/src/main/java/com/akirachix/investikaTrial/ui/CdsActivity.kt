@@ -15,12 +15,6 @@ class CdsActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        binding = ActivityCdsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        binding.btnAccountOPen.setOnClickListener {
-            val intent = Intent(this, AssessmentActivity::class.java)
-            startActivity(intent)
-        }
 
     }
 }

@@ -80,19 +80,19 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <RadioButton
                 android:id="@+id/radio_female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/nunito_sans_bold"
                 android:text="Female"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toStartOf="@+id/radio_male"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.009"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -182,18 +182,16 @@
 
     <Button
         android:id="@+id/btnprocedd"
-        android:layout_width="249dp"
-        android:layout_height="78dp"
-        android:layout_marginTop="132dp"
-        android:backgroundTint="#FFC300"
-        android:fontFamily="@font/nunito_bold"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:backgroundTint="#FFC107"
+        android:fontFamily="@font/nunito_sans_bold"
         android:text="Proceed"
-        android:textSize="20sp"
-        android:textAllCaps="false"
         android:textColor="#003566"
-        app:cornerRadius="40dp"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="@+id/usernameTextInput"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="@+id/usernameTextInput"
         app:layout_constraintTop_toBottomOf="@+id/usernameTextInput" />
 

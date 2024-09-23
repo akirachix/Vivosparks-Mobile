@@ -13,7 +13,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="80dp"
         android:fontFamily="@font/nunito_bold"
         android:text="What does it mean to diversify your investments?"
         android:textAlignment="center"
@@ -23,7 +23,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <Button
         android:id="@+id/button12"
