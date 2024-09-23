@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "925882610977",
+    "project_id": "investikatrial",
+    "storage_bucket": "investikatrial.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925882610977:android:542588427e6506d4d13a60",
+        "android_client_info": {
+          "package_name": "com.akirachix.investikaTrial"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcvkO1OshWwJixQB37pgcaeIc7bwdn6co"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925882610977:android:7df1c7cff568fe8bd13a60",
+        "android_client_info": {
+          "package_name": "com.akirachix.investikatrial"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcvkO1OshWwJixQB37pgcaeIc7bwdn6co"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

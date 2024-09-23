@@ -4,12 +4,9 @@
     <!-- Set the corner radius here -->
     <corners android:radius="16dp" />
     <!-- Optional: Set solid color or gradient -->
-    <solid android:color="#FFFFFF" /> <!-- Button background color -->
+    <solid android:color="@color/white" /> <!-- Button background color -->
     <!-- Optional: Set border/stroke -->
     <stroke
         android:width="2dp"
-        android:color="#FFFFFF" /> <!-- Border color and width -->
+        android:color="@color/white" /> <!-- Border color and width -->
 </shape>
-
-
-
