@@ -62,7 +62,6 @@ market."
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnProceed"
-        style="@style/AmberButtonStyle"
         android:layout_width="203dp"
         android:layout_height="65dp"
         android:layout_marginStart="32dp"

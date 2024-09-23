@@ -1,5 +1,6 @@
 package com.akirachix.investikaTrial.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -24,6 +25,8 @@ class MarketActivity : AppCompatActivity() {
 
         // Proceed button click listener
         binding.marketbtn.setOnClickListener {
+            var intent = Intent(this,AchievementScreen::class.java)
+            startActivity(intent)
             // Add your navigation or button action here
         }
     }

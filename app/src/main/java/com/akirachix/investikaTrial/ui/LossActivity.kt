@@ -3,6 +3,7 @@ package com.akirachix.investikaTrial.ui
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.akirachix.investikaTrial.models.Achievement
 import com.akirachix.investikatrial.databinding.ActivityLossBinding
 import com.akirachix.investikatrial.databinding.ActivityMedBinding
 
@@ -19,7 +20,7 @@ class LossActivity: AppCompatActivity() {
 
 
         binding.btnProceed.setOnClickListener {
-            val intent = Intent(this, LossActivity::class.java)
+            val intent = Intent(this, AchievementActivity::class.java)
             startActivity(intent)
         }
 
