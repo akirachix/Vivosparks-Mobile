@@ -16,8 +16,8 @@ class CoinActivity: AppCompatActivity() {
         binding = ActivityCoinBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnopen.setOnClickListener{
-            val intent = Intent(this, luckyActivity::class.java)
+        binding.btnOpenCoin.setOnClickListener{
+            val intent = Intent(this, LuckyActivity::class.java)
             startActivity(intent)
         }
     }

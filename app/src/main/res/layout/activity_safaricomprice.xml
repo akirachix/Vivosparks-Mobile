@@ -9,16 +9,20 @@
     android:background="@drawable/corporate"
     tools:context="com.akirachix.investikaTrial.ui.CorporateActivity">
 
+
     <TextView
         android:id="@+id/tvLiveStockPrices"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="96dp"
+        android:fontFamily="@font/nunito_bold"
         android:text="Live Stocks Prices"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="20dp"
+        android:textSize="24dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,69 +30,87 @@
         android:id="@+id/tvSafaricomInvestment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="96dp"
         android:backgroundTint="@color/white"
+        android:fontFamily="@font/nunito_bold"
         android:text="Invest in Safaricom PLC"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="20dp"
+        android:textSize="24dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.367"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvLiveStockPrices"
+        app:layout_constraintHorizontal_bias="0.359"
+        app:layout_constraintStart_toStartOf="@+id/tvLiveStockPrices"
         app:layout_constraintTop_toBottomOf="@+id/tvLiveStockPrices" />
-
 
     <TextView
         android:id="@+id/tvEnterShares"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="64dp"
+
+        android:fontFamily="@font/nunito_bold"
         android:text="Enter the number \nof shares you wish to buy"
-        android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textAlignment="center"
+        android:textColor="#FFC300"
+        android:textSize="24dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.325"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSafaricomInvestment" />
+        app:layout_constraintEnd_toEndOf="@+id/btnEnterShares"
+        app:layout_constraintStart_toStartOf="@+id/btnEnterShares"
+        app:layout_constraintTop_toBottomOf="@+id/btnEnterShares" />
 
     <Button
         android:id="@+id/btnEnterShares"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="48dp"
         android:backgroundTint="@color/white"
+        android:fontFamily="@font/nunito_bold"
         android:text="Ksh 40 per share"
+        android:textAlignment="center"
+        android:textAllCaps="false"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.412"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/tvSafaricomInvestment"
+        app:layout_constraintStart_toStartOf="@+id/tvSafaricomInvestment"
         app:layout_constraintTop_toBottomOf="@+id/tvSafaricomInvestment" />
 
     <Button
         android:id="@+id/btnEnterShareSafaricom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="40dp"
         android:backgroundTint="@color/white"
+        android:fontFamily="@font/nunito_bold"
         android:text="Enter number of shares.."
+        android:textAlignment="center"
+        android:textAllCaps="false"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/tvEnterShares"
+        app:layout_constraintStart_toStartOf="@+id/tvEnterShares"
         app:layout_constraintTop_toBottomOf="@+id/tvEnterShares" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnProceedTransaction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_margin="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="26dp"
         android:backgroundTint="#FFC300"
+        android:clipToOutline="true"
+        android:elevation="4dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:padding="16dp"
         android:text="Proceed"
-        android:textColor="@color/black"
+        android:textAllCaps="false"
+        android:textColor="#003566"
+        android:textSize="20dp"
+        app:cornerRadius="36dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.438"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/btnEnterShareSafaricom"
+        app:layout_constraintStart_toStartOf="@+id/btnEnterShareSafaricom"
+        app:layout_constraintTop_toBottomOf="@+id/btnEnterShareSafaricom" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

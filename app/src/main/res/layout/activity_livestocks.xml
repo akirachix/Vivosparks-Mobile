@@ -7,160 +7,138 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/corporate"
-    tools:context="com.akirachix.investikaTrial.ui.corporatebondActivity">
+    tools:context="com.akirachix.investikaTrial.ui.CorporateActivity">
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilBondCode"
-        android:layout_width="109dp"
+    <Button
+        android:id="@+id/symbol"
+        android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="86dp"
-        android:layout_marginEnd="274dp"
+        android:layout_marginTop="48dp"
+        android:background="@android:color/white"
+        android:text="Symbol"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etBondCode"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="FXD1/ 2024/005" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilFxdInterest"
-        android:layout_width="106dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="253dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilBondCode">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etFxdInterest"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="@string/fxdi" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilBondDuration"
-        android:layout_width="93dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tilBondCode"
-        app:layout_constraintStart_toEndOf="@+id/tilBondCode">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etBondDuration"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="@string/fdig" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilBondRisk"
-        android:layout_width="92dp"
-        android:layout_height="51dp"
-        app:layout_constraintEnd_toEndOf="@+id/tilBondDuration"
-        app:layout_constraintStart_toStartOf="@+id/tilBondDuration"
-        app:layout_constraintTop_toTopOf="@+id/tilFxdInterest">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etBondRisk"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="@string/FDIB" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilBondIssuer"
-        android:layout_width="108dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tilBondDuration"
-        app:layout_constraintStart_toEndOf="@+id/tilBondDuration"
-        app:layout_constraintTop_toTopOf="@+id/tilBondDuration">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etBondIssuer"
-            android:layout_width="109dp"
-            android:layout_height="match_parent"
-            android:hint="BFGT" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilBondYield"
-        android:layout_width="108dp"
-        android:layout_height="50dp"
-        app:layout_constraintEnd_toEndOf="@+id/tilBondIssuer"
-        app:layout_constraintStart_toStartOf="@+id/tilBondIssuer"
-        app:layout_constraintTop_toTopOf="@+id/tilBondRisk">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etBondYield"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="ADCE" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/tvLiveStocks"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Live stock data"
-        android:textColor="#FFFFFF"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.463"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <TextView
-        android:id="@+id/tvInvestmentPrompt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="132dp"
-        android:layout_marginBottom="357dp"
-        android:fontFamily="@font/nunito"
-        android:text="how much are\n you willing \nto invest"
-        android:textColor="#FFFFFF"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Button
+        android:id="@+id/open"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="44dp"
+        android:background="@android:color/white"
+        android:text="Open"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.434"
+        app:layout_constraintHorizontal_bias="0.084"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilFxdInterest"
-        app:layout_constraintVertical_bias="0.714" />
+        app:layout_constraintTop_toBottomOf="@id/symbol" />
 
     <Button
-        android:id="@+id/btnEamount"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="232dp"
-        android:backgroundTint="@color/white"
-        android:text="Enter amount..."
+        android:id="@+id/close"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:text="Close"
         android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.862"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/open" />
+
+    <Button
+        android:id="@+id/high"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="36dp"
+        android:background="@android:color/white"
+        android:text="High"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/close" />
+
+    <Button
+        android:id="@+id/low"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:text="Low"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/high"
+        app:layout_constraintEnd_toEndOf="@+id/close"
+        app:layout_constraintHorizontal_bias="0.689"
+        app:layout_constraintStart_toStartOf="@+id/close"
+        app:layout_constraintTop_toTopOf="@+id/high" />
+
+    <Button
+        android:id="@+id/volume"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="200dp"
+        android:background="@android:color/white"
+        android:text="Volume"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/low" />
+
+    <Button
+        android:id="@+id/after_hours"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="71dp"
+        android:background="@android:color/white"
+        android:text="After Hours"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/high"
+        app:layout_constraintHorizontal_bias="0.425"
+        app:layout_constraintStart_toStartOf="@+id/high"
+        app:layout_constraintTop_toBottomOf="@+id/high" />
+
+    <Button
+        android:id="@+id/pre_market"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/white"
+        android:text="Pre Market"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/after_hours"
+        app:layout_constraintEnd_toEndOf="@+id/low"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/low"
+        app:layout_constraintTop_toTopOf="@+id/after_hours"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnProceedInvest"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_margin="16dp"
+        android:backgroundTint="#FFC300"
+        android:clipToOutline="true"
+        android:elevation="4dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:padding="16dp"
+        android:text="Proceed"
+        android:textAllCaps="false"
+        android:textColor="#003566"
+        android:textSize="20dp"
+        app:cornerRadius="36dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnProceedInvest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="135dp"
-        android:backgroundTint="#FFC300"
-        android:text="Proceed"
-        android:textColor="#003566"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnEamount" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

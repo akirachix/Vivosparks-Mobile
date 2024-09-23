@@ -20,5 +20,10 @@ class EarningActivity : AppCompatActivity() {
             val intent = Intent(this, CongratulationsActivity::class.java)
             startActivity(intent)
         }
+        binding.btnAccountOPen.setOnClickListener {
+            var intent= Intent(this,CorporateActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

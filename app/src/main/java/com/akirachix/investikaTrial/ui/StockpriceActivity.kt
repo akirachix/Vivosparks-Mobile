@@ -19,9 +19,15 @@ class StockpriceActivity: AppCompatActivity() {
         binding = ActivityStockpriceBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnConfirmBuy.setOnClickListener{
+        binding.btnConfirmStock.setOnClickListener{
             val intent = Intent(this, CdsActivity::class.java)
             startActivity(intent)
         }
+
+        binding.btnBac.setOnClickListener {
+            var intent= Intent(this,SafaricompriceActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

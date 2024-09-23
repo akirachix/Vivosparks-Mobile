@@ -8,14 +8,12 @@ import com.akirachix.investikatrial.R
 import com.akirachix.investikatrial.databinding.ActivitySafaricompriceBinding
 
 class SafaricompriceActivity : AppCompatActivity() {
-    // Declare the binding object for the activity layout
     private lateinit var binding: ActivitySafaricompriceBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Initialize the binding object with the activity's layout inflater
         binding = ActivitySafaricompriceBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
