@@ -90,9 +90,9 @@ class ChampionActivity : AppCompatActivity() {
 
     private fun getImageUrl(choice: String): String {
         return when (choice) {
-            "ThunderWing" -> "https://example.com/images/thunderwing.png"
-            "ShadowClaw" -> "https://example.com/images/shadowclaw.png"
-            "MysticFlare" -> "https://example.com/images/mysticflare.png"
+            "ThunderWing" -> "https://images.playground.com/947b040980834f3cb1c3dfdbdff92511.jpeg"
+            "ThunderWing" -> "https://images.playground.com/947b040980834f3cb1c3dfdbdff92511.jpeg"
+            "ThunderWing" -> "https://images.playground.com/947b040980834f3cb1c3dfdbdff92511.jpeg"
             "AuroraBreath" -> "https://example.com/images/aurorabreath.png"
             else -> ""
         }
