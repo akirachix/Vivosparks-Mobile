@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.akirachix.investikaTrial.ui.HomeActivity
 import com.akirachix.investikaTrial.ui.RegisterActivity
+import com.akirachix.investikaTrial.viewmodel.SignInViewModel
 import com.akirachix.investikatrial.databinding.ActivitySigninBinding
 import com.akirachix.investikatrial.ui.RegisterActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -22,7 +23,7 @@ class SigninActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
 
-    private val signInViewModel: SignInViewMol by viewModels() // Add the ViewModel type here
+    private val signInViewModel: SignInViewModel by viewModels() // Add the ViewModel type here
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,7 +105,7 @@ class SigninActivity : AppCompatActivity() {
         try {
             val account = GoogleSignIn.getSignedInAccountFromIntent(data).getResult(ApiException::class.java)
             account?.let {
-                signInViewModel.firebaseAuthWithGoogle(it) // Pass the account to the ViewModel
+                signInViewModel.firebaseAuthWithGoogle(it.toString()) // Pass the account to the ViewModel
             }
         } catch (e: ApiException) {
             Log.w(TAG, "Google sign in failed", e)
