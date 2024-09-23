@@ -28,12 +28,23 @@ interface ApiInterface {
 
     @GET("achievements/")
     fun achievements(): Call<AchievementResponse>
-    abstract fun getQuestions(): Any
+
+    // Placeholder for a properly defined questions endpoint
+    @GET("api/questions/")
+    fun getQuestions(): Call<List<Any>>  // Update with correct response type when known
 }
 
 interface AssessmentInterface {
     @GET("api/assessments/")
-    fun getAssessments(): Call<List<AssessmentResponse>>
+    fun getAssessments(
+        @Query("limit") limit: List<Int>,
+        @Query("offset") offset: Int = 0
+    ): Call<List<AssessmentResponse>>
+
+
+
+    // Removing the redundant function declaration
+    // All API calls should be handled with limit and offset for pagination
 }
 
 interface PolygonApi {

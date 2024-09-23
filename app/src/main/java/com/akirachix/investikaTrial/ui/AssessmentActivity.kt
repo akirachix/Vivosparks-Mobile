@@ -4,12 +4,12 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.akirachix.investikaTrial.api.ApiClient
-import com.akirachix.investikaTrial.api.VirtualMoney
 import com.akirachix.investikaTrial.models.AssessmentResponse
 import com.akirachix.investikaTrial.models.VirtualCoin
 import com.akirachix.investikatrial.R
@@ -27,11 +27,13 @@ class AssessmentActivity : AppCompatActivity() {
     private lateinit var buttonC: Button
     private lateinit var buttonD: Button
     private lateinit var coinContainer: FrameLayout
-    private lateinit var totalCoinsTextView: TextView // Total coins TextView
+    private lateinit var totalCoinsTextView: TextView
 
     private var currentQuestionIndex = 0
     private var assessments: List<AssessmentResponse> = listOf()
-    private var totalCoins = 0 // Variable to keep track of total coins
+    private var totalCoins = 0
+
+    private var mediaPlayer: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,17 +47,19 @@ class AssessmentActivity : AppCompatActivity() {
         buttonC = findViewById(R.id.btnOptionC)
         buttonD = findViewById(R.id.btnOptionD)
         coinContainer = findViewById(R.id.coin_container)
-        totalCoinsTextView = findViewById(R.id.tvTotalCoins) // Initialize the TextView
+        totalCoinsTextView = findViewById(R.id.tvTotalCoins)
 
         fetchAssessments()
     }
 
     private fun fetchAssessments() {
-        val call = ApiClient.assessmentApi.getAssessments()
+        val call = ApiClient.assessmentApi.getAssessments(listOf(8, 4))
+
         call.enqueue(object : Callback<List<AssessmentResponse>> {
             override fun onResponse(call: Call<List<AssessmentResponse>>, response: Response<List<AssessmentResponse>>) {
                 if (response.isSuccessful) {
-                    assessments = response.body() ?: emptyList()
+                    // Get the list of assessments and take only the first 4
+                    assessments = (response.body() ?: emptyList()).take(4)
                     Log.d("API Response", "Number of questions fetched: ${assessments.size}")
 
                     if (assessments.isNotEmpty()) {
@@ -98,67 +102,57 @@ class AssessmentActivity : AppCompatActivity() {
     }
 
     private fun setAnswerListeners() {
-        buttonA.setOnClickListener { checkAnswer("A") }
-        buttonB.setOnClickListener { checkAnswer("B") }
-        buttonC.setOnClickListener { checkAnswer("C") }
-        buttonD.setOnClickListener { checkAnswer("D") }
+        buttonA.setOnClickListener { awardCoinsAndProceed() }
+        buttonB.setOnClickListener { awardCoinsAndProceed() }
+        buttonC.setOnClickListener { awardCoinsAndProceed() }
+        buttonD.setOnClickListener { awardCoinsAndProceed() }
     }
 
-    private fun checkAnswer(selectedOption: String) {
-        val correctAnswer = assessments[currentQuestionIndex].answers[0].option
-        if (selectedOption == correctAnswer) {
-            Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show()
-            awardCoins()
-        } else {
-            Toast.makeText(this, "Incorrect! Try again.", Toast.LENGTH_SHORT).show()
-        }
+    private fun awardCoinsAndProceed() {
+        // Award 5 coins for every answer
+        awardCoins(5)
+
+        Toast.makeText(this, "Good Job!!!", Toast.LENGTH_SHORT).show()
 
         // Increment to the next question
         currentQuestionIndex++
         displayQuestion() // Display next question
     }
 
-    // Function to award coins to the user
-    private fun awardCoins() {
-        val call = VirtualMoney.virtualMoneyApi.getVirtualMoney()
-        call.enqueue(object : Callback<List<VirtualCoin>> {
-            override fun onResponse(call: Call<List<VirtualCoin>>, response: Response<List<VirtualCoin>>) {
-                if (response.isSuccessful) {
-                    val coins = response.body() ?: emptyList()
-                    val awardedCoins = coins.sumOf { it.coinValue.toInt() } // Cast to Int
+    // Function to award a specific number of coins
+    private fun awardCoins(coinsToAward: Int) {
+        totalCoins += coinsToAward // Add awarded coins to totalCoins
+        runOnUiThread {
+            totalCoinsTextView.text = "Total Coins: $totalCoins" // Update UI on main thread
+        }
 
-                    totalCoins += awardedCoins // Update total coins
-                    runOnUiThread {
-                        totalCoinsTextView.text = "Total Coins: $totalCoins" // Update UI on main thread
-                    }
+        // Play the coin drop sound
+        playCoinDropSound()
 
-                    Toast.makeText(this@AssessmentActivity, "You have been awarded 5 coins!", Toast.LENGTH_LONG).show()
-
-                    showCoinAnimation()
-                } else {
-                    Toast.makeText(this@AssessmentActivity, "Failed to award coins: ${response.message()}", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<List<VirtualCoin>>, t: Throwable) {
-                Log.e("API Error", "Failed to fetch coins: ${t.localizedMessage}")
-                Toast.makeText(this@AssessmentActivity, "Error: ${t.localizedMessage}", Toast.LENGTH_SHORT).show()
-            }
-        })
+        showCoinAnimation(coinsToAward)
     }
 
-    // Function to show coin falling animation
+    // Function to play the coin drop sound
+    private fun playCoinDropSound() {
+        // Initialize MediaPlayer with the coin drop sound
+        mediaPlayer = MediaPlayer.create(this, R.raw.coin_drop)
+        mediaPlayer?.start() // Start playing the sound
 
-    private fun showCoinAnimation() {
-        val numberOfCoins = 5 // Number of coins to fall
+        mediaPlayer?.setOnCompletionListener {
+            it.release() // Release the MediaPlayer once done
+            mediaPlayer = null // Clear the reference
+        }
+    }
 
-        for (i in 1..numberOfCoins) {
+    // Function to show coin falling animation based on awarded coins
+    private fun showCoinAnimation(coinsToAward: Int) {
+        for (i in 1..coinsToAward) {
             val coinImageView = ImageView(this)
             coinImageView.setImageResource(R.drawable.coin) // Replace with your actual coin image
 
             // Set the desired width and height for the coin (in pixels)
-            val width = dpToPx(50)  // Set width to 25dp
-            val height = dpToPx(50) // Set height to 25dp
+            val width = dpToPx(50)  // Set width to 50dp
+            val height = dpToPx(50) // Set height to 50dp
 
             // Set the layout parameters for the ImageView
             val layoutParams = FrameLayout.LayoutParams(width, height)
@@ -202,7 +196,6 @@ class AssessmentActivity : AppCompatActivity() {
         val density = resources.displayMetrics.density
         return (dp * density).toInt()
     }
-
 
     // Navigate to results activity after last question
     private fun navigateToResults() {

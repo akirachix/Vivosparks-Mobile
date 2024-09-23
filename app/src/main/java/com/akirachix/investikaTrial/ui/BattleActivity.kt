@@ -16,8 +16,10 @@ class BattleActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.button.setOnClickListener {
-            val intent = Intent(this, BattleQuizActivity::class.java)
+            val intent = Intent(this, PathDecisionActivity::class.java)
             startActivity(intent)
         }
     }
 }
+
+

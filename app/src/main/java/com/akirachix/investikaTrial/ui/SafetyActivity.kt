@@ -16,7 +16,7 @@ class SafetyActivity: AppCompatActivity() {
 
 
         binding.btnProceed.setOnClickListener {
-            val intent = Intent(this, SageActivity::class.java)
+            val intent = Intent(this, LowMidRiskActivity::class.java)
             startActivity(intent)
         }
 

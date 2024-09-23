@@ -69,7 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/btnGetStarted"
+        android:id="@+id/btnStart"
         android:layout_width="160dp"
         android:layout_height="67dp"
         android:layout_marginStart="16dp"

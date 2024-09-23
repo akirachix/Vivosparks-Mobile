@@ -17,7 +17,7 @@ class SlayDragonActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.button.setOnClickListener {
-            val intent = Intent(this, DefeatedActivity::class.java)
+            val intent = Intent(this, LowMidRiskActivity::class.java)
             startActivity(intent)
         }
     }
