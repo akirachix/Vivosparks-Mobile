@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             try {
                 val response = ApiClient.api.getQuestions()
-                questions = response.questions
+//                questions = response.questions
                 displayQuestion(currentQuestionIndex)
             } catch (e: Exception) {
                 Toast.makeText(this@MainActivity, "Failed to fetch questions: ${e.message}", Toast.LENGTH_SHORT).show()

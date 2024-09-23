@@ -23,7 +23,7 @@ class AchievementActivity : AppCompatActivity() {
             val intent = Intent(this, InvestActivity::class.java)
             startActivity(intent)
         }
-        
+
 
         fetchAchievements()
     }

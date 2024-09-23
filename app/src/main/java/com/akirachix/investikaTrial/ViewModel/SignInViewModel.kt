@@ -2,13 +2,16 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.akirachix.investikaTrial.api.ApiClient
 import com.akirachix.investikaTrial.api.ApiInterface
+import com.akirachix.investikaTrial.api.MarketApiService
 import com.akirachix.investikaTrial.api.SignInClient
 import com.akirachix.investikaTrial.models.LoginRequest
 import com.akirachix.investikaTrial.models.LoginResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class SignInViewModel(application: Application) : AndroidViewModel(application) {
 

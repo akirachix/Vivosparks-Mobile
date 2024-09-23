@@ -19,7 +19,7 @@ class LossActivity: AppCompatActivity() {
         setContentView(binding.root)
 
 
-        binding.btnProceed.setOnClickListener {
+        binding.btnAccount.setOnClickListener {
             val intent = Intent(this, AchievementActivity::class.java)
             startActivity(intent)
         }

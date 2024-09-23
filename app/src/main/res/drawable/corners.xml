@@ -3,10 +3,10 @@
     android:shape="rectangle">
     <!-- Set the corner radius here -->
     <corners android:radius="16dp" />
-    <!-- Solid color background for the button -->
-    <solid android:color="@color/white" /> <!-- Button background color -->
-    <!-- Optional border/stroke -->
+    <!-- Optional: Set solid color or gradient -->
+    <solid android:color="#FFFFFF" /> <!-- Button background color -->
+    <!-- Optional: Set border/stroke -->
     <stroke
         android:width="2dp"
-        android:color="@color/white" /> <!-- Border color and width -->
+        android:color="#FFFFFF" /> <!-- Border color and width -->
 </shape>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/corporate"
+    tools:context="com.akirachix.investikaTrial.ui.CorporateActivity">
+
+    <Button
+        android:id="@+id/symbol"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="48dp"
+        android:background="@android:color/white"
+        android:text="Symbol"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.463"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/open"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="44dp"
+        android:background="@android:color/white"
+        android:text="Open"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/symbol" />
+
+    <Button
+        android:id="@+id/close"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:text="Close"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.862"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/open" />
+
+    <Button
+        android:id="@+id/high"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="36dp"
+        android:background="@android:color/white"
+        android:text="High"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/close" />
+
+    <Button
+        android:id="@+id/low"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:text="Low"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/high"
+        app:layout_constraintEnd_toEndOf="@+id/close"
+        app:layout_constraintHorizontal_bias="0.689"
+        app:layout_constraintStart_toStartOf="@+id/close"
+        app:layout_constraintTop_toTopOf="@+id/high" />
+
+    <Button
+        android:id="@+id/volume"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="200dp"
+        android:background="@android:color/white"
+        android:text="Volume"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/low" />
+
+    <Button
+        android:id="@+id/after_hours"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="71dp"
+        android:background="@android:color/white"
+        android:text="After Hours"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/high"
+        app:layout_constraintHorizontal_bias="0.425"
+        app:layout_constraintStart_toStartOf="@+id/high"
+        app:layout_constraintTop_toBottomOf="@+id/high" />
+
+    <Button
+        android:id="@+id/pre_market"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/white"
+        android:text="Pre Market"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/after_hours"
+        app:layout_constraintEnd_toEndOf="@+id/low"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/low"
+        app:layout_constraintTop_toTopOf="@+id/after_hours"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnProceedInvest"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_margin="16dp"
+        android:backgroundTint="#FFC300"
+        android:clipToOutline="true"
+        android:elevation="4dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:padding="16dp"
+        android:text="Proceed"
+        android:textAllCaps="false"
+        android:textColor="#003566"
+        android:textSize="20dp"
+        app:cornerRadius="36dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
