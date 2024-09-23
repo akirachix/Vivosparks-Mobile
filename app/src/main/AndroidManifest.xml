@@ -28,12 +28,22 @@ xmlns:tools="http://schemas.android.com/tools">
         <activity android:name=".ui.HomeActivity" android:exported="false" />
         <activity android:name="com.akirachix.investikaTrial.ui.createprofileactivity" android:exported="true" />
         <activity android:name="com.akirachix.investikaTrial.ui.ChampionActivity" android:exported="true" />
-        <activity android:name=".ui.RegisterActivity" android:exported="true">
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.HomeActivity"
+            android:exported="false" />
+        <!-- Splash Screen Activity -->
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.SplashScreenActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity> <!-- Sign In Activity -->
+        <activity
+            android:name=".SigninActivity"
+            android:exported="true" />
     </application>
 
 
