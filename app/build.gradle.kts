@@ -51,8 +51,10 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth.ktx)
     implementation(libs.play.services.auth)
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0") // Latest version
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0") // If you need JSON conversion
+    implementation (libs.retrofit) // Latest version
+    implementation (libs.converter.gson)
+    implementation (libs.androidx.appcompat.v131)
+    implementation ("com.squareup.picasso:picasso:2.8")
 
     testImplementation(libs.junit)
 

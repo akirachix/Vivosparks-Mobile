@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.akirachix.investikatrial.R
 import com.akirachix.investikatrial.databinding.ActivityAssessmentBinding
 import com.akirachix.investikatrial.databinding.ActivityChampionBinding
+import com.akirachix.investikatrial.ui.RegisterActivity
 
 class AssessmentActivity : AppCompatActivity() {
     lateinit var binding: ActivityAssessmentBinding

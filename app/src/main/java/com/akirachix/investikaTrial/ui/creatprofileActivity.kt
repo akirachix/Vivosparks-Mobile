@@ -2,28 +2,44 @@ package com.akirachix.investikaTrial.ui
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.akirachix.investikatrial.R
 import com.akirachix.investikatrial.databinding.ActivityCreatprofileBinding
-import com.akirachix.investikatrial.databinding.ActivityRegisterBinding
 
-class creatprofileActivity : AppCompatActivity() {
-    lateinit var binding: ActivityCreatprofileBinding
+class createprofileactivity : AppCompatActivity() {
+    private lateinit var binding: ActivityCreatprofileBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_launchgame)
-
         binding = ActivityCreatprofileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Navigate to MainActivity on button click using View Binding
         binding.btnprocedd.setOnClickListener {
-            val intent = Intent(this, championActivity::class.java)
-            startActivity(intent)
-            finish()
+            val age = binding.ageTextInput.text.toString()
+            val gender = if (binding.radioMale.isChecked) "male" else "female"
+            val location = binding.locationInput.text.toString()
+            val income = binding.income.text.toString()
+
+            if (age.isNotEmpty() && location.isNotEmpty() && income.isNotEmpty()) {
+                // Get data from RegisterActivity
+                val username = intent.getStringExtra("username") ?: ""
+                val email = intent.getStringExtra("email") ?: ""
+                val password = intent.getStringExtra("password") ?: ""
+
+                // Pass all data to ChampionActivity
+                val intent = Intent(this, ChampionActivity::class.java).apply {
+                    putExtra("username", username)
+                    putExtra("email", email)
+                    putExtra("password", password)
+                    putExtra("age", age)
+                    putExtra("gender", gender)
+                    putExtra("location", location)
+                    putExtra("income", income)
+                }
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

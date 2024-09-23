@@ -3,7 +3,7 @@ package com.akirachix.investikaTrial.api
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object SignInClient {
+object ApiClient {
     private const val BASE_URL = "https://investika-fed709cc5cec.herokuapp.com"
 
     val retrofitInstance: Retrofit by lazy {

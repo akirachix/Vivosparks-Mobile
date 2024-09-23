@@ -1,78 +1,63 @@
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.akirachix.investikaTrial.api.ApiInterface
-import com.akirachix.investikaTrial.api.SignInClient
-import com.akirachix.investikaTrial.models.LoginRequest
-import com.akirachix.investikaTrial.models.LoginResponse
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-
-class SignInViewModel(application: Application) : AndroidViewModel(application) {
-
-    private val _loginResult = MutableLiveData<Result<String>>()
-    val loginResult: LiveData<Result<String>> = _loginResult
-
-    private val _googleSignInResult = MutableLiveData<Result<String>>()
-    val googleSignInResult: LiveData<Result<String>> = _googleSignInResult
-
-    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
-
-    // API Login Logic
-    fun login(username: String, password: String) {
-        if (!validateForm(username, password)) return
-
-        val loginRequest = LoginRequest(username, password)
-        val apiService = SignInClient.retrofitInstance.create(ApiInterface::class.java)
-
-        apiService.login(loginRequest).enqueue(object : Callback<LoginResponse> {
-            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                if (response.isSuccessful && response.body()?.status == "success") {
-                    _loginResult.postValue(Result.success(response.body()?.message ?: "Login successful"))
-                } else {
-                    _loginResult.postValue(Result.failure(Throwable(response.body()?.message ?: "Login failed")))
-                }
-            }
-
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                _loginResult.postValue(Result.failure(t))
-            }
-        })
-    }
-
-    // Google Sign-In Logic
-    fun firebaseAuthWithGoogle(account: GoogleSignInAccount) {
-        val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-        auth.signInWithCredential(credential).addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                _googleSignInResult.postValue(Result.success("Google Sign-In successful"))
-            } else {
-                _googleSignInResult.postValue(Result.failure(task.exception ?: Exception("Google Sign-In failed")))
-            }
-        }
-    }
-
-    // Validation Logic
-    fun validateForm(username: String, password: String): Boolean {
-        return when {
-            username.isEmpty() -> {
-                _loginResult.postValue(Result.failure(Throwable("Username is required")))
-                false
-            }
-            password.isEmpty() -> {
-                _loginResult.postValue(Result.failure(Throwable("Password is required")))
-                false
-            }
-            password.length < 6 -> {
-                _loginResult.postValue(Result.failure(Throwable("Password must be at least 6 characters long")))
-                false
-            }
-            else -> true
-        }
-    }
-}
+//package com.akirachix.investikatrial.ui
+//
+//import android.content.Intent
+//import android.os.Bundle
+//import android.util.Log
+//import android.widget.Toast
+//import androidx.appcompat.app.AppCompatActivity
+//import com.akirachix.investikaTrial.api.ApiClient
+//import com.akirachix.investikaTrial.api.SigninInterface
+//import com.akirachix.investikaTrial.models.RegisterRequest
+//import com.akirachix.investikaTrial.models.RegisterResponse
+//import com.akirachix.investikaTrial.ui.creatprofileActivity
+//import com.akirachix.investikatrial.databinding.ActivityRegisterBinding
+//import retrofit2.Call
+//import retrofit2.Callback
+//import retrofit2.Response
+//
+//class RegisterActivity : AppCompatActivity() {
+//    private lateinit var binding: ActivityRegisterBinding
+//
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        binding = ActivityRegisterBinding.inflate(layoutInflater)
+//        setContentView(binding.root)
+//
+//        binding.loginbtn.setOnClickListener {
+//            registerUser()
+//        }
+//    }
+//
+//    private fun registerUser() {
+//        val username = binding.usernameTextInput.editText?.text.toString().trim()
+//        val email = binding.emailTextInput.editText?.text.toString().trim()
+//        val password = binding.passwordTextInput.editText?.text.toString().trim()
+//
+//        if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
+//            Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show()
+//            return
+//        }
+//
+//        val registerRequest = RegisterRequest(username, email, password)
+//        val apiInterface = ApiClient.retrofitInstance.create(SigninInterface::class.java)
+//
+//        apiInterface.register(registerRequest).enqueue(object : Callback<RegisterResponse> {
+//            override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
+//                if (response.isSuccessful && response.body() != null) {
+//                    Toast.makeText(this@RegisterActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+//                    val intent = Intent(this@RegisterActivity, creatprofileActivity::class.java)
+//                    startActivity(intent)
+//                    finish()
+//                } else {
+//                    Toast.makeText(this@RegisterActivity, "Registration failed: ${response.message()}", Toast.LENGTH_SHORT).show()
+//                    Log.e("RegisterActivity", "Failed response: ${response.errorBody()?.string()}")
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+//                Toast.makeText(this@RegisterActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+//                Log.e("RegisterActivity", "Error occurred: ${t.message}")
+//            }
+//        })
+//    }
+//}
