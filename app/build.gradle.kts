@@ -55,6 +55,12 @@ dependencies {
     implementation (libs.converter.gson)
     implementation (libs.androidx.appcompat.v131)
     implementation ("com.squareup.picasso:picasso:2.8")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4")
+    // Firebase Auth
+    implementation ("com.google.firebase:firebase-auth-ktx:22.0.0")
 
     testImplementation(libs.junit)
 

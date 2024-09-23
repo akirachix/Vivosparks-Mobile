@@ -7,13 +7,17 @@ import com.akirachix.investikaTrial.models.LoginResponse
 import com.akirachix.investikaTrial.models.LoginRequest
 import com.akirachix.investikaTrial.models.RegisterRequest
 import com.akirachix.investikaTrial.models.RegisterResponse
+import retrofit2.Response
 
 interface SigninInterface {
-    @POST("/auth/login/") // Replace with your actual endpoint
-    fun login(@Body request: LoginRequest): Call<LoginResponse>
+    @POST("/auth/login/")
+    suspend fun login(loginRequest: LoginRequest): Response<LoginResponse>
 
-    @POST("/api/register/")
+
+    @POST(/* value = */ "/api/register/")
     fun register(@Body request: RegisterRequest): Call<RegisterResponse>
-}
 
+
+
+}
 

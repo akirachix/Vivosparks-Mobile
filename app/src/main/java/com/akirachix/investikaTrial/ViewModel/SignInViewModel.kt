@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.akirachix.investikaTrial.api.ApiClient
-import com.akirachix.investikaTrial.api.ApiInterface
 import com.akirachix.investikaTrial.api.SigninInterface
 import com.akirachix.investikaTrial.models.LoginRequest
 import kotlinx.coroutines.launch
@@ -15,7 +14,7 @@ import kotlinx.coroutines.tasks.await
 
 class SignInViewModel : ViewModel() {
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
-    private val apiInterface: SigninInterface = ApiClient.api
+    private val apiInterface: SigninInterface = ApiClient.retrofitInstance.create(SigninInterface::class.java)
 
     private val _loginResult = MutableLiveData<Result<String>>()
     val loginResult: LiveData<Result<String>> = _loginResult
@@ -24,12 +23,16 @@ class SignInViewModel : ViewModel() {
     val googleSignInResult: LiveData<Result<String>> = _googleSignInResult
 
     fun login(username: String, password: String) {
-        val loginRequest = LoginRequest(username, password)
+        if (!validateForm(username, password)) {
+            _loginResult.value = Result.failure(IllegalArgumentException("Username and password must not be empty"))
+            return
+        }
 
+        val loginRequest = LoginRequest(username, password)
         viewModelScope.launch {
             try {
-                val loginResponse = apiInterface.login(loginRequest) // Make sure to define this in your ApiInterface
-                _loginResult.value = Result.success(loginResponse.message) // Handle successful response
+                val loginResponse = apiInterface.login(loginRequest) // Ensure this is correctly defined in your ApiInterface
+                _loginResult.value = Result.success(loginResponse.message()) // Handle successful response
             } catch (e: Exception) {
                 _loginResult.value = Result.failure(e) // Handle error response
             }

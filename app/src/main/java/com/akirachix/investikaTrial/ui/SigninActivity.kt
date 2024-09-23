@@ -1,79 +1,72 @@
-package com.akirachix.investikatrial
-
+package com.akirachix.investikaTrial.ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.activity.viewModels
 import com.akirachix.investikatrial.databinding.ActivitySigninBinding
-import com.akirachix.investikaTrial.ui.HomeActivity
-import com.akirachix.investikaTrial.ui.RegisterActivity
+import com.akirachix.investikaTrial.viewmodel.SignInViewModel
+import com.akirachix.investikatrial.R
+import com.akirachix.investikatrial.ui.RegisterActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
 
 class SigninActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySigninBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
-
-    private val signInViewModel:  by viewModels()
+    private val signInViewModel: SignInViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySigninBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
         supportActionBar?.hide()
         auth = FirebaseAuth.getInstance()
 
         setupGoogleSignIn()
-        observeLoginResult()
+        observeLoginResults()
         setupClickListeners()
     }
 
     private fun setupGoogleSignIn() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id)) // Your web client ID from Firebase
+            .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
     }
 
-    private fun observeLoginResult() {
-        // Observe email/password login result
+    private fun observeLoginResults() {
         signInViewModel.loginResult.observe(this, Observer { result ->
             result.onSuccess { message ->
                 navigateToMain()
-                showToast(message) // Optional: Show success message
+                showToast(message)
             }.onFailure { throwable ->
-                showError(throwable.localizedMessage ?: "Login failed.")
+                showError(throwable.localizedMessage ?: "Login failed")
             }
         })
 
-        // Observe Google Sign-In result
         signInViewModel.googleSignInResult.observe(this, Observer { result ->
             result.onSuccess { message ->
                 navigateToMain()
-                showToast(message) // Optional: Show success message
+                showToast(message)
             }.onFailure { throwable ->
-                showError(throwable.localizedMessage ?: "Google Sign-In failed.")
+                showError(throwable.localizedMessage ?: "Google Sign-In failed")
             }
         })
     }
 
     private fun setupClickListeners() {
         binding.apply {
-            googleSignInButton.setOnClickListener { signInWithGoogle() }
+//            googleSignInButton.setOnClickListener { signInWithGoogle() }
             loginbtn.setOnClickListener { handleEmailLogin() }
             signUpText.setOnClickListener { navigateToSignUp() }
         }
@@ -84,36 +77,33 @@ class SigninActivity : AppCompatActivity() {
         val password = binding.passwordInput.text.toString().trim()
 
         if (signInViewModel.validateForm(username, password)) {
-            signInViewModel.login(username, password) // Triggers login via ViewModel
+            signInViewModel.login(username, password)
         } else {
             showToast("Please enter both username and password")
         }
     }
 
-    private fun signInWithGoogle() {
-        val signInIntent = googleSignInClient.signInIntent
-        startActivityForResult(signInIntent, RC_SIGN_IN)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == RC_SIGN_IN) {
-            handleGoogleSignInResult(data)
-        }
-    }
-
-    private fun handleGoogleSignInResult(data: Intent?) {
-        try {
-            val account = GoogleSignIn.getSignedInAccountFromIntent(data).getResult(ApiException::class.java)
-            account?.let {
-                signInViewModel.firebaseAuthWithGoogle(it) // Pass the account to the ViewModel
-            }
-        } catch (e: ApiException) {
-            Log.w(TAG, "Google sign in failed", e)
-            showToast("Google Sign-In failed")
-        }
-    }
+//    private fun signInWithGoogle() {
+//        val signInIntent = googleSignInClient.signInIntent
+//        val activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+//            if (result.resultCode == RESULT_OK && result.data != null) {
+//                val account = result.data?.getParcelableExtra<GoogleSignInAccount>("GOOGLE_ACCOUNT")
+//                account?.idToken?.let { firebaseAuthWithGoogle(it) }
+//            }
+//        }
+//        activityResultLauncher.launch(signInIntent)
+//    }
+//
+//    private fun firebaseAuthWithGoogle(idToken: String) {
+//        val credential = GoogleAuthProvider.getCredential(idToken, null)
+//        auth.signInWithCredential(credential).addOnCompleteListener { task ->
+//            if (task.isSuccessful) {
+//                signInViewModel.googleSignInResult.value = "Successfully signed in with Google"
+//            } else {
+//                signInViewModel.googleSignInResult.value = "Failed to sign in with Google"
+//            }
+//        }
+//    }
 
     private fun navigateToMain() {
         startActivity(Intent(this, HomeActivity::class.java))
@@ -126,7 +116,7 @@ class SigninActivity : AppCompatActivity() {
     }
 
     private fun showError(message: String) {
-        Log.w(TAG, message)
+        Log.e(TAG, message)
         showToast(message)
     }
 
@@ -136,6 +126,5 @@ class SigninActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "SigninActivity"
-        private const val RC_SIGN_IN = 9001
     }
 }
