@@ -35,11 +35,11 @@ class RegisterActivity : AppCompatActivity() {
         val password = binding.passwordTextInput.editText?.text.toString().trim()
 
         // Additional fields for the registration request
-        val age = 27
-        val gender = "female" // You might want to gather this from user input
-        val location = "Nairobi" // Same for location
-        val income = "5000.00" // Replace this with actual data
-        val avatar = "ShadowClaw" // Use an actual avatar field from user input if available
+        val age = 27 // Example age, replace as necessary
+        val gender = "female" // Example gender, replace as necessary
+        val location = "Nairobi" // Example location, replace as necessary
+        val income = "5000.00" // Example income, replace as necessary
+        val avatar = "ShadowClaw" // Example avatar, replace as necessary
 
         // Input validation to ensure non-empty fields
         if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {

@@ -29,14 +29,18 @@ class ChampionActivity : AppCompatActivity() {
         imageSpinner = binding.idShadowClaw
         selectedImageView = binding.selectedImageView
 
+        // Setup the spinner to allow user to choose an avatar
         setupImageSpinner()
 
+        // Handle the register button click
         binding.registerButton.setOnClickListener {
             val avatar = selectedChoice
+            // Register user using all the input data including the avatar
             registerUserWithAllData(avatar)
         }
     }
 
+    // Setup the image spinner for avatar selection
     private fun setupImageSpinner() {
         val imageChoices = arrayOf("ThunderWing", "ShadowClaw", "MysticFlare", "AuroraBreath")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, imageChoices)
@@ -50,13 +54,18 @@ class ChampionActivity : AppCompatActivity() {
                 Picasso.get().load(imageUrl).into(selectedImageView)
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>) {}
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Do nothing
+            }
         }
     }
 
+    // Register the user using all the data, including the avatar
     private fun registerUserWithAllData(avatar: String) {
+        // Get intent data passed from previous activity
         val intent = intent
 
+        // Create a request object with all user inputs
         val registerRequest = RegisterRequest(
             username = intent.getStringExtra("username") ?: "",
             email = intent.getStringExtra("email") ?: "",
@@ -65,29 +74,38 @@ class ChampionActivity : AppCompatActivity() {
             gender = intent.getStringExtra("gender") ?: "",
             location = intent.getStringExtra("location") ?: "",
             income = intent.getStringExtra("income") ?: "",
-            avatar = avatar
+            avatar = avatar // Pass the selected avatar choice
         )
 
-        // Make the API call using Retrofit
+        // Use Retrofit to make API call for registration
         val apiInterface = ApiClient.retrofitInstance.create(SigninInterface::class.java)
         apiInterface.register(registerRequest).enqueue(object : Callback<RegisterResponse> {
             override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
                 if (response.isSuccessful) {
+                    // Registration is successful
                     Toast.makeText(this@ChampionActivity, "Registration successful!", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this@ChampionActivity, launchgameActivity::class.java))
                     finish()
                 } else {
+                    // Handle error response from the server
                     val errorBody = response.errorBody()?.string()
-                    Toast.makeText(this@ChampionActivity, "Registration failed: $errorBody", Toast.LENGTH_LONG).show()
+                    if (response.code() == 409) { // Assuming 409 is for duplicate username/email
+                        Toast.makeText(this@ChampionActivity, "Username or Email already exists. Please choose another.", Toast.LENGTH_LONG).show()
+                    } else {
+                        Toast.makeText(this@ChampionActivity, "Registration failed: $errorBody", Toast.LENGTH_LONG).show()
+                    }
                 }
             }
 
+
             override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+                // Show error message if there was an issue with the request
                 Toast.makeText(this@ChampionActivity, "Error: ${t.message}", Toast.LENGTH_LONG).show()
             }
         })
     }
 
+    // Helper function to get image URL based on avatar choice
     private fun getImageUrl(choice: String): String {
         return when (choice) {
             "ThunderWing" -> "https://example.com/images/thunderwing.png"
