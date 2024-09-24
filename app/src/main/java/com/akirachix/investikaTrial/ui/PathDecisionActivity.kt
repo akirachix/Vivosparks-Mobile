@@ -4,14 +4,13 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.akirachix.investikaTrial.api.ApiClient
-import com.akirachix.investikaTrial.api.VirtualMoney
 import com.akirachix.investikaTrial.models.AssessmentResponse
-import com.akirachix.investikaTrial.models.VirtualCoin
 import com.akirachix.investikatrial.R
 import com.bumptech.glide.Glide
 import retrofit2.Call
@@ -27,11 +26,12 @@ class PathDecisionActivity : AppCompatActivity() {
     private lateinit var buttonC: Button
     private lateinit var buttonD: Button
     private lateinit var coinContainer: FrameLayout
-    private lateinit var totalCoinsTextView: TextView // Total coins TextView
+    private lateinit var totalCoinsTextView: TextView
 
     private var currentQuestionIndex = 0
     private var assessments: List<AssessmentResponse> = listOf()
-    private var totalCoins = 0 // Variable to keep track of total coins
+    private var totalCoins = 0
+    private var mediaPlayer: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +45,7 @@ class PathDecisionActivity : AppCompatActivity() {
         buttonC = findViewById(R.id.btnOptionC)
         buttonD = findViewById(R.id.btnOptionD)
         coinContainer = findViewById(R.id.coin_container)
-        totalCoinsTextView = findViewById(R.id.tvTotalCoins) // Initialize the TextView
+        totalCoinsTextView = findViewById(R.id.tvTotalCoins)
 
         fetchAssessments()
     }
@@ -56,7 +56,6 @@ class PathDecisionActivity : AppCompatActivity() {
         call.enqueue(object : Callback<List<AssessmentResponse>> {
             override fun onResponse(call: Call<List<AssessmentResponse>>, response: Response<List<AssessmentResponse>>) {
                 if (response.isSuccessful) {
-                    // Get the list of assessments and take only the last 6
                     assessments = (response.body() ?: emptyList()).takeLast(6)
                     Log.d("API Response", "Number of questions fetched: ${assessments.size}")
 
@@ -78,13 +77,11 @@ class PathDecisionActivity : AppCompatActivity() {
     }
 
     private fun displayQuestion() {
-        // Check if currentQuestionIndex is within the assessments list
         if (currentQuestionIndex < assessments.size) {
             val question = assessments[currentQuestionIndex]
             questionTextView.text = question.question_text
             Glide.with(this).load(question.question_image).into(imageView)
 
-            // Ensure the answer array is valid (has at least 4 answers)
             if (question.answers.size >= 4) {
                 buttonA.text = question.answers[0].text
                 buttonB.text = question.answers[1].text
@@ -94,125 +91,104 @@ class PathDecisionActivity : AppCompatActivity() {
 
             setAnswerListeners()
         } else {
-            // If no more questions, navigate to the results activity
             navigateToResults()
         }
     }
 
     private fun setAnswerListeners() {
-        buttonA.setOnClickListener { checkAnswer("A") }
-        buttonB.setOnClickListener { checkAnswer("B") }
-        buttonC.setOnClickListener { checkAnswer("C") }
-        buttonD.setOnClickListener { checkAnswer("D") }
+        buttonA.setOnClickListener { checkAnswer(0) }
+        buttonB.setOnClickListener { checkAnswer(1) }
+        buttonC.setOnClickListener { checkAnswer(2) }
+        buttonD.setOnClickListener { checkAnswer(3) }
     }
 
-
-    private fun checkAnswer(selectedOption: String) {
+    private fun checkAnswer(selectedIndex: Int) {
         // Define the correct answer indices for each question
-        val correctAnswerIndices = listOf(2, 1, 1, 0, 1, 1)
+        val correctAnswerIndices = listOf(2, 1, 1, 0, 1, 1) // Update these according to your correct answers
         val correctAnswerIndex = correctAnswerIndices[currentQuestionIndex]
 
         // Check if the selected option corresponds to the correct answer index
-        if (selectedOption == assessments[currentQuestionIndex].answers[correctAnswerIndex].option) {
+        if (selectedIndex == correctAnswerIndex) {
             // Show toast and award coins for the correct answer
             Toast.makeText(this, "Good job!", Toast.LENGTH_SHORT).show()
-            awardCoins()
+            awardCoins(10) // Award a fixed amount of coins or calculate dynamically
         } else {
             // Show toast for the incorrect answer
             Toast.makeText(this, "Incorrect! Try again.", Toast.LENGTH_SHORT).show()
         }
 
-        // Increment to the next question
+        // Increment the question index after the answer is processed
         currentQuestionIndex++
-        displayQuestion() // Display the next question
+
+        // Check if there are more questions and load the next one
+        if (currentQuestionIndex < assessments.size) {
+            displayQuestion()
+        } else {
+            // If no more questions, navigate to the results activity
+            navigateToResults()
+        }
     }
 
+    // Function to award a specific number of coins
+    private fun awardCoins(coinsToAward: Int) {
+        totalCoins += coinsToAward
+        runOnUiThread {
+            totalCoinsTextView.text = "Total Coins: $totalCoins"
+        }
 
-    // Function to award coins to the user
-    private fun awardCoins() {
-        val call = VirtualMoney.virtualMoneyApi.getVirtualMoney()
-        call.enqueue(object : Callback<List<VirtualCoin>> {
-            override fun onResponse(call: Call<List<VirtualCoin>>, response: Response<List<VirtualCoin>>) {
-                if (response.isSuccessful) {
-                    val coins = response.body() ?: emptyList()
-                    val awardedCoins = coins.sumOf { it.coinValue.toInt() } // Cast to Int
-
-                    totalCoins += awardedCoins // Update total coins
-                    runOnUiThread {
-                        totalCoinsTextView.text = "Total Coins: $totalCoins" // Update UI on main thread
-                    }
-
-                    Toast.makeText(this@PathDecisionActivity, "You have been awarded 5 coins!", Toast.LENGTH_LONG).show()
-
-                    showCoinAnimation()
-                } else {
-                    Toast.makeText(this@PathDecisionActivity, "Failed to award coins: ${response.message()}", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<List<VirtualCoin>>, t: Throwable) {
-                Log.e("API Error", "Failed to fetch coins: ${t.localizedMessage}")
-                Toast.makeText(this@PathDecisionActivity, "Error: ${t.localizedMessage}", Toast.LENGTH_SHORT).show()
-            }
-        })
+        playCoinDropSound()
+        showCoinAnimation(coinsToAward)
     }
 
-    // Function to show coin falling animation
-    private fun showCoinAnimation() {
-        val numberOfCoins = 5 // Number of coins to fall
+    private fun playCoinDropSound() {
+        mediaPlayer = MediaPlayer.create(this, R.raw.coin_drop)
+        mediaPlayer?.start()
 
-        for (i in 1..numberOfCoins) {
+        mediaPlayer?.setOnCompletionListener {
+            it.release()
+            mediaPlayer = null
+        }
+    }
+
+    private fun showCoinAnimation(coinsToAward: Int) {
+        for (i in 1..coinsToAward) {
             val coinImageView = ImageView(this)
-            coinImageView.setImageResource(R.drawable.coin) // Replace with your actual coin image
+            coinImageView.setImageResource(R.drawable.coin)
 
-            // Set the desired width and height for the coin (in pixels)
-            val width = dpToPx(50)  // Set width to 50dp
-            val height = dpToPx(50) // Set height to 50dp
-
-            // Set the layout parameters for the ImageView
+            val width = dpToPx(50)
+            val height = dpToPx(50)
             val layoutParams = FrameLayout.LayoutParams(width, height)
             coinImageView.layoutParams = layoutParams
 
             coinContainer.addView(coinImageView)
 
-            // Random horizontal position to make the coin animation more natural
             val startX = (coinContainer.width * Math.random()).toFloat()
 
-            // Set up a falling animation for the coin
             val fallAnimation = ObjectAnimator.ofFloat(
-                coinImageView,
-                "translationY",
-                -coinContainer.height.toFloat(),
-                coinContainer.height.toFloat()
+                coinImageView, "translationY", -coinContainer.height.toFloat(), coinContainer.height.toFloat()
             )
-            fallAnimation.duration = (1500 + (500 * Math.random()).toLong()) // Randomize duration for each coin
+            fallAnimation.duration = (1500 + (500 * Math.random()).toLong())
             fallAnimation.start()
 
-            // Animate coin horizontally (optional: to add some horizontal movement)
             val horizontalMovement = ObjectAnimator.ofFloat(
-                coinImageView,
-                "translationX",
-                startX,
-                startX + (50 * Math.random()).toFloat()
+                coinImageView, "translationX", startX, startX + (50 * Math.random()).toFloat()
             )
             horizontalMovement.duration = fallAnimation.duration
             horizontalMovement.start()
 
             fallAnimation.addListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
-                    coinContainer.removeView(coinImageView) // Remove coin when the animation ends
+                    coinContainer.removeView(coinImageView)
                 }
             })
         }
     }
 
-    // Function to convert dp to pixels
     private fun dpToPx(dp: Int): Int {
         val density = resources.displayMetrics.density
         return (dp * density).toInt()
     }
 
-//     Navigate to results activity after last question
     private fun navigateToResults() {
         val intent = Intent(this, SlayDragonActivity::class.java)
         startActivity(intent)

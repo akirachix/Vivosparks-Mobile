@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.content.Intent
+import android.media.MediaPlayer // Import MediaPlayer for sound
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
@@ -28,11 +29,12 @@ class LowRiskActivity : AppCompatActivity() {
     private lateinit var buttonC: Button
     private lateinit var buttonD: Button
     private lateinit var coinContainer: FrameLayout
-    private lateinit var totalCoinsTextView: TextView // Total coins TextView
+    private lateinit var totalCoinsTextView: TextView
 
     private var currentQuestionIndex = 0
     private var assessments: List<AssessmentResponse> = listOf()
     private var totalCoins = 0 // Variable to keep track of total coins
+    private lateinit var coinSoundPlayer: MediaPlayer // MediaPlayer for coin sound
 
     // List of correct answer indices (0-based)
     private val correctAnswers = listOf(2, 2, 1, 2, 1, 1, 2, 1)
@@ -49,26 +51,35 @@ class LowRiskActivity : AppCompatActivity() {
         buttonC = findViewById(R.id.btnOptionC)
         buttonD = findViewById(R.id.btnOptionD)
         coinContainer = findViewById(R.id.coin_container)
-        totalCoinsTextView = findViewById(R.id.tvTotalCoins) // Initialize the TextView
+        totalCoinsTextView = findViewById(R.id.tvTotalCoins)
+
+        // Initialize MediaPlayer with a sound resource (replace with your sound file)
+        coinSoundPlayer = MediaPlayer.create(this, R.raw.coin_drop) // Add coin_sound.mp3 to /res/raw/
 
         fetchAssessments()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        // Release MediaPlayer resources
+        if (coinSoundPlayer.isPlaying) {
+            coinSoundPlayer.stop()
+        }
+        coinSoundPlayer.release()
+    }
+
     private fun fetchAssessments() {
-        // Fetch all assessments first
         val call = ApiClient.assessmentApi.getAssessments(listOf(11))
 
         call.enqueue(object : Callback<List<AssessmentResponse>> {
             override fun onResponse(call: Call<List<AssessmentResponse>>, response: Response<List<AssessmentResponse>>) {
                 if (response.isSuccessful) {
-                    // Get the list of assessments
                     val allAssessments = response.body() ?: emptyList()
                     Log.d("API Response", "Total questions fetched: ${allAssessments.size}")
 
                     if (allAssessments.isNotEmpty()) {
-                        // Calculate the start index for the middle five questions
-                        val startIndex = (allAssessments.size / 2) - 2 // Adjust for zero-based index
-                        assessments = allAssessments.slice(startIndex until startIndex + 5) // Get the middle five questions
+                        val startIndex = (allAssessments.size / 2) - 2
+                        assessments = allAssessments.slice(startIndex until startIndex + 5)
 
                         displayQuestion()
                     } else {
@@ -87,13 +98,11 @@ class LowRiskActivity : AppCompatActivity() {
     }
 
     private fun displayQuestion() {
-        // Check if currentQuestionIndex is within the assessments list
         if (currentQuestionIndex < assessments.size) {
             val question = assessments[currentQuestionIndex]
             questionTextView.text = question.question_text
             Glide.with(this).load(question.question_image).into(imageView)
 
-            // Ensure the answer array is valid (has at least 4 answers)
             if (question.answers.size >= 4) {
                 buttonA.text = question.answers[0].text
                 buttonB.text = question.answers[1].text
@@ -103,47 +112,46 @@ class LowRiskActivity : AppCompatActivity() {
 
             setAnswerListeners()
         } else {
-            // If no more questions, navigate to the results activity
             navigateToResults()
         }
     }
 
     private fun setAnswerListeners() {
-        buttonA.setOnClickListener { checkAnswer(0) } // Index 0 for button A
-        buttonB.setOnClickListener { checkAnswer(1) } // Index 1 for button B
-        buttonC.setOnClickListener { checkAnswer(2) } // Index 2 for button C
-        buttonD.setOnClickListener { checkAnswer(3) } // Index 3 for button D
+        buttonA.setOnClickListener { checkAnswer(0) }
+        buttonB.setOnClickListener { checkAnswer(1) }
+        buttonC.setOnClickListener { checkAnswer(2) }
+        buttonD.setOnClickListener { checkAnswer(3) }
     }
 
     private fun checkAnswer(selectedIndex: Int) {
         val correctIndex = correctAnswers[currentQuestionIndex]
         if (selectedIndex == correctIndex) {
             Toast.makeText(this, "Good job!!", Toast.LENGTH_SHORT).show()
-            awardCoins() // Award coins when the answer is correct
+            awardCoins()
         } else {
             Toast.makeText(this, "Incorrect! Try again.", Toast.LENGTH_SHORT).show()
         }
 
-        // Increment to the next question
         currentQuestionIndex++
-        displayQuestion() // Display next question
+        displayQuestion()
     }
 
     private fun awardCoins() {
-        val awardedCoins = 5 // Set the fixed number of coins to award
-        totalCoins += awardedCoins // Update total coins
+        val awardedCoins = 5
+        totalCoins += awardedCoins
 
-        // Animate the total coins and show a toast
-        animateCoinTotal(awardedCoins) // Animate the total coins
+        animateCoinTotal(awardedCoins)
         Toast.makeText(this@LowRiskActivity, "You have been awarded $awardedCoins coins!", Toast.LENGTH_LONG).show()
+
+        // Play the coin sound
+        coinSoundPlayer.start()
 
         showCoinAnimation()
     }
 
     private fun animateCoinTotal(awardedCoins: Int) {
-        // Create a ValueAnimator to animate the total coins text
         val animator = ValueAnimator.ofInt(totalCoins - awardedCoins, totalCoins)
-        animator.duration = 1000 // 1 second for animation
+        animator.duration = 1000
         animator.addUpdateListener { valueAnimator ->
             totalCoinsTextView.text = "Total Coins: ${valueAnimator.animatedValue}"
         }
@@ -151,14 +159,14 @@ class LowRiskActivity : AppCompatActivity() {
     }
 
     private fun showCoinAnimation() {
-        val numberOfCoins = 5 // Number of coins to fall
+        val numberOfCoins = 5
 
         for (i in 1..numberOfCoins) {
             val coinImageView = ImageView(this)
-            coinImageView.setImageResource(R.drawable.coin) // Replace with your actual coin image
+            coinImageView.setImageResource(R.drawable.coin)
 
-            val width = dpToPx(50)  // Set width to 50dp
-            val height = dpToPx(50) // Set height to 50dp
+            val width = dpToPx(50)
+            val height = dpToPx(50)
 
             val layoutParams = FrameLayout.LayoutParams(width, height)
             coinImageView.layoutParams = layoutParams
@@ -187,7 +195,7 @@ class LowRiskActivity : AppCompatActivity() {
 
             fallAnimation.addListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
-                    coinContainer.removeView(coinImageView) // Remove coin when the animation ends
+                    coinContainer.removeView(coinImageView)
                 }
             })
         }

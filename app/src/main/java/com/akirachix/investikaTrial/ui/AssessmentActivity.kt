@@ -108,16 +108,35 @@ class AssessmentActivity : AppCompatActivity() {
         buttonD.setOnClickListener { awardCoinsAndProceed() }
     }
 
+
     private fun awardCoinsAndProceed() {
         // Award 5 coins for every answer
         awardCoins(5)
 
-        Toast.makeText(this, "Good Job!!!", Toast.LENGTH_SHORT).show()
+        // Show custom Toast with larger text size and better visibility
+        showCustomToast("Good Job!!!")
 
         // Increment to the next question
         currentQuestionIndex++
         displayQuestion() // Display next question
     }
+
+    // Method to show custom Toast
+    private fun showCustomToast(message: String) {
+        // Inflate custom layout for Toast
+        val toastLayout = layoutInflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container))
+
+        // Find the TextView in the custom layout and set the message
+        val toastTextView = toastLayout.findViewById<TextView>(R.id.toast_text)
+        toastTextView.text = message
+
+        // Create and display the Toast
+        val toast = Toast(applicationContext)
+        toast.duration = Toast.LENGTH_SHORT
+        toast.view = toastLayout
+        toast.show()
+    }
+
 
     // Function to award a specific number of coins
     private fun awardCoins(coinsToAward: Int) {
