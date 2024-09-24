@@ -4,22 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.activity.viewModels
 import com.akirachix.investikatrial.databinding.ActivitySigninBinding
 import com.akirachix.investikaTrial.viewmodel.SignInViewModel
-import com.akirachix.investikatrial.R
-import com.akirachix.investikatrial.ui.RegisterActivity
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 
 class SigninActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySigninBinding
     private lateinit var auth: FirebaseAuth
-    private lateinit var googleSignInClient: GoogleSignInClient
     private val signInViewModel: SignInViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,101 +21,82 @@ class SigninActivity : AppCompatActivity() {
         binding = ActivitySigninBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Hide the action bar for cleaner UI
         supportActionBar?.hide()
+
+        // Initialize Firebase Authentication
         auth = FirebaseAuth.getInstance()
 
-        setupGoogleSignIn()
+        // Observe the login results from ViewModel
         observeLoginResults()
+
+        // Setup click listeners for login buttons
         setupClickListeners()
     }
 
-    private fun setupGoogleSignIn() {
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
-    }
-
+    // Observe login results from the ViewModel
     private fun observeLoginResults() {
+        // Email/password login result observer
         signInViewModel.loginResult.observe(this, Observer { result ->
             result.onSuccess { message ->
-                navigateToMain()
                 showToast(message)
+                // Navigate to the main activity or another screen after successful login
+                navigateToMainActivity()
             }.onFailure { throwable ->
                 showError(throwable.localizedMessage ?: "Login failed")
             }
         })
-
-        signInViewModel.googleSignInResult.observe(this, Observer { result ->
-            result.onSuccess { message ->
-                navigateToMain()
-                showToast(message)
-            }.onFailure { throwable ->
-                showError(throwable.localizedMessage ?: "Google Sign-In failed")
-            }
-        })
     }
 
+    // Setup the click listeners for UI buttons
     private fun setupClickListeners() {
         binding.apply {
-//            googleSignInButton.setOnClickListener { signInWithGoogle() }
+            // Handle the click event for email/password login
             loginbtn.setOnClickListener { handleEmailLogin() }
+
+            // Navigate to the register activity when user clicks the sign-up link
             signUpText.setOnClickListener { navigateToSignUp() }
         }
     }
 
+    // Handles email and password login
     private fun handleEmailLogin() {
         val username = binding.usernameInput.text.toString().trim()
         val password = binding.passwordInput.text.toString().trim()
 
+        // Validate form input
         if (signInViewModel.validateForm(username, password)) {
+            // Call login function in ViewModel
             signInViewModel.login(username, password)
         } else {
             showToast("Please enter both username and password")
         }
     }
 
-//    private fun signInWithGoogle() {
-//        val signInIntent = googleSignInClient.signInIntent
-//        val activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-//            if (result.resultCode == RESULT_OK && result.data != null) {
-//                val account = result.data?.getParcelableExtra<GoogleSignInAccount>("GOOGLE_ACCOUNT")
-//                account?.idToken?.let { firebaseAuthWithGoogle(it) }
-//            }
-//        }
-//        activityResultLauncher.launch(signInIntent)
-//    }
-//
-//    private fun firebaseAuthWithGoogle(idToken: String) {
-//        val credential = GoogleAuthProvider.getCredential(idToken, null)
-//        auth.signInWithCredential(credential).addOnCompleteListener { task ->
-//            if (task.isSuccessful) {
-//                signInViewModel.googleSignInResult.value = "Successfully signed in with Google"
-//            } else {
-//                signInViewModel.googleSignInResult.value = "Failed to sign in with Google"
-//            }
-//        }
-//    }
-
-    private fun navigateToMain() {
-        startActivity(Intent(this, HomeActivity::class.java))
-        finish()
-    }
-
+    // Navigate to the sign-up activity
     private fun navigateToSignUp() {
-        startActivity(Intent(this, RegisterActivity::class.java))
-        finish()
+        // Assuming you have a SignUpActivity to navigate to
+        val intent = Intent(this, this::class.java)
+        startActivity(intent)
     }
 
+    // Show error message
     private fun showError(message: String) {
         Log.e(TAG, message)
         showToast(message)
     }
 
+    // Display toast message
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    // Navigate to the main activity after successful login
+    private fun navigateToMainActivity() {
+        // Replace MainActivity::class.java with your actual main activity class
+        val intent = Intent(this, this::class.java)
+        startActivity(intent)
+        finish() // Optional: Close this activity
     }
 
     companion object {

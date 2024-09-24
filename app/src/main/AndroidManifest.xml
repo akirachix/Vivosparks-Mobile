@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools">
-
-    <uses-permission android:name="android.permission.INTERNET"/>
-
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-sdk
-    android:minSdkVersion="24"
-    android:targetSdkVersion="34"
-    tools:ignore="GradleOverrides" />
+        android:minSdkVersion="24"
+        android:targetSdkVersion="34"
+        tools:ignore="GradleOverrides" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -23,28 +22,21 @@ xmlns:tools="http://schemas.android.com/tools">
         tools:replace="android:allowBackup"
         tools:targetApi="31">
 
-        <activity android:name=".ui.SplashScreenActivity" android:exported="true" />
-
-        <activity android:name=".ui.HomeActivity" android:exported="false" />
-        <activity android:name="com.akirachix.investikaTrial.ui.createprofileactivity" android:exported="true" />
-        <activity android:name="com.akirachix.investikaTrial.ui.ChampionActivity" android:exported="true" />
         <activity
-            android:name="com.akirachix.investikaTrial.ui.HomeActivity"
-            android:exported="false" />
-        <!-- Splash Screen Activity -->
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.SplashScreenActivity"
+            android:name="com.akirachix.investikaTrial.ui.SigninActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Sign In Activity -->
-        <activity
-            android:name=".SigninActivity"
-            android:exported="true" />
-    </application>
+        </activity>
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
+    </application>
 
 </manifest>

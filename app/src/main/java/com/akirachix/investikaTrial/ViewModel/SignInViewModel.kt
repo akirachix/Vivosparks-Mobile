@@ -3,55 +3,41 @@ package com.akirachix.investikaTrial.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
 import com.akirachix.investikaTrial.api.ApiClient
 import com.akirachix.investikaTrial.api.SigninInterface
 import com.akirachix.investikaTrial.models.LoginRequest
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
+import com.akirachix.investikaTrial.models.LoginResponse
+import com.google.firebase.auth.FirebaseAuth
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SignInViewModel : ViewModel() {
-    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
-    private val apiInterface: SigninInterface = ApiClient.retrofitInstance.create(SigninInterface::class.java)
-
     private val _loginResult = MutableLiveData<Result<String>>()
     val loginResult: LiveData<Result<String>> = _loginResult
 
-    private val _googleSignInResult = MutableLiveData<Result<String>>()
-    val googleSignInResult: LiveData<Result<String>> = _googleSignInResult
+    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
+    // Login function
     fun login(username: String, password: String) {
-        if (!validateForm(username, password)) {
-            _loginResult.value = Result.failure(IllegalArgumentException("Username and password must not be empty"))
-            return
-        }
-
+        // Create a LoginRequest object
         val loginRequest = LoginRequest(username, password)
-        viewModelScope.launch {
-            try {
-                val loginResponse = apiInterface.login(loginRequest) // Ensure this is correctly defined in your ApiInterface
-                _loginResult.value = Result.success(loginResponse.message()) // Handle successful response
-            } catch (e: Exception) {
-                _loginResult.value = Result.failure(e) // Handle error response
+
+        // Use FirebaseAuth to sign in with username and password
+        auth.signInWithEmailAndPassword(username, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    // Login success, return success message
+                    _loginResult.value = Result.success("Login successful")
+                } else {
+                    // Login failed, return failure message
+                    _loginResult.value = Result.failure(task.exception ?: Exception("Login failed"))
+                }
             }
-        }
     }
 
-    fun firebaseAuthWithGoogle(idToken: String) {
-        viewModelScope.launch {
-            try {
-                val credential = GoogleAuthProvider.getCredential(idToken, null)
-                auth.signInWithCredential(credential).await()
-                _googleSignInResult.value = Result.success("Google Sign-In successful")
-            } catch (e: Exception) {
-                _googleSignInResult.value = Result.failure(e)
-            }
-        }
-    }
-
+    // Validate the input form
     fun validateForm(username: String, password: String): Boolean {
-        return username.isNotBlank() && password.isNotBlank()
+        return username.isNotEmpty() && password.isNotEmpty()
     }
 }
