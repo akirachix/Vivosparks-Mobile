@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/congrates"
+    tools:context="com.akirachix.investikaTrial.ui.CoinActivity">
+
+
+    <TextView
+        android:id="@+id/tv_congratulations"
+        android:layout_width="333dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="96dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Congratulations!!"
+        android:textAlignment="center"
+        android:textColor="#FFC300"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.589"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tv_profit_gained"
+        android:layout_width="333dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="172dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="You gained profit"
+        android:textAlignment="center"
+        android:textColor="#FFC300"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.589"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tv_number_of_coins"
+        android:layout_width="333dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="The number of coins"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_profit_gained" />
+
+
+    <TextView
+        android:id="@+id/tv_in_your_account"
+        android:layout_width="333dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="in your account"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_number_of_coins" />
+
+
+    <TextView
+        android:id="@+id/tv_increased_by"
+        android:layout_width="333dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="has increased by"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_in_your_account" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAccountOPen"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="32dp"
+        android:text="Invest"
+        android:textAlignment="center"
+        android:textColor="#003566"
+        android:textSize="14dp"
+        app:backgroundTint="#FFC107"
+        app:cornerRadius="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_coins" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnOpenCoin"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="32dp"
+        android:text="Open Account"
+        android:textAlignment="center"
+        android:textColor="#003566"
+        android:textSize="14dp"
+        app:backgroundTint="#FFC107"
+        app:cornerRadius="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_coins" />
+
+
+    <TextView
+        android:id="@+id/tv_coins"
+        android:layout_width="236dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="20.0 Coins"
+        android:textAlignment="center"
+        android:textColor="#FFC300"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_increased_by"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/tv_increased_by"
+        app:layout_constraintTop_toBottomOf="@+id/tv_increased_by" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
