@@ -1,13 +1,12 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.google.services)
 }
 
 android {
     namespace = "com.akirachix.investikatrial"
     compileSdk = 34
-
-
 
     defaultConfig {
         applicationId = "com.akirachix.investikatrial"
@@ -28,58 +27,52 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
     buildFeatures {
-        //noinspection DataBindingWithoutKapt
-        viewBinding= true
+        viewBinding = true
         dataBinding = true
-        }
+    }
 }
 
 
 dependencies {
-    implementation(libs.androidx.core.ktx.v160)
-    implementation(libs.androidx.appcompat.v131)
-    implementation(libs.material.v140)
-    implementation(libs.androidx.activity.ktx)
-    implementation(libs.androidx.constraintlayout.v210)
-    implementation(libs.retrofit.v290)
-    implementation(libs.converter.gson.v290)
+    // Core Android libraries
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
     implementation(libs.androidx.activity)
+    implementation(libs.androidx.constraintlayout)
+
+    // Firebase and Google Play services
+    implementation(platform("com.google.firebase:firebase-bom:32.0.0")) // Use latest version
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.play.services.auth)
+
+    // Retrofit for networking
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    // Image loading libraries
+    implementation(libs.picasso)
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
+    // Remove unnecessary dependency
+    // implementation("com.typesafe.play:play_2.13:2.8.8") // Remove if not needed
+
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit.v113)
-    androidTestImplementation(libs.androidx.espresso.core.v340)
-    implementation (libs.androidx.appcompat.v151)
-    implementation(libs.material.v161)
-    implementation (libs.material.v180)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation (libs.retrofit)
-    implementation (libs.converter.gson)
-    implementation (libs.material.v140)
-    implementation (libs.androidx.constraintlayout)
-    implementation (libs.play.services.auth)
-    implementation (libs.androidx.core.v1100)
-    implementation (libs.material.v190)
-    implementation (libs.androidx.constraintlayout)
-    implementation (libs.androidx.core.ktx.v1120)// Use the latest version
-    implementation (libs.androidx.appcompat.v161)
-    implementation (libs.picasso)
-    implementation (libs.glide)
-    annotationProcessor (libs.compiler)
-
-
-
-
-
-
 }
-
 
 

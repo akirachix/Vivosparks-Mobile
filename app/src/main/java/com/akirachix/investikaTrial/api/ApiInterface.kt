@@ -62,3 +62,4 @@ interface VirtualMoneyApi {
     @GET("/api/virtualmoney")
     fun getVirtualMoney(): Call<List<VirtualCoin>>  // The endpoint will return a list of VirtualCoins
 }
+

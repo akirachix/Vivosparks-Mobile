@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:background="#000000"> <!-- Set background color to black -->
 
+
     <ImageView
         android:id="@+id/backgroundImage"
         android:layout_width="448dp"
@@ -25,9 +26,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:text="Welcome Back\nto the Realm"
+        android:fontFamily="@font/nunito_sans_bold"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="32sp"
+        android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,90 +38,73 @@
 
     <EditText
         android:id="@+id/usernameInput"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_height="59dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="76dp"
         android:layout_marginEnd="32dp"
         android:background="@android:drawable/editbox_background"
+        android:fontFamily="@font/nunito_sans_bold"
         android:hint="Enter username"
         android:padding="12dp"
-        android:textColorHint="#808080"
         android:textColor="@color/black"
+        android:textColorHint="#808080"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/welcomeText" />
 
     <EditText
         android:id="@+id/passwordInput"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_height="59dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
+        android:background="@android:drawable/editbox_background_normal"
+        android:fontFamily="@font/nunito_sans_bold"
         android:hint="Enter Password"
         android:inputType="textPassword"
         android:padding="12dp"
-        android:textColorHint="#808080"
         android:textColor="@color/black"
-        android:background="@android:drawable/editbox_background_normal"
+        android:textColorHint="#808080"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/usernameInput" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/loginbtn"
-        android:layout_width="162dp"
+        android:layout_width="200dp"
         android:layout_height="53dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="32dp"
+        android:fontFamily="@font/nunito_sans_bold"
         android:text="Sign in"
+        android:textAlignment="center"
         android:textColor="#003566"
         app:backgroundTint="#FFC107"
         app:cornerRadius="25dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/passwordInput" />
-
-    <TextView
-        android:id="@+id/orText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="or"
-        android:textColor="#FFC107"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginbtn" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/googleSignInButton"
-        android:layout_width="271dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:text="Sign in with Google"
-        android:textColor="#000000"
-        app:backgroundTint="#FFFFFF"
-        app:cornerRadius="25dp"
-        android:drawableLeft="@drawable/google_svgrepo_com"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/orText" />
 
     <TextView
         android:id="@+id/signUpText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:fontFamily="@font/nunito_sans_bold"
         android:text="Don't have an account? Sign up"
+        android:textAlignment="center"
         android:textColor="#FFC107"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/googleSignInButton" />
+        app:layout_constraintTop_toBottomOf="@+id/loginbtn" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,6 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import android.media.MediaPlayer
 import com.akirachix.investikatrial.R
-import com.akirachix.investikatrial.SignInActivity
 import com.akirachix.investikatrial.databinding.ActivitySplashScreenBinding
 
 class SplashScreenActivity : AppCompatActivity() {
@@ -50,9 +49,3 @@ class SplashScreenActivity : AppCompatActivity() {
         }
     }
 }
-
-
-
-
-
-

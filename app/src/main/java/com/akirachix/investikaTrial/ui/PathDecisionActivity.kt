@@ -33,6 +33,10 @@ class PathDecisionActivity : AppCompatActivity() {
     private var totalCoins = 0
     private var mediaPlayer: MediaPlayer? = null
 
+    // Track the number of correct and incorrect answers
+    private var correctAnswers = 0
+    private var incorrectAnswers = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_assessment)
@@ -109,27 +113,23 @@ class PathDecisionActivity : AppCompatActivity() {
 
         // Check if the selected option corresponds to the correct answer index
         if (selectedIndex == correctAnswerIndex) {
-            // Show toast and award coins for the correct answer
             Toast.makeText(this, "Good job!", Toast.LENGTH_SHORT).show()
-            awardCoins(10) // Award a fixed amount of coins or calculate dynamically
+            correctAnswers++ // Increment correct answer count
+            awardCoins(10)
         } else {
-            // Show toast for the incorrect answer
             Toast.makeText(this, "Incorrect! Try again.", Toast.LENGTH_SHORT).show()
+            incorrectAnswers++ // Increment incorrect answer count
         }
 
-        // Increment the question index after the answer is processed
         currentQuestionIndex++
 
-        // Check if there are more questions and load the next one
         if (currentQuestionIndex < assessments.size) {
             displayQuestion()
         } else {
-            // If no more questions, navigate to the results activity
             navigateToResults()
         }
     }
 
-    // Function to award a specific number of coins
     private fun awardCoins(coinsToAward: Int) {
         totalCoins += coinsToAward
         runOnUiThread {
@@ -189,9 +189,16 @@ class PathDecisionActivity : AppCompatActivity() {
         return (dp * density).toInt()
     }
 
+    // Decide which activity to navigate to
     private fun navigateToResults() {
-        val intent = Intent(this, SlayDragonActivity::class.java)
-        startActivity(intent)
+        if (correctAnswers == 0) {
+            val intent = Intent(this, DefeatActivity::class.java)
+            startActivity(intent)
+        } else {
+            // If at least one answer is correct, navigate to SlayDragonActivity
+            val intent = Intent(this, SlayDragonActivity::class.java)
+            startActivity(intent)
+        }
         finish()
     }
 }

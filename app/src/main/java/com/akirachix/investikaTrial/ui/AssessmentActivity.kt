@@ -11,7 +11,6 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.akirachix.investikaTrial.api.ApiClient
 import com.akirachix.investikaTrial.models.AssessmentResponse
-import com.akirachix.investikaTrial.models.VirtualCoin
 import com.akirachix.investikatrial.R
 import com.bumptech.glide.Glide
 import retrofit2.Call
@@ -223,3 +222,12 @@ class AssessmentActivity : AppCompatActivity() {
         finish()
     }
 }
+
+
+
+
+
+
+
+
+

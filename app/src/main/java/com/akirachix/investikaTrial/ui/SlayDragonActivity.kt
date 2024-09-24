@@ -5,8 +5,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.akirachix.investikatrial.databinding.ActivitySlayDragonBinding
 
-
-
 class SlayDragonActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySlayDragonBinding
 

@@ -71,15 +71,16 @@
                 android:id="@+id/radio_male"
                 android:layout_width="108dp"
                 android:layout_height="47dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/nunito_sans_bold"
                 android:text="Male"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/radio_female"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/radio_female"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
 
             <RadioButton
                 android:id="@+id/radio_female"
@@ -113,12 +114,13 @@
 
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ageTextInput"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#FFFFFF"
             android:fontFamily="@font/nunito_bold"
             android:hint="Enter Age"
-            android:inputType="textPassword"
+            android:inputType="number"
             android:textColor="#000000"
             android:textColorHint="#FFFFFF" />
 
@@ -133,6 +135,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="32dp"
         android:hint="Enter Location"
+        android:inputType="text"
         android:fontFamily="@font/nunito_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -143,11 +146,12 @@
 
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/locationInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
-            android:hint="Confirm Password"
             android:fontFamily="@font/nunito_bold"
+            android:hint="Confirm Password"
             android:inputType="textPassword"
             android:textColor="#000000"
             android:textColorHint="#FFFFFF" />
@@ -170,29 +174,30 @@
 
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/income"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
-            android:hint="Enter Username"
             android:fontFamily="@font/nunito_bold"
+            android:hint="Enter Username"
             android:textColor="#000000"
             android:textColorHint="#FFFFFF" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnprocedd"
-        android:layout_width="249dp"
-        android:layout_height="78dp"
-        android:layout_marginTop="132dp"
-        android:backgroundTint="#FFC300"
-        android:fontFamily="@font/nunito_bold"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="32dp"
         android:text="Proceed"
-        android:textSize="20sp"
-        android:textAllCaps="false"
+        android:textAlignment="center"
         android:textColor="#003566"
-        app:cornerRadius="40dp"
+        android:textSize="18dp"
+        app:backgroundTint="#FFC107"
+        app:cornerRadius="25dp"
         app:layout_constraintEnd_toEndOf="@+id/usernameTextInput"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/usernameTextInput"
         app:layout_constraintTop_toBottomOf="@+id/usernameTextInput" />
 

@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context="com.akirachix.investikaTrial.ui.AwardActivity">
 
+
     <!-- Top Background Image -->
     <ImageView
         android:id="@+id/top_background_image"
@@ -20,6 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" /> <!-- Adjust height percentage if needed -->
 
+
     <!-- Bottom Background Image -->
     <ImageView
         android:id="@+id/bottom_background_image"
@@ -27,11 +29,13 @@
         android:layout_height="0dp"
         android:scaleType="fitXY"
         android:src="@drawable/moneyaward"
-    app:layout_constraintTop_toBottomOf="@id/top_background_image"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHeight_percent="0.5" />
+        app:layout_constraintTop_toBottomOf="@id/top_background_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5" />
+
+
 
 
     <TextView
@@ -51,6 +55,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_background_image" />
 
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -59,7 +64,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/nunito_bold"
-        android:text="  You have been\nawarded 10000 coins"
+        android:text="  You have been\nawarded 10,000 coins"
         android:textAlignment="center"
         android:textColor="#FFC300"
         android:textSize="36sp"
@@ -68,28 +73,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+
     <Button
-        android:id="@+id/btnStart"
-        android:layout_width="160dp"
-        android:layout_height="67dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="88dp"
-        android:backgroundTint="#FFc300"
-        android:fontFamily="@font/nunito_sans_bold"
-        android:paddingStart="40dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="40dp"
-        android:paddingBottom="10dp"
+        android:id="@+id/btnGetStarted"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="76dp"
+        android:backgroundTint="#FFC107"
         android:text="Proceed"
+        android:textSize="18dp"
+        android:fontFamily="@font/nunito_sans_bold"
         android:textColor="#003566"
-        android:textSize="20sp"
-        app:cornerRadius="40dp"
         app:layout_constraintBottom_toBottomOf="@+id/bottom_background_image"
         app:layout_constraintEnd_toEndOf="@+id/textView1"
-        app:layout_constraintHorizontal_bias="0.453"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/textView1"
         app:layout_constraintTop_toBottomOf="@+id/textView1"
         app:layout_constraintVertical_bias="1.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
