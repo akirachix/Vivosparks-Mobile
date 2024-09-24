@@ -14,7 +14,7 @@ object ApiClient {
     }
     private const val BASE_URL = "https://investika-fed709cc5cec.herokuapp.com/"
 
-    private val retrofit: Retrofit = Retrofit.Builder()
+    val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()

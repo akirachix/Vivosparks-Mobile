@@ -23,7 +23,7 @@ class CdsActivity: AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.btnPLayAgain.setOnClickListener {
+        binding.btnAccountOPen.setOnClickListener {
             val intent = Intent(this, HighRiskPaths::class.java)
             startActivity(intent)
         }
