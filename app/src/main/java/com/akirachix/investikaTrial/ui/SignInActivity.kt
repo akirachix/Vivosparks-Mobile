@@ -1,5 +1,3 @@
-package com.akirachix.investikaTrial.ui
-
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +5,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.akirachix.investikaTrial.ui.LaunchGameActivity
 import com.akirachix.investikaTrial.viewmodel.SignInViewModel
 import com.akirachix.investikatrial.R
 import com.akirachix.investikatrial.databinding.ActivitySigninBinding
@@ -16,7 +15,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
 
 class SigninActivity : AppCompatActivity() {
 
@@ -108,7 +106,7 @@ class SigninActivity : AppCompatActivity() {
 
     // Navigate to the main activity
     private fun navigateToMain() {
-        startActivity(Intent(this, launchgameActivity::class.java))
+        startActivity(Intent(this, LaunchGameActivity::class.java))
         finish()
     }
 

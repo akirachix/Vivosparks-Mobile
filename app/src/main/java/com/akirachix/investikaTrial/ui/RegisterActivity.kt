@@ -10,6 +10,7 @@ import com.akirachix.investikaTrial.models.RegisterRequest
 import com.akirachix.investikaTrial.models.RegisterResponse
 import com.akirachix.investikaTrial.ui.createprofileactivity
 import com.akirachix.investikatrial.databinding.ActivityRegisterBinding
+import com.akirachix.investikatrial.databinding.ActivitySigninBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -60,7 +61,7 @@ class RegisterActivity : AppCompatActivity() {
         )
 
         // Make the API call using Retrofit
-        val apiInterface = ApiClient.retrofitInstance.create(SigninInterface::class.java)
+        val apiInterface = ApiClient.retrofit.create(SigninInterface::class.java)
         apiInterface.register(registerRequest).enqueue(object : Callback<RegisterResponse> {
             override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
                 if (response.isSuccessful && response.body() != null) {

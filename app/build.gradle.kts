@@ -39,38 +39,40 @@ android {
 
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 
+
 dependencies {
+    // Core Android libraries
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.auth.ktx)
-    implementation(libs.play.services.auth)
-    implementation (libs.retrofit) // Latest version
-    implementation (libs.converter.gson)
-    implementation (libs.androidx.appcompat.v131)
-    implementation (libs.picasso)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    implementation(platform(libs.firebase.bom))
+
+    // Firebase and Google Play services
+    implementation(platform("com.google.firebase:firebase-bom:32.0.0")) // Use latest version
     implementation(libs.firebase.auth.ktx)
     implementation(libs.play.services.auth)
 
-    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    // Retrofit for networking
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    // Image loading libraries
+    implementation(libs.picasso)
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
+    // Remove unnecessary dependency
+    // implementation("com.typesafe.play:play_2.13:2.8.8") // Remove if not needed
 
     testImplementation(libs.junit)
-
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
+
+

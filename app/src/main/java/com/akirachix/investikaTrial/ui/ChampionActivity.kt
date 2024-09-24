@@ -78,13 +78,13 @@ class ChampionActivity : AppCompatActivity() {
         )
 
         // Use Retrofit to make API call for registration
-        val apiInterface = ApiClient.retrofitInstance.create(SigninInterface::class.java)
+        val apiInterface = ApiClient.retrofit.create(SigninInterface::class.java)
         apiInterface.register(registerRequest).enqueue(object : Callback<RegisterResponse> {
             override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
                 if (response.isSuccessful) {
                     // Registration is successful
                     Toast.makeText(this@ChampionActivity, "Registration successful!", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this@ChampionActivity, launchgameActivity::class.java))
+                    startActivity(Intent(this@ChampionActivity, LaunchGameActivity::class.java))
                     finish()
                 } else {
                     // Handle error response from the server

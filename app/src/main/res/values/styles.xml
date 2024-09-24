@@ -1,8 +1,4 @@
 <!-- res/values/styles.xml -->
 <resources>
-    <!-- Base application theme -->
-    <style name="Theme.InvestikaTrial" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-
-    </style>
 
 </resources>

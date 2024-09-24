@@ -1,0 +1,137 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/corporate"
+    tools:context="com.akirachix.investikaTrial.ui.CorporateActivity">
+
+    <TextView
+        android:id="@+id/tvCorporateBond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Corporate Bond"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvInterestEarning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Interest Earning Calculation"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvCorporateBond"
+        app:layout_constraintStart_toStartOf="@+id/tvCorporateBond"
+        app:layout_constraintTop_toBottomOf="@+id/tvCorporateBond" />
+
+    <TextView
+        android:id="@+id/tvWeekly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Semi annually"
+        android:textAlignment="center"
+        android:textColor="#FFC107"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvInterestEarning"
+        app:layout_constraintStart_toStartOf="@+id/tvInterestEarning"
+        app:layout_constraintTop_toBottomOf="@+id/tvInterestEarning" />
+
+    <Button
+        android:id="@+id/btnProceedWeekly"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Ksh 700"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="@+id/tvWeekly"
+        app:layout_constraintStart_toStartOf="@+id/tvWeekly"
+        app:layout_constraintTop_toBottomOf="@+id/tvWeekly" />
+
+    <TextView
+        android:id="@+id/tvMonthly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Annually"
+        android:textColor="#FFC107"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/btnProceedWeekly"
+        app:layout_constraintStart_toStartOf="@+id/btnProceedWeekly"
+        app:layout_constraintTop_toBottomOf="@+id/btnProceedWeekly" />
+
+    <Button
+        android:id="@+id/btnProceedMonthly"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/nunito_bold"
+        android:text="ksh 300"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="@+id/tvMonthly"
+        app:layout_constraintStart_toStartOf="@+id/tvMonthly"
+        app:layout_constraintTop_toBottomOf="@+id/tvMonthly" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBac"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_margin="16dp"
+        android:layout_marginStart="27dp"
+        android:backgroundTint="#FFC300"
+        android:clipToOutline="true"
+        android:elevation="4dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:padding="16dp"
+        android:text="Back"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        android:textColor="#003566"
+        app:cornerRadius="36dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnProceedMonthly" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnConfirmStock"
+
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_margin="16dp"
+        android:layout_marginEnd="26dp"
+        android:backgroundTint="#FFC300"
+        android:clipToOutline="true"
+        android:elevation="4dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:padding="16dp"
+        android:text="Confirm Buy"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        android:textColor="#003566"
+        app:cornerRadius="36dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBac"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnBac" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

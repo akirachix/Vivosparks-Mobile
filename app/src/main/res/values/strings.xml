@@ -1,5 +1,6 @@
+<!-- res/values/strings.xml -->
 <resources>
-    <string name="app_name">InvestikaTrial</string>
-    <string name="default_web_client_id">your-client-id-here</string>
 
+    <string name="investika">Investika</string>
+    <string name="default_web_client_id">1:925882610977:android:7df1c7cff568fe8bd13a60</string>
 </resources>

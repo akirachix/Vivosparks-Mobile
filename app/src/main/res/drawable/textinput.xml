@@ -1,0 +1,19 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Set the corner radius to 16dp for more rounding -->
+    <corners android:radius="16dp"/>
+
+    <!-- Set the border (stroke) with a wider width and a lighter color -->
+    <stroke
+        android:width="3dp"
+        android:color="#CCCCCC"/> <!-- Lighter grey border -->
+
+    <!-- Set the background color to a light blue -->
+    <solid android:color="#E0F7FA"/> <!-- Light blue background -->
+
+    <!-- Optional: Add padding inside the shape -->
+    <padding
+        android:left="30dp"
+        android:top="30dp"
+        android:right="30dp"
+        android:bottom="30dp"/>
+</shape>

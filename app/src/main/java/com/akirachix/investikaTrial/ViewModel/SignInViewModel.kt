@@ -22,7 +22,7 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
     val googleSignInResult: LiveData<Result<String>> = _googleSignInResult
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
-    private val apiService = ApiClient.retrofitInstance.create(SigninInterface::class.java)
+    private val apiService = ApiClient.retrofit.create(SigninInterface::class.java)
 
     // API Login Logic with Coroutines
     fun login(username: String, password: String) {
