@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-sdk
         android:minSdkVersion="24"
         android:targetSdkVersion="34" />
+
     <!-- Internet Permission -->
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -18,10 +18,23 @@
         android:theme="@style/Theme.InvestikaTrial"
         tools:targetApi="31">
 
+        <!-- Main Entry Point -->
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.SplashScreenActivity"
+            android:exported="true"> <!-- Allow launching -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Other Activities -->
+        <activity
+            android:name="SignInActivity"
+            android:exported="true" />
         <activity
             android:name="com.akirachix.investikaTrial.ui.InvestmentActivity"
             android:exported="false" />
-
         <activity
             android:name="com.akirachix.investikaTrial.ui.MarketActivity"
             android:exported="false" />
@@ -31,21 +44,9 @@
         <activity
             android:name="com.akirachix.investikaTrial.ui.AchievementScreen"
             android:exported="false" />
-
-        <uses-library android:name="com.google.android.maps" />
-
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-com.akirachix.investikatrial" />
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-
         <activity
             android:name="com.akirachix.investikaTrial.ui.AchievementActivity"
-            android:exported="true"/>
-        <activity android:name="com.akirachix.investikatrial.SigninActivity" />
-
+            android:exported="true" />
         <activity
             android:name="com.akirachix.investikaTrial.ui.ProfileActivity"
             android:exported="false" />
@@ -58,11 +59,9 @@
         <activity
             android:name="com.akirachix.investikaTrial.ui.StepsActivity"
             android:exported="false" />
-
         <activity
             android:name="com.akirachix.investikaTrial.ui.MedActivity"
             android:exported="false" />
-
         <activity
             android:name="com.akirachix.investikaTrial.ui.LossActivity"
             android:exported="false" />
@@ -72,7 +71,6 @@
         <activity
             android:name="com.akirachix.investikaTrial.ui.SageActivity"
             android:exported="false" />
-
         <activity
             android:name="com.akirachix.investikaTrial.ui.DefeatedActivity"
             android:exported="false" />
@@ -95,15 +93,6 @@
             android:name="com.akirachix.investikaTrial.ui.PathDecisionActivity"
             android:exported="false" />
         <activity
-            android:name="com.akirachix.investikaTrial.ui.SplashScreenActivity"
-            android:exported="true">  <!-- Set this to "true" or "false" based on your requirements -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity
             android:name="com.akirachix.investikaTrial.ui.AwardActivity"
             android:exported="false" />
         <activity
@@ -124,15 +113,12 @@
         <activity
             android:name="com.akirachix.investikaTrial.ui.AssessmentActivity"
             android:exported="true" />
-
         <activity
             android:name="com.akirachix.investikaTrial.ui.ResultsActivity"
             android:exported="false" />
-
         <activity
             android:name="com.akirachix.investikaTrial.ui.CorporateActivity"
-            android:exported="true"/>
-
+            android:exported="true" />
         <activity
             android:name="com.akirachix.investikaTrial.ui.LuckyActivity"
             android:exported="false" />
@@ -146,6 +132,9 @@
             android:name="com.akirachix.investikaTrial.ui.StockpriceActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.RegisterActivity"
+            android:exported="false" />
+        <activity
             android:name="com.akirachix.investikaTrial.ui.SafaricompriceActivity"
             android:exported="false" />
         <activity
@@ -157,6 +146,14 @@
         <activity
             android:name="com.akirachix.investikaTrial.ui.LivestocksActivity"
             android:exported="false" />
+
+        <!-- Google Ads Configuration -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-com.akirachix.investikatrial" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
         <meta-data
             android:name="preloaded_fonts"

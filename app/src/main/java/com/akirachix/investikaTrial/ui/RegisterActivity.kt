@@ -10,7 +10,7 @@ import com.akirachix.investikaTrial.models.RegisterRequest
 import com.akirachix.investikaTrial.models.RegisterResponse
 import com.akirachix.investikaTrial.ui.createprofileactivity
 import com.akirachix.investikatrial.databinding.ActivityRegisterBinding
-import com.akirachix.investikatrial.databinding.ActivitySigninBinding
+import com.akirachix.investikatrial.databinding.ActivitySignInBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

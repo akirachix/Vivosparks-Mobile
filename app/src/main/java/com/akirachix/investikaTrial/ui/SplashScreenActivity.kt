@@ -1,11 +1,12 @@
 package com.akirachix.investikaTrial.ui
 
-import SigninActivity
+import SignInActivity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.akirachix.investikatrial.databinding.ActivitySplashScreenBinding
+import com.akirachix.investikatrial.ui.RegisterActivity
 
 class SplashScreenActivity : AppCompatActivity() {
 
@@ -19,7 +20,7 @@ class SplashScreenActivity : AppCompatActivity() {
         // Handler to delay for 3 seconds
         Handler().postDelayed({
             // Navigate to LoginActivity after 3 seconds
-            val intent = Intent(this,SigninActivity::class.java)
+            val intent = Intent(this,RegisterActivity::class.java)
             startActivity(intent)
             // Finish SplashScreenActivity so it can't be returned to
             finish()
