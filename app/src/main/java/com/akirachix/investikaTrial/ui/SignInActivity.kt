@@ -67,7 +67,6 @@ class SignInActivity : AppCompatActivity() {
         })
 
         // Button click listeners
-        binding.googleSignInButton.setOnClickListener { signInWithGoogle() }
         binding.loginbtn.setOnClickListener { handleEmailLogin() }
         binding.signUpText.setOnClickListener { navigateToSignUp() }
     }
