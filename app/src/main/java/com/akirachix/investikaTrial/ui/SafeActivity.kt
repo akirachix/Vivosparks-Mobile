@@ -17,7 +17,7 @@ class SafeActivity: AppCompatActivity() {
 
 
         binding.btnProceed.setOnClickListener {
-            val intent = Intent(this, BridgeActivity::class.java)
+            val intent = Intent(this, AchievementScreen::class.java)
             startActivity(intent)
         }
 

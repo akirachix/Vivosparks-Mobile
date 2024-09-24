@@ -10,6 +10,8 @@
     tools:context="com.akirachix.investikaTrial.ui.CorporateActivity">
 
 
+
+
     <TextView
         android:id="@+id/tvCongratsMessage"
         android:layout_width="wrap_content"
@@ -27,6 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/tvGetReady"
         android:layout_width="wrap_content"
@@ -42,6 +45,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnToStock"
@@ -61,6 +65,7 @@
         app:layout_constraintStart_toEndOf="@+id/btnInvestAgain"
         app:layout_constraintTop_toBottomOf="@+id/tvGetReady" />
 
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnInvestAgain"
         android:layout_width="150dp"
@@ -78,5 +83,6 @@
         app:layout_constraintEnd_toStartOf="@+id/btnToStock"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvGetReady" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

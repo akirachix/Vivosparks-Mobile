@@ -1,92 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
-    android:gravity="center"
-    android:background="@drawable/palacebg">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Why have you decided to fight the dragon?"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!-- Background and padding -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/background"
+        android:padding="16dp">
 
-    <Button
-        android:id="@+id/button15"
-        android:layout_width="350dp"
-        android:layout_height="65dp"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/corners"
-        android:text="I'm confident in my choice"
-        android:textAllCaps="false"
-        android:fontFamily="@font/nunito_bold"
-        android:textColor="@color/black"
-        android:textColorLink="#FFFFFF"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/button12"
-        app:layout_constraintEnd_toEndOf="@+id/button12"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/button12" />
+        <!-- Total Coins Display -->
+        <TextView
+            android:id="@+id/tvTotalCoins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Coins: 0"
+            android:textSize="24sp"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp" />
 
-    <Button
-        android:id="@+id/button16"
-        android:layout_width="350dp"
-        android:layout_height="65dp"
-        android:textAllCaps="false"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/corners"
-        android:fontFamily="@font/nunito_bold"
-        android:text="I want quick gains"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/button15"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
-        app:layout_constraintStart_toStartOf="parent" />
+        <!-- Question Text -->
+        <TextView
+            android:id="@+id/tvQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:fontFamily="@font/nunito_bold"
+            android:textColor="@android:color/white" />
 
-    <Button
-        android:id="@+id/button12"
-        android:layout_width="350dp"
-        android:layout_height="65dp"
-        android:layout_marginBottom="88dp"
-        android:background="@drawable/corners"
-        android:text="Aware of negative outcomes"
-        android:textAllCaps="false"
-        android:fontFamily="@font/nunito_bold"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/button16"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/button16" />
+        <ImageView
+            android:id="@+id/imageQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:scaleType="centerCrop" />
 
-    <Button
-        android:id="@+id/button14"
-        android:layout_width="350dp"
-        android:layout_height="65dp"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/corners"
-        android:text="High Risk, high reward"
-        android:textAllCaps="false"
-        android:fontFamily="@font/nunito_bold"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/button16"
-        app:layout_constraintEnd_toEndOf="@+id/button15"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/button15" />
+        <!-- Option Buttons -->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btnOptionA"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Option A"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/btnOptionB"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Option B"
+            android:textSize="15sp"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/btnOptionC"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Option C"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/btnOptionD"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Option D"
+            android:textSize="15sp"
+            android:textColor="@android:color/black" />
+
+    </LinearLayout>
+
+    <!-- Coin Animation Container -->
+    <FrameLayout
+        android:id="@+id/coin_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</FrameLayout>

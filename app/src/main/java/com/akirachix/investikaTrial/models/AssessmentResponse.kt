@@ -8,6 +8,7 @@ data class AssessmentResponse(
     val is_active: Boolean,
     val taken_at: String,
     val user_id: Int?
+
 )
 
 data class Answer(

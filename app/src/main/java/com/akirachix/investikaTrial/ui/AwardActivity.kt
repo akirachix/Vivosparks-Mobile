@@ -17,7 +17,7 @@ class AwardActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Navigate to MainActivity on button click using View Binding
-        binding.btnGetStarted.setOnClickListener {
+        binding.btnStart.setOnClickListener {
             val intent = Intent(this, DragonActivity::class.java)
             startActivity(intent)
 

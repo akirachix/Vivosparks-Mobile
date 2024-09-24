@@ -9,6 +9,8 @@
     android:background="@drawable/secondbackground">
 
 
+
+
     <TextView
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
@@ -23,6 +25,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
@@ -36,6 +39,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
+
     <RadioGroup
         android:id="@+id/radio_group_gender"
         android:layout_width="wrap_content"
@@ -48,7 +52,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
     </RadioGroup>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailTextInput"
@@ -62,10 +68,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleText">
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="336dp"
             android:layout_height="match_parent"
             android:fontFamily="@font/nunito_bold">
+
 
             <RadioButton
                 android:id="@+id/radio_male"
@@ -81,6 +89,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
+
 
             <RadioButton
                 android:id="@+id/radio_female"
@@ -99,6 +108,8 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
+
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordTextInput"
         android:layout_width="0dp"
@@ -108,9 +119,12 @@
         android:layout_marginEnd="32dp"
         android:hint="Enter Age"
 
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/emailTextInput">
+
+
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -123,7 +137,10 @@
             android:textColor="#000000"
             android:textColorHint="#FFFFFF" />
 
+
     </com.google.android.material.textfield.TextInputLayout>
+
+
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -140,7 +157,10 @@
         app:boxCornerRadiusBottomEnd="30dp"
         app:boxCornerRadiusBottomStart="30dp"
 
+
         app:layout_constraintTop_toBottomOf="@id/passwordTextInput">
+
+
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -155,6 +175,8 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
+
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/usernameTextInput"
         android:layout_width="0dp"
@@ -163,11 +185,14 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="32dp"
 
+
         android:hint="Enter Income"
         android:fontFamily="@font/nunito_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/confirmPasswordTextInput">
+
+
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -179,6 +204,7 @@
             android:textColor="#000000"
             android:textColorHint="#FFFFFF" />
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
         android:id="@+id/btnprocedd"
@@ -196,5 +222,6 @@
         app:layout_constraintTop_toBottomOf="@+id/usernameTextInput" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
 
+
+</androidx.constraintlayout.widget.ConstraintLayout>

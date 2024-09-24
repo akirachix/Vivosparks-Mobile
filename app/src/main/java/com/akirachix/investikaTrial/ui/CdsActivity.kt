@@ -1,11 +1,10 @@
 package com.akirachix.investikaTrial.ui
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.akirachix.investikaTrial.models.AssessmentResponse
-import com.akirachix.investikatrial.databinding.ActivityAssessmentBinding
 import com.akirachix.investikatrial.databinding.ActivityCdsBinding
 
 class CdsActivity: AppCompatActivity() {
@@ -15,7 +14,18 @@ class CdsActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
+        binding = ActivityCdsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+        // Open external URL when btnAccountOpen is clicked
+        binding.btnAccountOPen.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.nse.co.ke/usp/"))
+            startActivity(intent)
+        }
+
+        binding.btnPLayAgain.setOnClickListener {
+            val intent = Intent(this, HighRiskPaths::class.java)
+            startActivity(intent)
+        }
     }
 }
-

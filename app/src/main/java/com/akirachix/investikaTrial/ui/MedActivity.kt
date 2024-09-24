@@ -18,7 +18,7 @@ class MedActivity: AppCompatActivity() {
 
 
         binding.btnProceed.setOnClickListener {
-            val intent = Intent(this, LossActivity::class.java)
+            val intent = Intent(this, AchievementScreen::class.java)
             startActivity(intent)
         }
 

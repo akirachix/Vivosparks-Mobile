@@ -8,6 +8,7 @@
     android:background="@drawable/congrates"
     tools:context="com.akirachix.investikaTrial.ui.CoinActivity">
 
+
     <TextView
         android:id="@+id/tv_congratulations"
         android:layout_width="333dp"
@@ -22,6 +23,7 @@
         app:layout_constraintHorizontal_bias="0.794"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/tv_profit_gained"
@@ -38,6 +40,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/tv_number_of_coins"
         android:layout_width="333dp"
@@ -52,6 +55,7 @@
         app:layout_constraintHorizontal_bias="0.91"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_profit_gained" />
+
 
     <TextView
         android:id="@+id/tv_in_your_account"
@@ -68,6 +72,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_number_of_coins" />
 
+
     <TextView
         android:id="@+id/tv_increased_by"
         android:layout_width="333dp"
@@ -82,6 +87,7 @@
         app:layout_constraintHorizontal_bias="0.91"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_in_your_account" />
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAccountOPen"
@@ -101,6 +107,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_coins" />
 
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnOpenCoin"
         android:layout_width="150dp"
@@ -119,6 +126,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_coins" />
 
+
     <TextView
         android:id="@+id/tv_coins"
         android:layout_width="236dp"
@@ -133,5 +141,6 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="@+id/tv_increased_by"
         app:layout_constraintTop_toBottomOf="@+id/tv_increased_by" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

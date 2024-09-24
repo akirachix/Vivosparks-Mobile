@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context="com.akirachix.investikaTrial.ui.AwardActivity">
 
+
     <!-- Top Background Image -->
     <ImageView
         android:id="@+id/top_background_image"
@@ -20,6 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" /> <!-- Adjust height percentage if needed -->
 
+
     <!-- Bottom Background Image -->
     <ImageView
         android:id="@+id/bottom_background_image"
@@ -27,11 +29,13 @@
         android:layout_height="0dp"
         android:scaleType="fitXY"
         android:src="@drawable/moneyaward"
-    app:layout_constraintTop_toBottomOf="@id/top_background_image"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHeight_percent="0.5" />
+        app:layout_constraintTop_toBottomOf="@id/top_background_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5" />
+
+
 
 
     <TextView
@@ -51,6 +55,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_background_image" />
 
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -68,6 +73,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+
     <Button
         android:id="@+id/btnGetStarted"
         android:layout_width="200dp"
@@ -84,5 +90,6 @@
         app:layout_constraintStart_toStartOf="@+id/textView1"
         app:layout_constraintTop_toBottomOf="@+id/textView1"
         app:layout_constraintVertical_bias="1.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

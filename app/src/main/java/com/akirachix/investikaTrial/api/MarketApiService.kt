@@ -29,5 +29,7 @@ interface MarketApiService {
         @Query("date") date: String,
         @Query("adjusted") adjusted: Boolean,
         @Query("apiKey") apiKey: String
+
     ): Call<MarketResponse>  // Correct return type
 }
+

@@ -9,6 +9,7 @@
     android:gravity="center"
     android:background="@drawable/secondbackground">
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -23,6 +24,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <ImageView
         android:id="@+id/idShadowClaw"
         android:layout_width="wrap_content"
@@ -32,6 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:srcCompat="@drawable/shadowclaw" />
+
 
     <ImageView
         android:id="@+id/imageView3"
@@ -45,6 +48,7 @@
         app:layout_constraintStart_toEndOf="@+id/idShadowClaw"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:srcCompat="@drawable/thunderwing" />
+
 
     <TextView
         android:id="@+id/textView2"
@@ -60,6 +64,7 @@
         app:layout_constraintStart_toStartOf="@+id/idShadowClaw"
         app:layout_constraintTop_toBottomOf="@+id/idShadowClaw" />
 
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -73,6 +78,7 @@
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
+
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
@@ -83,6 +89,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:srcCompat="@drawable/mysticflare" />
 
+
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="wrap_content"
@@ -92,6 +99,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         app:srcCompat="@drawable/aurorabreath" />
+
 
     <TextView
         android:id="@+id/textView4"
@@ -106,6 +114,7 @@
         app:layout_constraintStart_toStartOf="@+id/imageView4"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
+
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
@@ -118,5 +127,6 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView5"
         app:layout_constraintStart_toStartOf="@+id/imageView5"
         app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

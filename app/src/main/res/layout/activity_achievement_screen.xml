@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context="com.akirachix.investikaTrial.ui.AchievementScreen">
 
+
     <ImageView
         android:id="@+id/imageView10"
         android:layout_width="1265dp"
@@ -17,6 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/gift" />
+
 
     <View
         android:id="@+id/overlay"
@@ -29,6 +31,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.087" />
+
 
     <TextView
         android:id="@+id/gift"
@@ -45,6 +48,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/textView10"
         android:layout_width="314dp"
@@ -59,6 +63,7 @@
         app:layout_constraintHorizontal_bias="0.268"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gift" />
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnNext"
@@ -77,6 +82,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10"
         tools:ignore="MissingConstraints" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,5 +22,24 @@ class ChampionActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
+
+        binding.idThunderWing.setOnClickListener {
+            val intent = Intent(this,   AwardActivity::class.java)
+            startActivity(intent)
+
+
+        }
+
+        binding.idAuroraBreath.setOnClickListener {
+            val intent = Intent(this,   AwardActivity::class.java)
+            startActivity(intent)
+
+        }
+
+        binding.idMysticFlare.setOnClickListener {
+            val intent = Intent(this,   AwardActivity::class.java)
+            startActivity(intent)
+
+        }
     }
 }
