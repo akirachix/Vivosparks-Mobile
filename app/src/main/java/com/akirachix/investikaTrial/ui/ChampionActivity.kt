@@ -3,7 +3,10 @@ package com.akirachix.investikaTrial.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.akirachix.investikaTrial.api.ApiClient
 import com.akirachix.investikaTrial.api.SigninInterface
@@ -17,7 +20,6 @@ import retrofit2.Response
 
 class ChampionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityChampionBinding
-    private lateinit var imageSpinner: Spinner
     private lateinit var selectedImageView: ImageView
     private lateinit var selectedChoice: String
 
@@ -26,7 +28,6 @@ class ChampionActivity : AppCompatActivity() {
         binding = ActivityChampionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        imageSpinner = binding.idShadowClaw
         selectedImageView = binding.selectedImageView
 
         // Setup the spinner to allow user to choose an avatar
@@ -80,12 +81,12 @@ class ChampionActivity : AppCompatActivity() {
 
     // Setup the image spinner for avatar selection
     private fun setupImageSpinner() {
-        val imageChoices = arrayOf("ThunderWing", "ShadowClaw", "MysticFlare", "AuroraBreath")
+        val imageChoices = arrayOf("ShadowClaw", "ThunderWing", "MysticFlare", "AuroraBreath")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, imageChoices)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        imageSpinner.adapter = adapter
+        binding.idAvatarSpinner.adapter = adapter // Assuming you have a Spinner in your layout with this ID
 
-        imageSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        binding.idAvatarSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 selectedChoice = imageChoices[position]
                 val imageUrl = getImageUrl(selectedChoice)
