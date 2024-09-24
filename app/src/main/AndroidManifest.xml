@@ -5,129 +5,71 @@
     <uses-sdk
         android:minSdkVersion="24"
         android:targetSdkVersion="34" />
+
     <!-- Internet Permission -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/launcherpic"
-        android:label="@string/Investika"
+        android:label="@string/investika"
         android:roundIcon="@drawable/launcherpic"
         android:supportsRtl="true"
         android:theme="@style/Theme.InvestikaTrial"
         tools:targetApi="31">
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.HowToOpenAccountActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.LowMidRiskActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.LowRiskActivity"
-            android:exported="false" />
 
-
+        <!-- Main Entry Point -->
         <activity
-            android:name="com.akirachix.investikaTrial.ui.AchievementScreen"
-            android:exported="false" />
+            android:name="com.akirachix.investikaTrial.ui.SplashScreenActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
-        <uses-library android:name="com.google.android.maps" />
+        <!-- Register Activity -->
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.RegisterActivity"
+            android:exported="true" />
 
+        <!-- Other Activities -->
+        <activity android:name="com.akirachix.investikaTrial.ui.SignInActivity" android:exported="true" />
+        <activity android:name="com.akirachix.investikaTrial.ui.InvestmentActivity" android:exported="true" />
+        <activity android:name="com.akirachix.investikaTrial.ui.MarketActivity" android:exported="true" />
+        <activity android:name="com.akirachix.investikaTrial.ui.InvestActivity" android:exported="true" />
+        <activity android:name="com.akirachix.investikaTrial.ui.AchievementActivity" android:exported="true" />
+        <activity android:name="com.akirachix.investikaTrial.ui.ProfileActivity" android:exported="true" />
+        <activity android:name="com.akirachix.investikaTrial.ui.SafeActivity" android:exported="true"/>
+        <activity android:name="com.akirachix.investikaTrial.ui.BridgeActivity" android:exported="true" />
+        <activity android:name="com.akirachix.investikaTrial.ui.StepsActivity" android:exported="true" />
+        <activity android:name="com.akirachix.investikaTrial.ui.MedActivity" android:exported="true"/>
+        <activity android:name="com.akirachix.investikaTrial.ui.LossActivity" android:exported="true"/>
+        <activity android:name="com.akirachix.investikaTrial.ui.FollowupActivity" android:exported="true" />
+        <activity android:name="com.akirachix.investikaTrial.ui.SageActivity" android:exported="true" />
+        <activity android:name="com.akirachix.investikaTrial.ui.DefeatedActivity" android:exported="true"/>
+        <activity android:name="com.akirachix.investikaTrial.ui.SafetyActivity" android:exported="true" />
+        <activity android:name="com.akirachix.investikaTrial.ui.WisdomActivity" android:exported="true" />
+        <activity android:name="com.akirachix.investikaTrial.ui.SlayDragonActivity" android:exported="true"/>
+        <activity android:name="com.akirachix.investikaTrial.ui.BattleQuizActivity" android:exported="true"/>
+        <activity android:name="com.akirachix.investikaTrial.ui.BattleActivity" android:exported="true" />
+        <activity android:name="com.akirachix.investikaTrial.ui.PathDecisionActivity" android:exported="true" />
+        <activity android:name="com.akirachix.investikaTrial.ui.AwardActivity" android:exported="true" />
+        <activity android:name="com.akirachix.investikaTrial.ui.HighRiskPaths" android:exported="true" />
+        <activity android:name="com.akirachix.investikaTrial.ui.DragonActivity" android:exported="true" />
+        <activity android:name="com.akirachix.investikaTrial.ui.ChampionActivity" android:exported="true" />
+        <activity android:name="com.akirachix.investikaTrial.ui.LaunchGameActivity" android:exported="true" />
+        <activity android:name="com.akirachix.investikaTrial.ui.CreateProfileActivity" android:exported="true" />
+        <activity android:name="com.akirachix.investikaTrial.ui.AssessmentActivity" android:exported="true" />
+        <activity android:name="com.akirachix.investikaTrial.ui.CorporateActivity" android:exported="true" />
+
+        <!-- Google Ads Configuration -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-com.akirachix.investikatrial" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
-
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.SafeActivity"
-            android:exported="false" />
-
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.StepsActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.MedActivity"
-            android:exported="false" />
-
-
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.SafetyActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.WisdomActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.SlayDragonActivity"
-            android:exported="false" />
-
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.BattleActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.PathDecisionActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.AwardActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.HighRiskPaths"
-            android:exported="false" />
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.DragonActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.ChampionActivity"
-            android:exported="true" />
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.LaunchGameActivity"
-            android:exported="true" />
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.CreateProfileActivity"
-            android:exported="true" />
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.RegisterActivity"
-            android:exported="true" />
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.AssessmentActivity"
-            android:exported="true" />
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.SplashScreenActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".SignInActivity"
-            android:exported="true" />
-
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.CorporateActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.CdsActivity"
-            android:exported="false" />
-
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.CongratulationsActivity"
-            android:exported="false" />
-
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.LivestocksActivity"
-            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"

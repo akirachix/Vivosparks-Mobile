@@ -1,17 +1,17 @@
+package com.akirachix.investikaTrial.viewmodel
+
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.akirachix.investikaTrial.api.ApiClient
-import com.akirachix.investikaTrial.api.ApiInterface
-import com.akirachix.investikaTrial.api.MarketApiService
-import com.akirachix.investikaTrial.api.SignInClient
+import com.akirachix.investikaTrial.api.SigninInterface
 import com.akirachix.investikaTrial.models.LoginRequest
-import com.akirachix.investikaTrial.models.LoginResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-
+import kotlinx.coroutines.launch
+import retrofit2.HttpException
 
 class SignInViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -21,30 +21,42 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
     private val _googleSignInResult = MutableLiveData<Result<String>>()
     val googleSignInResult: LiveData<Result<String>> = _googleSignInResult
 
+    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private val apiService = ApiClient.retrofit.create(SigninInterface::class.java)
 
-    // API Login Logic
+    // API Login Logic with Coroutines
     fun login(username: String, password: String) {
         if (!validateForm(username, password)) return
 
         val loginRequest = LoginRequest(username, password)
-        val apiService = SignInClient.retrofitInstance.create(ApiInterface::class.java)
 
-        apiService.login(loginRequest).enqueue(object : Callback<LoginResponse> {
-            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+        viewModelScope.launch {
+            try {
+                val response = apiService.login(loginRequest) // Assuming login is a suspend function
                 if (response.isSuccessful && response.body()?.status == "success") {
                     _loginResult.postValue(Result.success(response.body()?.message ?: "Login successful"))
                 } else {
                     _loginResult.postValue(Result.failure(Throwable(response.body()?.message ?: "Login failed")))
                 }
+            } catch (e: HttpException) {
+                _loginResult.postValue(Result.failure(Throwable("Network error: ${e.message()}")))
+            } catch (e: Exception) {
+                _loginResult.postValue(Result.failure(Throwable("An error occurred: ${e.localizedMessage}")))
             }
-
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                _loginResult.postValue(Result.failure(t))
-            }
-        })
+        }
     }
 
-
+    // Google Sign-In Logic
+    fun firebaseAuthWithGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credential).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                _googleSignInResult.postValue(Result.success("Google Sign-In successful"))
+            } else {
+                _googleSignInResult.postValue(Result.failure(task.exception ?: Exception("Google Sign-In failed")))
+            }
+        }
+    }
 
     // Validation Logic
     fun validateForm(username: String, password: String): Boolean {

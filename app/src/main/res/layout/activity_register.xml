@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Register">
+    tools:context=".ui.RegisterActivity">
 
     <ImageView
         android:id="@+id/backgroundImage"
@@ -129,24 +129,25 @@
             android:textSize="20sp"
             android:fontFamily="@font/nunito_bold"
             android:textColor="#000000"
+
             android:textColorHint="#FFFFFF" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/loginbtn"
-        android:layout_width="250dp"
+        android:layout_width="249dp"
         android:layout_height="78dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="44dp"
         android:backgroundTint="#FFC300"
         android:fontFamily="@font/nunito_bold"
         android:text="Proceed"
-        android:textColor="#003356"
+        android:textAllCaps="false"
+        android:textColor="#003566"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.381"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/usernameTextInput" />
+        app:cornerRadius="40dp"
+        app:layout_constraintEnd_toEndOf="@+id/usernameTextInput"
+        app:layout_constraintStart_toStartOf="@+id/usernameTextInput"
+        app:layout_constraintTop_toBottomOf="@+id/usernameTextInput" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
