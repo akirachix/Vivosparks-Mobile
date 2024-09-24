@@ -16,13 +16,13 @@ class SplashScreenActivity : AppCompatActivity() {
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Handler to delay for 3 seconds
+     
         Handler().postDelayed({
-            // Navigate to LoginActivity after 3 seconds
+        
             val intent = Intent(this,SignInActivity::class.java)
             startActivity(intent)
-            // Finish SplashScreenActivity so it can't be returned to
+        
             finish()
-        }, 3000) // 3000 milliseconds = 3 seconds
+        }, 3000)
     }
 }

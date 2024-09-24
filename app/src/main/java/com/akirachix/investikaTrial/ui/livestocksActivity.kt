@@ -49,7 +49,7 @@ class LivestocksActivity : AppCompatActivity() {
 
         // Set up button click listener for proceeding to another activity
         binding.btnProceedInvest.setOnClickListener {
-            val intent = Intent(this, SafaricompriceActivity::class.java)
+            val intent = Intent(this, HowToOpenAccountActivity::class.java)
             startActivity(intent)
         }
     }

@@ -38,6 +38,25 @@ class ChampionActivity : AppCompatActivity() {
             // Register user using all the input data including the avatar
             registerUserWithAllData(avatar)
         }
+
+        binding.idThunderWing.setOnClickListener {
+            val intent = Intent(this,   AwardActivity::class.java)
+            startActivity(intent)
+
+
+        }
+
+        binding.idAuroraBreath.setOnClickListener {
+            val intent = Intent(this,   AwardActivity::class.java)
+            startActivity(intent)
+
+        }
+
+        binding.idMysticFlare.setOnClickListener {
+            val intent = Intent(this,   AwardActivity::class.java)
+            startActivity(intent)
+
+        }
     }
 
     // Setup the image spinner for avatar selection

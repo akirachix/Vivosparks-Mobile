@@ -27,7 +27,7 @@ class CorporateActivity : AppCompatActivity() {
 
         val btnProceedWeekly: Button = findViewById(R.id.btnProceedWeekly)
         btnProceedWeekly.setOnClickListener {
-            val intent = Intent(this, EarningActivity::class.java)
+            val intent = Intent(this, CdsActivity::class.java)
             startActivity(intent)
         }
 
