@@ -6,11 +6,9 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.akirachix.investikaTrial.ui.LaunchGameActivity
 import com.akirachix.investikaTrial.viewmodel.SignInViewModel
 import com.akirachix.investikatrial.R
 import com.akirachix.investikatrial.databinding.ActivitySignInBinding
-import com.akirachix.investikatrial.ui.RegisterActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -32,7 +30,7 @@ class SignInActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.loginbtn.setOnClickListener {
-            val intent = Intent(this, LaunchGameActivity::class.java)
+            val intent = Intent(this, DragonActivity::class.java)
             startActivity(intent)
 
 
@@ -115,13 +113,13 @@ class SignInActivity : AppCompatActivity() {
 
     // Navigate to the main activity
     private fun navigateToMain() {
-        startActivity(Intent(this, LaunchGameActivity::class.java))
+        startActivity(Intent(this, HighRiskPaths::class.java))
         finish()
     }
 
     // Navigate to the sign-up screen
     private fun navigateToSignUp() {
-        startActivity(Intent(this, RegisterActivity::class.java))
+        startActivity(Intent(this, LaunchGameActivity::class.java))
     }
 
     // Show error message

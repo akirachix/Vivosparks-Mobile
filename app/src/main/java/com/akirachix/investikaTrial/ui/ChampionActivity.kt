@@ -34,28 +34,47 @@ class ChampionActivity : AppCompatActivity() {
 
         // Handle the register button click
         binding.registerButton.setOnClickListener {
-            val avatar = selectedChoice
-            // Register user using all the input data including the avatar
-            registerUserWithAllData(avatar)
-        }
+            val avatar = selectedChoice // Selected avatar
 
-        binding.idShadowClaw.setOnClickListener {
-            val intent = Intent(this,   AwardActivity::class.java)
-            startActivity(intent)
+            // Get the data from the previous activities
+            val username = intent.getStringExtra("username") ?: ""
+            val email = intent.getStringExtra("email") ?: ""
+            val password = intent.getStringExtra("password") ?: ""
+            val age = intent.getStringExtra("age")?.toIntOrNull() ?: 0
+            val gender = intent.getStringExtra("gender") ?: ""
+            val location = intent.getStringExtra("location") ?: ""
+            val income = intent.getStringExtra("income") ?: ""
 
+            // Make the final registration request with all data
+            val registerRequest = RegisterRequest(
+                username = username,
+                email = email,
+                password = password,
+                age = age,
+                gender = gender,
+                location = location,
+                income = income,
+                avatar = avatar // Avatar choice from spinner
+            )
 
-        }
+            // Use Retrofit to register user
+            val apiInterface = ApiClient.retrofit.create(SigninInterface::class.java)
+            apiInterface.register(registerRequest).enqueue(object : Callback<RegisterResponse> {
+                override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
+                    if (response.isSuccessful) {
+                        // Registration success, navigate to next activity
+                        Toast.makeText(this@ChampionActivity, "Registration successful!", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@ChampionActivity, AwardActivity::class.java))
+                        finish()
+                    } else {
+                        Toast.makeText(this@ChampionActivity, "Registration failed: ${response.message()}", Toast.LENGTH_LONG).show()
+                    }
+                }
 
-        binding.idShadowClaw.setOnClickListener {
-            val intent = Intent(this,   AwardActivity::class.java)
-            startActivity(intent)
-
-        }
-
-        binding.idShadowClaw.setOnClickListener {
-            val intent = Intent(this,   AwardActivity::class.java)
-            startActivity(intent)
-
+                override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+                    Toast.makeText(this@ChampionActivity, "Error: ${t.message}", Toast.LENGTH_LONG).show()
+                }
+            })
         }
     }
 
@@ -77,51 +96,6 @@ class ChampionActivity : AppCompatActivity() {
                 // Do nothing
             }
         }
-    }
-
-    // Register the user using all the data, including the avatar
-    private fun registerUserWithAllData(avatar: String) {
-        // Get intent data passed from previous activity
-        val intent = intent
-
-        // Create a request object with all user inputs
-        val registerRequest = RegisterRequest(
-            username = intent.getStringExtra("username") ?: "",
-            email = intent.getStringExtra("email") ?: "",
-            password = intent.getStringExtra("password") ?: "",
-            age = intent.getStringExtra("age")?.toIntOrNull() ?: 0,
-            gender = intent.getStringExtra("gender") ?: "",
-            location = intent.getStringExtra("location") ?: "",
-            income = intent.getStringExtra("income") ?: "",
-            avatar = avatar // Pass the selected avatar choice
-        )
-
-        // Use Retrofit to make API call for registration
-        val apiInterface = ApiClient.retrofit.create(SigninInterface::class.java)
-        apiInterface.register(registerRequest).enqueue(object : Callback<RegisterResponse> {
-            override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
-                if (response.isSuccessful) {
-                    // Registration is successful
-                    Toast.makeText(this@ChampionActivity, "Registration successful!", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this@ChampionActivity, LaunchGameActivity::class.java))
-                    finish()
-                } else {
-                    // Handle error response from the server
-                    val errorBody = response.errorBody()?.string()
-                    if (response.code() == 409) { // Assuming 409 is for duplicate username/email
-                        Toast.makeText(this@ChampionActivity, "Username or Email already exists. Please choose another.", Toast.LENGTH_LONG).show()
-                    } else {
-                        Toast.makeText(this@ChampionActivity, "Registration failed: $errorBody", Toast.LENGTH_LONG).show()
-                    }
-                }
-            }
-
-
-            override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
-                // Show error message if there was an issue with the request
-                Toast.makeText(this@ChampionActivity, "Error: ${t.message}", Toast.LENGTH_LONG).show()
-            }
-        })
     }
 
     // Helper function to get image URL based on avatar choice

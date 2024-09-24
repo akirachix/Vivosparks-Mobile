@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -16,14 +15,13 @@
         android:roundIcon="@drawable/launcherpic"
         android:supportsRtl="true"
         android:theme="@style/Theme.InvestikaTrial"
-
         tools:targetApi="31">
-
-
-
-
-
-
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.DefeatActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.FailedActivity"
+            android:exported="false" />
         <activity
             android:name="com.akirachix.investikaTrial.ui.AchievementScreen"
             android:exported="false" />
@@ -40,23 +38,26 @@
 
 
         <activity
+            android:name="com.akirachix.investikaTrial.ui.HowToOpenAccountActivity"
+            android:exported="true" />
+        <activity
             android:name="com.akirachix.investikaTrial.ui.SafeActivity"
             android:exported="false" />
-
         <activity
             android:name="com.akirachix.investikaTrial.ui.StepsActivity"
             android:exported="false" />
-
         <activity
             android:name="com.akirachix.investikaTrial.ui.MedActivity"
             android:exported="false" />
-
-
-
         <activity
             android:name="com.akirachix.investikaTrial.ui.SignInActivity"
             android:exported="true" />
-
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.LowMidRiskActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.akirachix.investikaTrial.ui.LowRiskActivity"
+            android:exported="true" />
         <activity
             android:name="com.akirachix.investikaTrial.ui.SafetyActivity"
             android:exported="false" />
@@ -66,7 +67,6 @@
         <activity
             android:name="com.akirachix.investikaTrial.ui.SlayDragonActivity"
             android:exported="false" />
-
         <activity
             android:name="com.akirachix.investikaTrial.ui.BattleActivity"
             android:exported="false" />
@@ -89,7 +89,7 @@
             android:name="com.akirachix.investikaTrial.ui.LaunchGameActivity"
             android:exported="true" />
         <activity
-            android:name="com.akirachix.investikaTrial.ui.CreateProfileActivity"
+            android:name="com.akirachix.investikaTrial.ui.Createprofileactivity"
             android:exported="true" />
         <activity
             android:name="com.akirachix.investikaTrial.ui.RegisterActivity"
@@ -102,14 +102,13 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.akirachix.investikaTrial.ui.ResultsActivity"
             android:exported="false" />
-
         <activity
             android:name="com.akirachix.investikaTrial.ui.CorporateActivity"
             android:exported="true">
@@ -128,11 +127,9 @@
         <activity
             android:name="com.akirachix.investikaTrial.ui.CdsActivity"
             android:exported="false" />
-
         <activity
             android:name="com.akirachix.investikaTrial.ui.CongratulationsActivity"
             android:exported="false" />
-
         <activity
             android:name="com.akirachix.investikaTrial.ui.LivestocksActivity"
             android:exported="false" />
