@@ -71,16 +71,15 @@
                 android:id="@+id/radio_male"
                 android:layout_width="108dp"
                 android:layout_height="47dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/nunito_sans_bold"
                 android:text="Male"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/radio_female"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toTopOf="@+id/radio_female"
+                app:layout_constraintVertical_bias="0.0" />
 
             <RadioButton
                 android:id="@+id/radio_female"

@@ -8,7 +8,7 @@
     tools:context="com.akirachix.investikaTrial.ui.InvestActivity">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/idThunderWing"
         android:layout_width="718dp"
         android:layout_height="897dp"
         app:layout_constraintBottom_toBottomOf="parent"

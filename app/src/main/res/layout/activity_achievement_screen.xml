@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.528"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/gift" />
+        app:srcCompat="@drawable/congrats" />
 
     <View
         android:id="@+id/overlay"
@@ -38,6 +38,7 @@
         android:fontFamily="@font/nunito_sans_bold"
         android:text="Congratulations!!, brave investor! Now  that you've mastered  the art of low-risk  investing, it's  time to face the real  market."
         android:textColor="#FFC107"
+        android:textAlignment="center"
         android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,6 +55,7 @@
         android:text="Get ready to navigate the  exciting world of money  market funds trading!"
         android:textColor="@color/white"
         android:textSize="24dp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.268"
         app:layout_constraintStart_toStartOf="parent"

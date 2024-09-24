@@ -17,7 +17,7 @@ class LaunchGameActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Navigate to MainActivity on button click using View Binding
-        binding.btnGetStarted.setOnClickListener {
+        binding.btnStart.setOnClickListener {
             val intent = Intent(this, AssessmentActivity::class.java)
             startActivity(intent)
 
