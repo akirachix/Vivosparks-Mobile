@@ -9,21 +9,19 @@
     android:background="@drawable/riverbg">
 
 
-
-
-
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
+        android:layout_marginBottom="81dp"
+        android:fontFamily="@font/nunito_bold"
         android:text="You were defeated by the dragon!"
         android:textAlignment="center"
         android:textColor="#FFC300"
-        android:fontFamily="@font/nunito_bold"
         android:textSize="28sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

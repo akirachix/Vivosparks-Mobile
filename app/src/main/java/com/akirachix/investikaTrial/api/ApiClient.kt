@@ -1,6 +1,6 @@
 package com.akirachix.investikaTrial.api
 
-import com.akirachix.investikaTrial.api.ApiClient.BASE_URL
+
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
