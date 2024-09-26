@@ -15,6 +15,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/nunito_bold"
         android:text="Summon Your Champion"
+        android:textAlignment="center"
         android:textColor="#FFC300"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,10 +27,9 @@
         android:id="@+id/Imgshadow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
         app:srcCompat="@drawable/shadowclaw" />
 
     <ImageView
@@ -37,10 +37,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.956"
+        app:layout_constraintHorizontal_bias="0.967"
         app:layout_constraintStart_toEndOf="@+id/Imgshadow"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:srcCompat="@drawable/thunderwing" />
@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:srcCompat="@drawable/mysticflare" />
@@ -85,10 +85,12 @@
         android:id="@+id/imageView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintHorizontal_bias="0.967"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
         app:srcCompat="@drawable/aurorabreath" />
 
     <TextView
@@ -123,18 +125,16 @@
     <!-- ImageView to display the selected image -->
     <Spinner
         android:id="@+id/idAvatarSpinner"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
         android:background="@drawable/spinner_background"
-        android:text="Select Your Avatar"
         android:padding="16dp"
         android:spinnerMode="dropdown"
+        android:text="Select Your Avatar"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView5"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <!-- White background -->
@@ -154,16 +154,16 @@
         android:id="@+id/registerButton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="Proceed"
         android:textAlignment="center"
         android:textColor="#003566"
         android:textSize="18dp"
         app:backgroundTint="#FFC107"
         app:cornerRadius="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/idAvatarSpinner"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/idAvatarSpinner"
         app:layout_constraintTop_toBottomOf="@+id/idAvatarSpinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
