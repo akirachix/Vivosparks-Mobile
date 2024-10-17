@@ -1,5 +1,4 @@
 package com.akirachix.investikaTrial.ui
-
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
@@ -79,13 +78,11 @@ class AssessmentActivity : AppCompatActivity() {
     }
 
     private fun displayQuestion() {
-        // Check if currentQuestionIndex is within the assessments list
         if (currentQuestionIndex < assessments.size) {
             val question = assessments[currentQuestionIndex]
             questionTextView.text = question.question_text
             Glide.with(this).load(question.question_image).into(imageView)
 
-            // Ensure the answer array is valid (has at least 4 answers)
             if (question.answers.size >= 4) {
                 buttonA.text = question.answers[0].text
                 buttonB.text = question.answers[1].text
@@ -95,103 +92,78 @@ class AssessmentActivity : AppCompatActivity() {
 
             setAnswerListeners()
         } else {
-            // If no more questions, navigate to the results activity
             navigateToResults()
         }
     }
 
     private fun setAnswerListeners() {
-        buttonA.setOnClickListener { awardCoinsAndProceed() }
-        buttonB.setOnClickListener { awardCoinsAndProceed() }
-        buttonC.setOnClickListener { awardCoinsAndProceed() }
-        buttonD.setOnClickListener { awardCoinsAndProceed() }
+        buttonA.setOnClickListener { awardCoinsAndProceed(buttonA.text.toString()) }
+        buttonB.setOnClickListener { awardCoinsAndProceed(buttonB.text.toString()) }
+        buttonC.setOnClickListener { awardCoinsAndProceed(buttonC.text.toString()) }
+        buttonD.setOnClickListener { awardCoinsAndProceed(buttonD.text.toString()) }
     }
 
-
-    private fun awardCoinsAndProceed() {
-        // Award 5 coins for every answer
+    private fun awardCoinsAndProceed(selectedOptionText: String) {
         awardCoins(5)
-
-        // Show custom Toast with larger text size and better visibility
-        showCustomToast("Good Job!!!")
-
-        // Increment to the next question
+        showCustomToast("You've opted for: $selectedOptionText. Nice! Let's move on!")
         currentQuestionIndex++
-        displayQuestion() // Display next question
+        displayQuestion()
     }
 
-    // Method to show custom Toast
     private fun showCustomToast(message: String) {
-        // Inflate custom layout for Toast
         val toastLayout = layoutInflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container))
-
-        // Find the TextView in the custom layout and set the message
         val toastTextView = toastLayout.findViewById<TextView>(R.id.toast_text)
         toastTextView.text = message
 
-        // Create and display the Toast
         val toast = Toast(applicationContext)
         toast.duration = Toast.LENGTH_SHORT
         toast.view = toastLayout
         toast.show()
     }
 
-
-    // Function to award a specific number of coins
     private fun awardCoins(coinsToAward: Int) {
-        totalCoins += coinsToAward // Add awarded coins to totalCoins
+        totalCoins += coinsToAward
         runOnUiThread {
-            totalCoinsTextView.text = "Total Coins: $totalCoins" // Update UI on main thread
+            totalCoinsTextView.text = "Total Coins: $totalCoins"
         }
 
-        // Play the coin drop sound
         playCoinDropSound()
-
         showCoinAnimation(coinsToAward)
     }
 
-    // Function to play the coin drop sound
     private fun playCoinDropSound() {
-        // Initialize MediaPlayer with the coin drop sound
         mediaPlayer = MediaPlayer.create(this, R.raw.coin_drop)
-        mediaPlayer?.start() // Start playing the sound
+        mediaPlayer?.start()
 
         mediaPlayer?.setOnCompletionListener {
-            it.release() // Release the MediaPlayer once done
-            mediaPlayer = null // Clear the reference
+            it.release()
+            mediaPlayer = null
         }
     }
 
-    // Function to show coin falling animation based on awarded coins
     private fun showCoinAnimation(coinsToAward: Int) {
         for (i in 1..coinsToAward) {
             val coinImageView = ImageView(this)
-            coinImageView.setImageResource(R.drawable.coin) // Replace with your actual coin image
+            coinImageView.setImageResource(R.drawable.coin)
 
-            // Set the desired width and height for the coin (in pixels)
-            val width = dpToPx(50)  // Set width to 50dp
-            val height = dpToPx(50) // Set height to 50dp
-
-            // Set the layout parameters for the ImageView
+            val width = dpToPx(50)
+            val height = dpToPx(50)
             val layoutParams = FrameLayout.LayoutParams(width, height)
             coinImageView.layoutParams = layoutParams
 
             coinContainer.addView(coinImageView)
 
-            // Random horizontal position to make the coin animation more natural
             val startX = (coinContainer.width * Math.random()).toFloat()
 
-            // Set up a falling animation for the coin
             val fallAnimation = ObjectAnimator.ofFloat(
                 coinImageView,
                 "translationY",
                 -coinContainer.height.toFloat(),
                 coinContainer.height.toFloat()
             )
-            fallAnimation.duration = (1500 + (500 * Math.random()).toLong()) // Randomize duration for each coin
+            fallAnimation.duration = (1500 + (500 * Math.random()).toLong())
             fallAnimation.start()
 
-            // Animate coin horizontally (optional: to add some horizontal movement)
             val horizontalMovement = ObjectAnimator.ofFloat(
                 coinImageView,
                 "translationX",
@@ -203,31 +175,20 @@ class AssessmentActivity : AppCompatActivity() {
 
             fallAnimation.addListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
-                    coinContainer.removeView(coinImageView) // Remove coin when the animation ends
+                    coinContainer.removeView(coinImageView)
                 }
             })
         }
     }
 
-    // Function to convert dp to pixels
     private fun dpToPx(dp: Int): Int {
         val density = resources.displayMetrics.density
         return (dp * density).toInt()
     }
 
-    // Navigate to results activity after last question
     private fun navigateToResults() {
         val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
         finish()
     }
 }
-
-
-
-
-
-
-
-
-

@@ -7,8 +7,6 @@
     android:layout_height="match_parent"
     tools:context="com.akirachix.investikaTrial.ui.AwardActivity">
 
-
-    <!-- Top Background Image -->
     <ImageView
         android:id="@+id/top_background_image"
         android:layout_width="447dp"
@@ -19,10 +17,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" /> <!-- Adjust height percentage if needed -->
+        app:layout_constraintTop_toTopOf="parent" />
 
-
-    <!-- Bottom Background Image -->
     <ImageView
         android:id="@+id/bottom_background_image"
         android:layout_width="match_parent"
@@ -34,9 +30,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.5" />
-
-
-
 
     <TextView
         android:id="@+id/textView"
@@ -53,8 +46,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_background_image" />
-
+        app:layout_constraintTop_toBottomOf="@id/top_background_image" />
 
     <TextView
         android:id="@+id/textView1"
@@ -71,8 +63,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.566"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
+        app:layout_constraintTop_toBottomOf="@id/textView" />
 
     <Button
         android:id="@+id/btnGetStarted"
@@ -81,7 +72,7 @@
         android:layout_marginBottom="76dp"
         android:backgroundTint="#FFC107"
         android:text="Proceed"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:fontFamily="@font/nunito_sans_bold"
         android:textColor="#003566"
         app:layout_constraintBottom_toBottomOf="@+id/bottom_background_image"
@@ -91,5 +82,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView1"
         app:layout_constraintVertical_bias="1.0" />
 
-
+    <!-- Coin Container for Animation -->
+    <FrameLayout
+        android:id="@+id/coin_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/textView1"
+        app:layout_constraintBottom_toTopOf="@id/btnGetStarted"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

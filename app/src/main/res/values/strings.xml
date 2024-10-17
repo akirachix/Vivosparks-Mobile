@@ -3,4 +3,8 @@
 
     <string name="investika">Investika</string>
     <string name="default_web_client_id">1:925882610977:android:7df1c7cff568fe8bd13a60</string>
+    <string name="summon_your_champion">Summon Your Champion</string>
+    <string name="join_the_quest">Join The Quest</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="total_coins_0">Total Coins: 0</string>
 </resources>

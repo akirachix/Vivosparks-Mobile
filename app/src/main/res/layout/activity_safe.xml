@@ -38,14 +38,14 @@
 
     <ImageView
         android:id="@+id/sageImageView"
-        android:layout_width="226dp"
-        android:layout_height="293dp"
-        android:layout_marginTop="96dp"
+        android:layout_width="599dp"
+        android:layout_height="358dp"
+        android:layout_marginTop="76dp"
         android:layout_marginEnd="24dp"
         android:src="@drawable/safe"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintHorizontal_bias="0.443"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="88dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/nunito_sans_bold"
         android:gravity="center"
@@ -63,7 +63,7 @@
         android:textColor="#FFEB3B"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.341"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sageImageView" />
 
@@ -71,11 +71,11 @@
         android:id="@+id/adviseTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/nunito_sans_bold"
         android:gravity="center"
         android:text="Low-risk decisions lead to safe,guaranteed growth, but with lower returns..."
         android:textAlignment="center"
-        android:fontFamily="@font/nunito_sans_bold"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,9 +94,10 @@
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.559"
+        app:layout_constraintHorizontal_bias="0.436"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adviseTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/adviseTextView"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

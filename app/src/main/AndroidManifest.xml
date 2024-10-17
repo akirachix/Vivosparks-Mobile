@@ -17,6 +17,9 @@
         android:theme="@style/Theme.InvestikaTrial"
         tools:targetApi="31">
         <activity
+            android:name="com.akirachix.investikaTrial.ui.ActivityGovernmentBond"
+            android:exported="false" />
+        <activity
             android:name="com.akirachix.investikaTrial.ui.DefeatActivity"
             android:exported="false" />
         <activity
@@ -34,8 +37,6 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
-
 
         <activity
             android:name="com.akirachix.investikaTrial.ui.HowToOpenAccountActivity"
@@ -89,7 +90,7 @@
             android:name="com.akirachix.investikaTrial.ui.LaunchGameActivity"
             android:exported="true" />
         <activity
-            android:name="com.akirachix.investikaTrial.ui.Createprofileactivity"
+            android:name="com.akirachix.investikaTrial.ui.CreateProfileActivity"
             android:exported="true" />
         <activity
             android:name="com.akirachix.investikaTrial.ui.RegisterActivity"
@@ -106,9 +107,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.ResultsActivity"
-            android:exported="false" />
+
         <activity
             android:name="com.akirachix.investikaTrial.ui.CorporateActivity"
             android:exported="true">
@@ -118,12 +117,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.LuckyActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.akirachix.investikaTrial.ui.CoinActivity"
-            android:exported="false" />
+
         <activity
             android:name="com.akirachix.investikaTrial.ui.CdsActivity"
             android:exported="false" />

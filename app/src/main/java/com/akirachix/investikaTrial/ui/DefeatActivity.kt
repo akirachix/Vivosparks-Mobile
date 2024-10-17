@@ -19,12 +19,12 @@ class DefeatActivity : AppCompatActivity() {
 
         // Set up the click listeners
         binding.btnTryAgain.setOnClickListener {
-            val intent = Intent(this, HighRiskPaths::class.java) // Replace with your actual activity
+            val intent = Intent(this, HighRiskPaths::class.java)
             startActivity(intent)
         }
 
         binding.btncontinue.setOnClickListener {
-            val intent = Intent(this, LowMidRiskActivity::class.java) // Replace with your actual activity
+            val intent = Intent(this, LowMidRiskActivity::class.java)
             startActivity(intent)
         }
     }

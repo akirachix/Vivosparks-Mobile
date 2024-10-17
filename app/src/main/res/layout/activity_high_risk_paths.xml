@@ -8,48 +8,61 @@
     android:gravity="center"
     android:background="@drawable/riverbg">
 
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="Select Your Destiney"
+        android:textColor="#FFC300"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button15"
+        android:id="@+id/button16"
         android:layout_width="350dp"
         android:layout_height="65dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="80dp"
         android:background="@drawable/corners"
-        android:textAllCaps="false"
-        android:text="Pay the dragon"
         android:fontFamily="@font/nunito_bold"
+        android:text="Pay the dragon"
+        android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/button16"
-        app:layout_constraintEnd_toEndOf="@+id/button12"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/button12" />
+        app:layout_constraintBottom_toTopOf="@+id/button14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button14"
         android:layout_width="350dp"
         android:layout_height="65dp"
-        android:layout_marginBottom="60dp"
-        android:fontFamily="@font/nunito_bold"
+        android:layout_marginBottom="212dp"
         android:background="@drawable/corners"
-        android:text=" Fight the dragon"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Fight the dragon"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/button15"
-        app:layout_constraintEnd_toEndOf="@+id/button15"
+        app:layout_constraintEnd_toEndOf="@+id/button16"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/button15" />
+        app:layout_constraintStart_toStartOf="@+id/button16" />
 
     <Button
-        android:id="@+id/button12"
-        android:layout_width="349dp"
+        android:id="@+id/button15"
+        android:layout_width="350dp"
         android:layout_height="78dp"
-        android:layout_marginBottom="164dp"
-        android:textAllCaps="false"
+        android:layout_marginBottom="68dp"
         android:background="@drawable/corners"
         android:fontFamily="@font/nunito_bold"
         android:text="Cross the bridge of choices"
+        android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,34 +71,18 @@
         app:layout_constraintStart_toStartOf="@+id/button16" />
 
     <Button
-        android:id="@+id/button16"
+        android:id="@+id/button12"
         android:layout_width="350dp"
         android:layout_height="65dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="76dp"
         android:background="@drawable/corners"
-        android:text="Consult the wise sage"
         android:fontFamily="@font/nunito_bold"
+        android:text="Consult the wise sage"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/button12"
+        app:layout_constraintBottom_toTopOf="@+id/button15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/nunito_semibold"
-        android:text="Choose Your Path"
-        android:textColor="#FFC300"
-        android:textSize="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

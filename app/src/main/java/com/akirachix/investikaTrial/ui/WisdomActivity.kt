@@ -14,10 +14,8 @@ class WisdomActivity: AppCompatActivity() {
 
         binding = ActivityWisdomBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
         binding.btnProceed.setOnClickListener {
-            val intent = Intent(this, SafeActivity::class.java)
+            val intent = Intent(this, ActivityGovernmentBond::class.java)
             startActivity(intent)
         }
 

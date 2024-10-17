@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:gravity="center"
         android:background="@drawable/background"
         android:padding="16dp">
 
@@ -21,6 +22,8 @@
             android:textSize="24sp"
             android:textColor="@android:color/white"
             android:layout_gravity="center"
+            android:textAlignment="center"
+            android:fontFamily="@font/nunito_sans_bold"
             android:layout_marginBottom="16dp" />
 
         <!-- Question Text -->
@@ -39,45 +42,74 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            android:background="@drawable/rounded_corners"
+        android:clipToOutline="true" />
 
         <!-- Option Buttons -->
-
         <Button
             android:id="@+id/btnOptionA"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_width="350dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/corners"
+            android:backgroundTint="#FFFFFF"
+            android:fontFamily="@font/nunito_sans_bold"
+            android:padding="5dp"
             android:text="Option A"
-            android:textColor="@android:color/black"
-            android:textSize="15sp" />
+            android:textAlignment="center"
+            android:textColor="#050505"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnOptionB"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_width="350dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/corners"
+            android:backgroundTint="#FFFFFF"
+            android:fontFamily="@font/nunito_sans_bold"
+            android:padding="5dp"
             android:text="Option B"
-            android:textSize="15sp"
-            android:textColor="@android:color/black" />
+            android:textAlignment="center"
+            android:textColor="#050505"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnOptionC"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_width="350dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/corners"
+            android:backgroundTint="#FFFFFF"
+            android:fontFamily="@font/nunito_sans_bold"
+            android:padding="5dp"
             android:text="Option C"
-            android:textColor="@android:color/black"
-            android:textSize="15sp" />
+            android:textAlignment="center"
+            android:textColor="#050505"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnOptionD"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_width="350dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/corners"
+            android:backgroundTint="#FFFFFF"
+            android:fontFamily="@font/nunito_sans_bold"
+            android:padding="5dp"
             android:text="Option D"
-            android:textSize="15sp"
-            android:textColor="@android:color/black" />
+            android:textAlignment="center"
+            android:textColor="#050505"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

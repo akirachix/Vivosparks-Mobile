@@ -108,17 +108,17 @@ class PathDecisionActivity : AppCompatActivity() {
 
     private fun checkAnswer(selectedIndex: Int) {
         // Define the correct answer indices for each question
-        val correctAnswerIndices = listOf(2, 1, 1, 0, 1, 1) // Update these according to your correct answers
+        val correctAnswerIndices = listOf(2, 1, 1, 0, 1, 1)
         val correctAnswerIndex = correctAnswerIndices[currentQuestionIndex]
 
         // Check if the selected option corresponds to the correct answer index
         if (selectedIndex == correctAnswerIndex) {
-            Toast.makeText(this, "Good job!", Toast.LENGTH_SHORT).show()
-            correctAnswers++ // Increment correct answer count
+            Toast.makeText(this, "Great!", Toast.LENGTH_SHORT).show()
+            correctAnswers++
             awardCoins(10)
         } else {
             Toast.makeText(this, "Incorrect! Try again.", Toast.LENGTH_SHORT).show()
-            incorrectAnswers++ // Increment incorrect answer count
+            incorrectAnswers++
         }
 
         currentQuestionIndex++
@@ -149,7 +149,6 @@ class PathDecisionActivity : AppCompatActivity() {
             mediaPlayer = null
         }
     }
-
     private fun showCoinAnimation(coinsToAward: Int) {
         for (i in 1..coinsToAward) {
             val coinImageView = ImageView(this)
@@ -202,3 +201,4 @@ class PathDecisionActivity : AppCompatActivity() {
         finish()
     }
 }
+

@@ -11,7 +11,6 @@ class CongratulationsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityCongratulationsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

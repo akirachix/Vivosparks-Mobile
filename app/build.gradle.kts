@@ -45,7 +45,6 @@ android {
 
 
 dependencies {
-    // Core Android libraries
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -56,23 +55,17 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.0.0")) // Use latest version
     implementation(libs.firebase.auth.ktx)
     implementation(libs.play.services.auth)
-
-    // Retrofit for networking
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
-
-    // Image loading libraries
     implementation(libs.picasso)
     implementation(libs.glide)
+    implementation(libs.firebase.perf.ktx)
     annotationProcessor(libs.compiler)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-
-    // Remove unnecessary dependency
-    // implementation("com.typesafe.play:play_2.13:2.8.8") // Remove if not needed
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation (libs.material.v1100)
 }
 
 

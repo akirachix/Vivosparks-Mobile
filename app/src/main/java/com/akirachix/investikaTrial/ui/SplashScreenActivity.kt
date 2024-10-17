@@ -1,10 +1,11 @@
 package com.akirachix.investikaTrial.ui
 
 import android.content.Intent
+import android.media.AudioManager
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import android.media.MediaPlayer
 import com.akirachix.investikatrial.R
 import com.akirachix.investikatrial.databinding.ActivitySplashScreenBinding
 
@@ -20,25 +21,31 @@ class SplashScreenActivity : AppCompatActivity() {
 
         // Initialize the MediaPlayer with the audio file in res/raw
         mediaPlayer = MediaPlayer.create(this, R.raw.game)
-
-        // Play the sound
+        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
+        mediaPlayer.isLooping = true // Loop the sound
         mediaPlayer.start()
 
-        // Handler to delay for 3 seconds
+        // Navigate to SignInActivity after 5 seconds
         Handler().postDelayed({
-            // Stop and release the MediaPlayer when done
-            if (mediaPlayer.isPlaying) {
-                mediaPlayer.stop()
-            }
-            mediaPlayer.release()
+            navigateToSignIn()
+        }, 5000)
 
-            // Navigate to SignInActivity after 3 seconds
-            val intent = Intent(this, SignInActivity::class.java)
-            startActivity(intent)
+        // Set a listener to release the media player when done
+        mediaPlayer.setOnCompletionListener {
+            navigateToSignIn()
+        }
+    }
 
-            // Finish SplashScreenActivity so it can't be returned to
-            finish()
-        }, 5000) // 5000 milliseconds = 3 seconds
+    private fun navigateToSignIn() {
+        if (mediaPlayer.isPlaying) {
+            mediaPlayer.stop()
+        }
+        mediaPlayer.release()
+
+        // Navigate to SignInActivity
+        val intent = Intent(this, SignInActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     override fun onDestroy() {
