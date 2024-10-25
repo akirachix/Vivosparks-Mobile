@@ -1,6 +1,7 @@
 package com.akirachix.investikaTrial.ui
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -18,6 +19,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import android.util.Log
+import androidx.activity.FullyDrawnReporter
+import androidx.lifecycle.Lifecycle
 
 class ChampionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityChampionBinding
@@ -128,7 +131,7 @@ class ChampionActivity : AppCompatActivity() {
             }
         })
     }
-
+    
     private fun getImageUrl(choice: String): String {
         return when (choice) {
             "ThunderWing" -> "https://example.com/images/thunderwing.png"

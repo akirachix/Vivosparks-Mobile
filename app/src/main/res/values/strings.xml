@@ -7,4 +7,9 @@
     <string name="join_the_quest">Join The Quest</string>
     <string name="enter_email">Enter Email</string>
     <string name="total_coins_0">Total Coins: 0</string>
+    <string name="shadow_claw">Shadow Claw</string>
+    <string name="thunder_wing">Thunder Wing</string>
+    <string name="mystic_flare">Mystic Flare</string>
+    <string name="aurora_breath">Aurora Breath</string>
+    <string name="gender">Gender</string>
 </resources>

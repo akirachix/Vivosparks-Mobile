@@ -10,32 +10,35 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/titleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
-            android:fontFamily="@font/nunito_bold"
-            android:text="Create Profile"
-            android:textColor="#FFFFFF"
-            android:textSize="40sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.528"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Create Profile"
+        android:textColor="#FFFFFF"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:text="Gender"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
             android:fontFamily="@font/nunito_sans_bold"
+            android:text="@string/gender"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleText" />
@@ -50,122 +53,128 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-        </RadioGroup>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailTextInput"
-            android:layout_width="337dp"
-            android:layout_height="66dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="32dp"
-            android:hint="Enter Email"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/titleText">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="336dp"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/nunito_bold">
-
-                <RadioButton
-                    android:id="@+id/radio_male"
-                    android:layout_width="108dp"
-                    android:layout_height="47dp"
-                    android:fontFamily="@font/nunito_sans_bold"
-                    android:text="Male"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/radio_female" />
-
-                <RadioButton
-                    android:id="@+id/radio_female"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/nunito_sans_bold"
-                    android:text="Female"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp"
-                    app:layout_constraintEnd_toStartOf="@+id/radio_male"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <EditText
-            android:id="@+id/idAge"
-            android:layout_width="350dp"
-            android:layout_height="60dp"
-            android:layout_marginHorizontal="32dp"
-            android:layout_marginTop="32dp"
-            android:background="#FFFFFF"
-            android:fontFamily="@font/nunito_bold"
-            android:hint="Enter Age"
-            android:inputType="textPassword"
-            android:textColor="#000000"
-            android:textColorHint="#646262"
-            android:textCursorDrawable="@null"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="@+id/emailTextInput"
-            app:layout_constraintStart_toStartOf="@+id/emailTextInput"
-            app:layout_constraintTop_toBottomOf="@+id/emailTextInput" />
-
-        <EditText
-            android:id="@+id/idLocation"
-            android:layout_width="350dp"
-            android:layout_height="60dp"
-            android:layout_marginHorizontal="32dp"
-            android:layout_marginTop="50dp"
-            android:background="#FFFFFF"
-            android:fontFamily="@font/nunito_bold"
-            android:hint="Enter location"
-            android:inputType="textPassword"
-            android:textColor="#000000"
-            android:textColorHint="#646262"
-            android:textCursorDrawable="@null"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="@+id/idAge"
-            app:layout_constraintStart_toStartOf="@+id/idAge"
-            app:layout_constraintTop_toBottomOf="@+id/idAge" />
-
-        <EditText
-            android:id="@+id/idIncome"
-            android:layout_width="350dp"
-            android:layout_height="60dp"
-            android:layout_marginHorizontal="32dp"
-            android:layout_marginTop="50dp"
-            android:background="#FFFFFF"
-            android:fontFamily="@font/nunito_bold"
-            android:hint="Your income"
-            android:inputType="textPassword"
-            android:textColor="#000000"
-            android:textColorHint="#646262"
-            android:textCursorDrawable="@null"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="@+id/idLocation"
-            app:layout_constraintStart_toStartOf="@+id/idLocation"
-            app:layout_constraintTop_toBottomOf="@+id/idLocation" />
-
-        <Button
-            android:id="@+id/btnprocedd"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
-            android:text="Proceed"
-            android:textAlignment="center"
-            android:textColor="#003566"
-            android:textSize="18dp"
-            app:backgroundTint="#FFC107"
-            app:cornerRadius="25dp"
-            app:layout_constraintEnd_toEndOf="@+id/idIncome"
-            app:layout_constraintStart_toStartOf="@+id/idIncome"
-            app:layout_constraintTop_toBottomOf="@+id/idIncome" />
+            android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="50dp"
+        android:hint="Enter Email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleText">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radio_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:text="Male"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/radio_female" />
+
+            <RadioButton
+                android:id="@+id/radio_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:text="Female"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/radio_male"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <EditText
+        android:id="@+id/idAge"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="32dp"
+    android:background="#FFFFFF"
+    android:fontFamily="@font/nunito_bold"
+    android:hint="Enter Age"
+    android:inputType="text"
+    android:textColor="#000000"
+    android:textColorHint="#646262"
+    android:textCursorDrawable="@null"
+    android:textSize="20sp"
+        android:paddingStart="16dp"
+    app:layout_constraintEnd_toEndOf="@+id/emailTextInput"
+    app:layout_constraintStart_toStartOf="@+id/emailTextInput"
+    app:layout_constraintTop_toBottomOf="@+id/emailTextInput" />
+
+    <EditText
+        android:id="@+id/idLocation"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="50dp"
+    android:background="#FFFFFF"
+        android:paddingStart="16dp"
+    android:fontFamily="@font/nunito_bold"
+    android:hint="Enter location"
+    android:inputType="text"
+    android:textColor="#000000"
+    android:textColorHint="#646262"
+    android:textCursorDrawable="@null"
+    android:textSize="20sp"
+    app:layout_constraintEnd_toEndOf="@+id/idAge"
+    app:layout_constraintStart_toStartOf="@+id/idAge"
+    app:layout_constraintTop_toBottomOf="@+id/idAge" />
+
+    <EditText
+        android:id="@+id/idIncome"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="50dp"
+    android:background="#FFFFFF"
+    android:fontFamily="@font/nunito_bold"
+    android:hint="Your income"
+    android:inputType="text"
+        android:paddingStart="16dp"
+    android:textColor="#000000"
+    android:textColorHint="#646262"
+    android:textCursorDrawable="@null"
+    android:textSize="20sp"
+    app:layout_constraintEnd_toEndOf="@+id/idLocation"
+    app:layout_constraintStart_toStartOf="@+id/idLocation"
+    app:layout_constraintTop_toBottomOf="@+id/idLocation" />
+
+    <Button
+        android:id="@+id/btnprocedd"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="70dp"
+    android:text="Proceed"
+    android:textAlignment="center"
+    android:textColor="#003566"
+    android:textSize="18sp"
+    app:backgroundTint="#FFC107"
+    app:cornerRadius="25dp"
+    app:layout_constraintEnd_toEndOf="@+id/idIncome"
+    app:layout_constraintStart_toStartOf="@+id/idIncome"
+    app:layout_constraintTop_toBottomOf="@+id/idIncome" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
